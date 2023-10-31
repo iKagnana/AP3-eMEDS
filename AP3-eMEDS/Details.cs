@@ -15,8 +15,8 @@ namespace AP3_eMEDS
         public Details(string name, string description)
         {
             InitializeComponent();
-            textBox1.Text = name;
-            textBox2.Text = description;
+            this.textBox1.Text = name;
+            this.textBox2.Text = description;
         }
 
         private void confirmBtn_Click(object sender, EventArgs e)
