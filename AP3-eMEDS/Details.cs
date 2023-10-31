@@ -12,16 +12,35 @@ namespace AP3_eMEDS
 {
     public partial class Details : Form
     {
-        public Details(string name, string description)
+        private Drug detailledDrug;
+        private DrugDataAccess drugDataAccess = new DrugDataAccess();
+        public Details(int id, string name, string description)
         {
             InitializeComponent();
             this.textBox1.Text = name;
             this.textBox2.Text = description;
+            this.detailledDrug = new Drug(id, name, description);
         }
 
         private void confirmBtn_Click(object sender, EventArgs e)
         {
-            // TODO: change fields
+            Drug updatedDrug = new Drug(detailledDrug.Id, textBox1.Text, textBox2.Text);
+            int result =  drugDataAccess.UpdateDrugFromId(updatedDrug);
+            Console.WriteLine(result);
+            if (result == 0)
+            {
+                MessageBox.Show("Il y a eu une erreur");
+            }
+            else if (result == 1)
+            {
+                MessageBox.Show("Médicament modifié");
+                this.Close();
+            }
+        }
+
+        private void supprBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
