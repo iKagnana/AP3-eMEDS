@@ -29,7 +29,7 @@ namespace AP3_eMEDS
                 this.descTxt.Text,
                 this.targetTxt.Text,
                 Convert.ToDouble(this.priceTxt.Text),
-                Convert.ToInt32(this.stocksTxt.Text)
+                Convert.ToInt32(this.stocksField.Text)
                 );
             // get the saved row in db
             int result = dataAccess.addDrugToDB(drug);
@@ -59,7 +59,7 @@ namespace AP3_eMEDS
             this.targetTxt.Text = "";
             this.descTxt.Text = "";
             this.priceTxt.Text = "";
-            this.stocksTxt.Text = "";
+            this.priceTxt.Text = "";
         }
 
 
@@ -86,6 +86,21 @@ namespace AP3_eMEDS
         private void DetailsClosing(object sender, FormClosingEventArgs e)
         {
             UpdateGridView();
+        }
+
+        // check if only numeric value or not
+        private void priceTxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

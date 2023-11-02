@@ -21,7 +21,7 @@ namespace AP3_eMEDS
             this.targetTxt.Text = detailledDrug.Target;
             this.descTxt.Text = detailledDrug.Description;
             this.priceTxt.Text = detailledDrug.Price.ToString();
-            this.stocksTxt.Text = detailledDrug.Stocks.ToString();
+            this.stocksField.Text = detailledDrug.Stocks.ToString();
             this.detailledDrug = detailledDrug;
         }
 
@@ -32,7 +32,7 @@ namespace AP3_eMEDS
                                         descTxt.Text,
                                         targetTxt.Text,
                                         Convert.ToDouble(priceTxt.Text), 
-                                        Convert.ToInt32(stocksTxt.Text));
+                                        Convert.ToInt32(stocksField.Text));
             int result =  drugDataAccess.UpdateDrugFromId(updatedDrug);
             Console.WriteLine(result);
             if (result == 0)
@@ -49,6 +49,21 @@ namespace AP3_eMEDS
         private void supprBtn_Click(object sender, EventArgs e)
         {
             // TODO
+        }
+
+        // check if only numeric value or not
+        private void priceTxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

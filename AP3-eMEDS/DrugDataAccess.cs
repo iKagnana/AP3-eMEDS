@@ -90,7 +90,7 @@ namespace AP3_eMEDS
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "UPDATE drugs SET name = @name, description = @description, tagret = @target, price = @price, stocks = @stocks WHERE id = @id";
+                string query = "UPDATE drugs SET name = @name, description = @description, target = @target, price = @price, stocks = @stocks WHERE id = @id";
 
                 using (MySqlCommand command = new MySqlCommand(query, conn))
                 {

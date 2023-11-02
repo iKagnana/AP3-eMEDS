@@ -31,16 +31,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.confirmBtn = new System.Windows.Forms.Button();
             this.supprBtn = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.priceTxt = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.stocksTxt = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.targetTxt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.descTxt = new System.Windows.Forms.TextBox();
             this.nameTxt = new System.Windows.Forms.TextBox();
+            this.stocksField = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.priceTxt = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.stocksField)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -73,38 +74,6 @@
             this.supprBtn.TabIndex = 6;
             this.supprBtn.Text = "Supprimer le médicament";
             this.supprBtn.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(171, 294);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(69, 13);
-            this.label6.TabIndex = 23;
-            this.label6.Text = "Prix (à l\'unité)";
-            // 
-            // priceTxt
-            // 
-            this.priceTxt.Location = new System.Drawing.Point(174, 310);
-            this.priceTxt.Name = "priceTxt";
-            this.priceTxt.Size = new System.Drawing.Size(93, 20);
-            this.priceTxt.TabIndex = 22;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(270, 294);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(40, 13);
-            this.label5.TabIndex = 21;
-            this.label5.Text = "Stocks";
-            // 
-            // stocksTxt
-            // 
-            this.stocksTxt.Location = new System.Drawing.Point(273, 310);
-            this.stocksTxt.Name = "stocksTxt";
-            this.stocksTxt.Size = new System.Drawing.Size(105, 20);
-            this.stocksTxt.TabIndex = 20;
             // 
             // label4
             // 
@@ -157,15 +126,53 @@
             this.nameTxt.Size = new System.Drawing.Size(204, 20);
             this.nameTxt.TabIndex = 14;
             // 
+            // stocksField
+            // 
+            this.stocksField.Location = new System.Drawing.Point(285, 312);
+            this.stocksField.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.stocksField.Name = "stocksField";
+            this.stocksField.Size = new System.Drawing.Size(93, 20);
+            this.stocksField.TabIndex = 23;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(171, 296);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(69, 13);
+            this.label6.TabIndex = 22;
+            this.label6.Text = "Prix (à l\'unité)";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(282, 296);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(40, 13);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "Stocks";
+            // 
+            // priceTxt
+            // 
+            this.priceTxt.Location = new System.Drawing.Point(174, 312);
+            this.priceTxt.Name = "priceTxt";
+            this.priceTxt.Size = new System.Drawing.Size(93, 20);
+            this.priceTxt.TabIndex = 20;
+            this.priceTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.priceTxt_KeyPress);
+            // 
             // Details
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(557, 527);
+            this.Controls.Add(this.stocksField);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.priceTxt);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.stocksTxt);
+            this.Controls.Add(this.priceTxt);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.targetTxt);
             this.Controls.Add(this.label2);
@@ -177,6 +184,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Details";
             this.Text = "Form3";
+            ((System.ComponentModel.ISupportInitialize)(this.stocksField)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -187,15 +195,15 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button confirmBtn;
         private System.Windows.Forms.Button supprBtn;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox priceTxt;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox stocksTxt;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox targetTxt;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox descTxt;
         private System.Windows.Forms.TextBox nameTxt;
+        private System.Windows.Forms.NumericUpDown stocksField;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox priceTxt;
     }
 }
