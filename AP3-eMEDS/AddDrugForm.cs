@@ -19,6 +19,12 @@ namespace AP3_eMEDS
         {
             InitializeComponent();
             UpdateGridView();
+
+            // init column size
+            this.dataGridView1.Columns[0].Width = 25;
+            this.dataGridView1.Columns[1].Width = 100;
+            this.dataGridView1.Columns[2].Width = 210;
+            this.dataGridView1.Columns[3].Width = 150;
         }
 
         // event when click on the button
