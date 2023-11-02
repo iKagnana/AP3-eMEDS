@@ -11,10 +11,11 @@ using Microsoft.SqlServer.Server;
 
 namespace AP3_eMEDS
 {
-    public partial class Form2 : Form
+    public partial class AddDrugForm : Form
     {
         private DrugDataAccess dataAccess = new DrugDataAccess();
-        public Form2()
+        private List<Drug> drugs = new List<Drug>();
+        public AddDrugForm()
         {
             InitializeComponent();
             UpdateGridView();
@@ -48,8 +49,14 @@ namespace AP3_eMEDS
         // get the last updated list of drugs
         public void UpdateGridView()
         {
+            // get updated data 
+            var drugs = dataAccess.GetDrugs();
+
+            // reset research to avoid conflict
+            this.drugs = drugs;
+            this.searchTxt.Text = "";
             this.dataGridView1.DataSource = null;
-            this.dataGridView1.DataSource = dataAccess.GetDrugs();
+            this.dataGridView1.DataSource = drugs;
         }
 
         // reset textboxes
@@ -101,6 +108,32 @@ namespace AP3_eMEDS
             {
                 e.Handled = true;
             }
+        }
+
+        // update list with filters
+        private void searchTxt_TextChanged(object sender, EventArgs e)
+        {
+            // if searchTxt is empty => get the filled data
+            if (searchTxt.Text == "") {
+                this.dataGridView1.DataSource = drugs;
+                // exit method
+                return;
+
+            }
+
+             List<Drug> filteredDrugs = new List<Drug>();
+
+            foreach (var drug in drugs)
+            {
+                if (drug.Name.ToLower().Contains(searchTxt.Text.ToLower()) || 
+                    drug.Description.ToLower().Contains(searchTxt.Text.ToLower()) || 
+                        drug.Target.ToLower().Contains(searchTxt.Text.ToLower()))
+                {
+                    filteredDrugs.Add(drug);
+                }
+            }
+
+            this.dataGridView1.DataSource = filteredDrugs;
         }
     }
 }

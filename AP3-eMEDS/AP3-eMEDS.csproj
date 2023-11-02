@@ -98,6 +98,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddDrugForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddDrugForm.Designer.cs">
+      <DependentUpon>AddDrugForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DrugDataAccess.cs" />
     <Compile Include="Details.cs">
       <SubType>Form</SubType>
@@ -113,22 +119,16 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddDrugForm.resx">
+      <DependentUpon>AddDrugForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Details.resx">
       <DependentUpon>Details.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -78,6 +78,7 @@ namespace AP3_eMEDS
                         newList.Add(newDrug);
                     }
                     conn.Close();
+                    this.drugs = newList;
                     return newList;
                 }
             }

@@ -1,6 +1,6 @@
 ﻿namespace AP3_eMEDS
 {
-    partial class Form2
+    partial class AddDrugForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddDrugForm));
             this.nameTxt = new System.Windows.Forms.TextBox();
             this.descTxt = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -41,6 +42,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.stocksField = new System.Windows.Forms.NumericUpDown();
+            this.searchTxt = new System.Windows.Forms.TextBox();
+            this.labelSearch = new System.Windows.Forms.Label();
+            this.searchBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stocksField)).BeginInit();
             this.SuspendLayout();
@@ -65,7 +69,7 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridView1.Location = new System.Drawing.Point(413, 53);
+            this.dataGridView1.Location = new System.Drawing.Point(411, 68);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(589, 449);
@@ -165,11 +169,40 @@
             this.stocksField.Size = new System.Drawing.Size(93, 20);
             this.stocksField.TabIndex = 14;
             // 
-            // Form2
+            // searchTxt
+            // 
+            this.searchTxt.Location = new System.Drawing.Point(411, 42);
+            this.searchTxt.Name = "searchTxt";
+            this.searchTxt.Size = new System.Drawing.Size(236, 20);
+            this.searchTxt.TabIndex = 15;
+            this.searchTxt.TextChanged += new System.EventHandler(this.searchTxt_TextChanged);
+            // 
+            // labelSearch
+            // 
+            this.labelSearch.AutoSize = true;
+            this.labelSearch.Location = new System.Drawing.Point(411, 23);
+            this.labelSearch.Name = "labelSearch";
+            this.labelSearch.Size = new System.Drawing.Size(63, 13);
+            this.labelSearch.TabIndex = 16;
+            this.labelSearch.Text = "Rechercher";
+            // 
+            // searchBtn
+            // 
+            this.searchBtn.Location = new System.Drawing.Point(654, 39);
+            this.searchBtn.Name = "searchBtn";
+            this.searchBtn.Size = new System.Drawing.Size(75, 23);
+            this.searchBtn.TabIndex = 17;
+            this.searchBtn.Text = "Chercher";
+            this.searchBtn.UseVisualStyleBackColor = true;
+            // 
+            // AddDrugForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1038, 618);
+            this.Controls.Add(this.searchBtn);
+            this.Controls.Add(this.labelSearch);
+            this.Controls.Add(this.searchTxt);
             this.Controls.Add(this.stocksField);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -183,8 +216,9 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.descTxt);
             this.Controls.Add(this.nameTxt);
-            this.Name = "Form2";
-            this.Text = "Form2";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "AddDrugForm";
+            this.Text = "Ajout de médicament - GSB";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stocksField)).EndInit();
             this.ResumeLayout(false);
@@ -207,5 +241,8 @@
         private System.Windows.Forms.TextBox priceTxt;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.NumericUpDown stocksField;
+        private System.Windows.Forms.TextBox searchTxt;
+        private System.Windows.Forms.Label labelSearch;
+        private System.Windows.Forms.Button searchBtn;
     }
 }
