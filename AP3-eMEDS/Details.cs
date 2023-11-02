@@ -12,19 +12,27 @@ namespace AP3_eMEDS
 {
     public partial class Details : Form
     {
-        private Drug detailledDrug;
-        private DrugDataAccess drugDataAccess = new DrugDataAccess();
-        public Details(int id, string name, string description)
+        private readonly Drug detailledDrug;
+        private readonly DrugDataAccess drugDataAccess = new DrugDataAccess();
+        public Details(Drug detailledDrug)
         {
             InitializeComponent();
-            this.textBox1.Text = name;
-            this.textBox2.Text = description;
-            this.detailledDrug = new Drug(id, name, description);
+            this.nameTxt.Text = detailledDrug.Name;
+            this.targetTxt.Text = detailledDrug.Target;
+            this.descTxt.Text = detailledDrug.Description;
+            this.priceTxt.Text = detailledDrug.Price.ToString();
+            this.stocksTxt.Text = detailledDrug.Stocks.ToString();
+            this.detailledDrug = detailledDrug;
         }
 
         private void confirmBtn_Click(object sender, EventArgs e)
         {
-            Drug updatedDrug = new Drug(detailledDrug.Id, textBox1.Text, textBox2.Text);
+            Drug updatedDrug = new Drug(detailledDrug.Id, 
+                                        nameTxt.Text, 
+                                        descTxt.Text,
+                                        targetTxt.Text,
+                                        Convert.ToDouble(priceTxt.Text), 
+                                        Convert.ToInt32(stocksTxt.Text));
             int result =  drugDataAccess.UpdateDrugFromId(updatedDrug);
             Console.WriteLine(result);
             if (result == 0)
@@ -40,7 +48,7 @@ namespace AP3_eMEDS
 
         private void supprBtn_Click(object sender, EventArgs e)
         {
-
+            // TODO
         }
     }
 }

@@ -24,7 +24,13 @@ namespace AP3_eMEDS
         private void addBtn_Click(object sender, EventArgs e)
         {
             // create a new object drug
-            Drug drug = new Drug(this.textBox1.Text, this.textBox2.Text);
+            Drug drug = new Drug(
+                this.nameTxt.Text,
+                this.descTxt.Text,
+                this.targetTxt.Text,
+                Convert.ToDouble(this.priceTxt.Text),
+                Convert.ToInt32(this.stocksTxt.Text)
+                );
             // get the saved row in db
             int result = dataAccess.addDrugToDB(drug);
             if (result == 0)
@@ -49,8 +55,11 @@ namespace AP3_eMEDS
         // reset textboxes
         private void ResetTextBoxes()
         {
-            this.textBox1.Text = "";
-            this.textBox2.Text = "";
+            this.nameTxt.Text = "";
+            this.targetTxt.Text = "";
+            this.descTxt.Text = "";
+            this.priceTxt.Text = "";
+            this.stocksTxt.Text = "";
         }
 
 
@@ -63,7 +72,7 @@ namespace AP3_eMEDS
                 if (selectedRow != null)
                 {
                     Drug selected = selectedRow.DataBoundItem as Drug;
-                    Details details = new Details(selected.Id, selected.Name, selected.Description);
+                    Details details = new Details(selected);
                     // add closing event to the form
                     details.FormClosing += new FormClosingEventHandler(this.DetailsClosing);
                     details.Show();

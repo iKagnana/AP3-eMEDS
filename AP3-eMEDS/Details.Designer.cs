@@ -29,57 +29,29 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.confirmBtn = new System.Windows.Forms.Button();
+            this.supprBtn = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.priceTxt = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.stocksTxt = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.targetTxt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.confirmBtn = new System.Windows.Forms.Button();
+            this.descTxt = new System.Windows.Forms.TextBox();
+            this.nameTxt = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.label1.Location = new System.Drawing.Point(151, 102);
+            this.label1.Location = new System.Drawing.Point(154, 61);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(247, 26);
             this.label1.TabIndex = 0;
             this.label1.Text = "Détails du médicament :";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(156, 183);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(242, 20);
-            this.textBox1.TabIndex = 1;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(156, 280);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(242, 40);
-            this.textBox2.TabIndex = 2;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label2.Location = new System.Drawing.Point(156, 164);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 17);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Nom";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label3.Location = new System.Drawing.Point(156, 261);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 17);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Description";
             // 
             // confirmBtn
             // 
@@ -92,16 +64,116 @@
             this.confirmBtn.UseVisualStyleBackColor = false;
             this.confirmBtn.Click += new System.EventHandler(this.confirmBtn_Click);
             // 
+            // supprBtn
+            // 
+            this.supprBtn.ForeColor = System.Drawing.Color.Red;
+            this.supprBtn.Location = new System.Drawing.Point(193, 412);
+            this.supprBtn.Name = "supprBtn";
+            this.supprBtn.Size = new System.Drawing.Size(168, 23);
+            this.supprBtn.TabIndex = 6;
+            this.supprBtn.Text = "Supprimer le médicament";
+            this.supprBtn.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(171, 294);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(69, 13);
+            this.label6.TabIndex = 23;
+            this.label6.Text = "Prix (à l\'unité)";
+            // 
+            // priceTxt
+            // 
+            this.priceTxt.Location = new System.Drawing.Point(174, 310);
+            this.priceTxt.Name = "priceTxt";
+            this.priceTxt.Size = new System.Drawing.Size(93, 20);
+            this.priceTxt.TabIndex = 22;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(270, 294);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(40, 13);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "Stocks";
+            // 
+            // stocksTxt
+            // 
+            this.stocksTxt.Location = new System.Drawing.Point(273, 310);
+            this.stocksTxt.Name = "stocksTxt";
+            this.stocksTxt.Size = new System.Drawing.Size(105, 20);
+            this.stocksTxt.TabIndex = 20;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(171, 163);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(30, 13);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "Cible";
+            // 
+            // targetTxt
+            // 
+            this.targetTxt.Location = new System.Drawing.Point(174, 179);
+            this.targetTxt.Name = "targetTxt";
+            this.targetTxt.Size = new System.Drawing.Size(204, 20);
+            this.targetTxt.TabIndex = 18;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(174, 221);
+            this.label2.Name = "label2";
+            this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label2.Size = new System.Drawing.Size(60, 13);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Description";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(171, 108);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(29, 13);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "Nom";
+            // 
+            // descTxt
+            // 
+            this.descTxt.BackColor = System.Drawing.SystemColors.Window;
+            this.descTxt.Location = new System.Drawing.Point(174, 237);
+            this.descTxt.Multiline = true;
+            this.descTxt.Name = "descTxt";
+            this.descTxt.Size = new System.Drawing.Size(204, 40);
+            this.descTxt.TabIndex = 15;
+            // 
+            // nameTxt
+            // 
+            this.nameTxt.Location = new System.Drawing.Point(174, 124);
+            this.nameTxt.Name = "nameTxt";
+            this.nameTxt.Size = new System.Drawing.Size(204, 20);
+            this.nameTxt.TabIndex = 14;
+            // 
             // Details
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(557, 527);
-            this.Controls.Add(this.confirmBtn);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.priceTxt);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.stocksTxt);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.targetTxt);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.descTxt);
+            this.Controls.Add(this.nameTxt);
+            this.Controls.Add(this.supprBtn);
+            this.Controls.Add(this.confirmBtn);
             this.Controls.Add(this.label1);
             this.Name = "Details";
             this.Text = "Form3";
@@ -113,10 +185,17 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button confirmBtn;
+        private System.Windows.Forms.Button supprBtn;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox priceTxt;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox stocksTxt;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox targetTxt;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button confirmBtn;
+        private System.Windows.Forms.TextBox descTxt;
+        private System.Windows.Forms.TextBox nameTxt;
     }
 }
