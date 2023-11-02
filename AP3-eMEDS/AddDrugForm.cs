@@ -13,7 +13,7 @@ namespace AP3_eMEDS
 {
     public partial class AddDrugForm : Form
     {
-        private DrugDataAccess dataAccess = new DrugDataAccess();
+        private DrugController dataAccess = new DrugController();
         private List<Drug> drugs = new List<Drug>();
         public AddDrugForm()
         {

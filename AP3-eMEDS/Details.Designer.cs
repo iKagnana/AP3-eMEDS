@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Details));
             this.label1 = new System.Windows.Forms.Label();
             this.confirmBtn = new System.Windows.Forms.Button();
             this.supprBtn = new System.Windows.Forms.Button();
@@ -194,8 +195,9 @@
             this.Controls.Add(this.supprBtn);
             this.Controls.Add(this.confirmBtn);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Details";
-            this.Text = "Form3";
+            this.Text = "Détails du médicament - GSB";
             ((System.ComponentModel.ISupportInitialize)(this.stocksField)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

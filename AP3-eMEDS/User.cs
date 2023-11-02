@@ -8,20 +8,26 @@ namespace AP3_eMEDS
 {
     internal class User
     {
-        public string Lastname { get; set; }
-        public string Firstname { get; set; }
+        public int Id { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public User(string Lastname, string Firstname, string Email, string Passwrord) {
-            this.Lastname = Lastname;
-            this.Firstname = Firstname;
-            this.Email = Email;
-            this.Password = Passwrord;
+        public string Address { get; set; }
+
+        // constructor to get user 
+        public User(int Id, string email, string passwrord, string address)
+        {
+            this.Id = Id;
+            this.Email = email;
+            this.Password = passwrord;
+            this.Address = address;
         }
 
-        public User(string Lastname)
+        // constructor to create user
+        public User(string email, string passwrord, string address)
         {
-            this.Lastname = Lastname;
+            this.Email = email;
+            this.Password = passwrord;
+            this.Address = address;
         }
     }
 }

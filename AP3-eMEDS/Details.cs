@@ -13,7 +13,7 @@ namespace AP3_eMEDS
     public partial class Details : Form
     {
         private readonly Drug detailledDrug;
-        private readonly DrugDataAccess drugDataAccess = new DrugDataAccess();
+        private readonly DrugController drugDataAccess = new DrugController();
         public Details(Drug detailledDrug)
         {
             InitializeComponent();

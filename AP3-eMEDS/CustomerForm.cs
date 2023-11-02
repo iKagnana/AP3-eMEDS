@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace AP3_eMEDS
 {
-    public partial class Form1 : Form
+    public partial class CustomerForm : Form
     {
-        public Form1()
+        public CustomerForm()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            User user = new User(textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text);
         }
     }
 }

@@ -8,13 +8,13 @@ using MySql.Data.MySqlClient;
 
 namespace AP3_eMEDS
 {
-    internal class DrugDataAccess
+    internal class DrugController
     {
         // get value for localhost in App.config
         private string connectionString = ConfigurationManager.ConnectionStrings["localhost"].ConnectionString;
         private List<Drug> drugs = new List<Drug>();
 
-        public DrugDataAccess() { }
+        public DrugController() { }
 
         // add drug to local list
         public void AddDrug(Drug drug) {
