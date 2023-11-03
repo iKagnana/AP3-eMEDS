@@ -39,13 +39,15 @@
             this.emailTxt = new System.Windows.Forms.TextBox();
             this.labelPassword = new System.Windows.Forms.Label();
             this.passwordTxt = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.addressTxt = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // labelSiret
             // 
             this.labelSiret.AutoSize = true;
             this.labelSiret.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSiret.Location = new System.Drawing.Point(169, 150);
+            this.labelSiret.Location = new System.Drawing.Point(287, 134);
             this.labelSiret.Name = "labelSiret";
             this.labelSiret.Size = new System.Drawing.Size(38, 18);
             this.labelSiret.TabIndex = 33;
@@ -54,7 +56,7 @@
             // siretTxt
             // 
             this.siretTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.siretTxt.Location = new System.Drawing.Point(172, 171);
+            this.siretTxt.Location = new System.Drawing.Point(290, 155);
             this.siretTxt.Name = "siretTxt";
             this.siretTxt.Size = new System.Drawing.Size(204, 26);
             this.siretTxt.TabIndex = 32;
@@ -63,7 +65,7 @@
             // 
             this.labelName.AutoSize = true;
             this.labelName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelName.Location = new System.Drawing.Point(169, 92);
+            this.labelName.Location = new System.Drawing.Point(63, 134);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(41, 18);
             this.labelName.TabIndex = 30;
@@ -72,7 +74,7 @@
             // nameTxt
             // 
             this.nameTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameTxt.Location = new System.Drawing.Point(172, 113);
+            this.nameTxt.Location = new System.Drawing.Point(66, 155);
             this.nameTxt.Name = "nameTxt";
             this.nameTxt.Size = new System.Drawing.Size(204, 26);
             this.nameTxt.TabIndex = 28;
@@ -82,12 +84,13 @@
             this.confirmBtn.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.confirmBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.confirmBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.confirmBtn.Location = new System.Drawing.Point(172, 357);
+            this.confirmBtn.Location = new System.Drawing.Point(181, 371);
             this.confirmBtn.Name = "confirmBtn";
             this.confirmBtn.Size = new System.Drawing.Size(204, 43);
             this.confirmBtn.TabIndex = 26;
             this.confirmBtn.Text = "Valider";
             this.confirmBtn.UseVisualStyleBackColor = false;
+            this.confirmBtn.Click += new System.EventHandler(this.confirmBtn_Click);
             // 
             // title
             // 
@@ -103,7 +106,7 @@
             // 
             this.labelEmail.AutoSize = true;
             this.labelEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEmail.Location = new System.Drawing.Point(169, 211);
+            this.labelEmail.Location = new System.Drawing.Point(63, 195);
             this.labelEmail.Name = "labelEmail";
             this.labelEmail.Size = new System.Drawing.Size(45, 18);
             this.labelEmail.TabIndex = 39;
@@ -112,7 +115,7 @@
             // emailTxt
             // 
             this.emailTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emailTxt.Location = new System.Drawing.Point(172, 232);
+            this.emailTxt.Location = new System.Drawing.Point(66, 216);
             this.emailTxt.Name = "emailTxt";
             this.emailTxt.Size = new System.Drawing.Size(204, 26);
             this.emailTxt.TabIndex = 38;
@@ -121,7 +124,7 @@
             // 
             this.labelPassword.AutoSize = true;
             this.labelPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPassword.Location = new System.Drawing.Point(169, 277);
+            this.labelPassword.Location = new System.Drawing.Point(287, 195);
             this.labelPassword.Name = "labelPassword";
             this.labelPassword.Size = new System.Drawing.Size(98, 18);
             this.labelPassword.TabIndex = 41;
@@ -130,16 +133,37 @@
             // passwordTxt
             // 
             this.passwordTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordTxt.Location = new System.Drawing.Point(172, 298);
+            this.passwordTxt.Location = new System.Drawing.Point(290, 216);
             this.passwordTxt.Name = "passwordTxt";
             this.passwordTxt.Size = new System.Drawing.Size(204, 26);
             this.passwordTxt.TabIndex = 40;
+            this.passwordTxt.UseSystemPasswordChar = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(96, 259);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(62, 18);
+            this.label1.TabIndex = 43;
+            this.label1.Text = "Adresse";
+            // 
+            // addressTxt
+            // 
+            this.addressTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addressTxt.Location = new System.Drawing.Point(99, 280);
+            this.addressTxt.Name = "addressTxt";
+            this.addressTxt.Size = new System.Drawing.Size(357, 26);
+            this.addressTxt.TabIndex = 42;
             // 
             // CustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(557, 527);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.addressTxt);
             this.Controls.Add(this.labelPassword);
             this.Controls.Add(this.passwordTxt);
             this.Controls.Add(this.labelEmail);
@@ -170,5 +194,7 @@
         private System.Windows.Forms.TextBox emailTxt;
         private System.Windows.Forms.Label labelPassword;
         private System.Windows.Forms.TextBox passwordTxt;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox addressTxt;
     }
 }

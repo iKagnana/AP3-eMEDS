@@ -14,11 +14,11 @@ namespace AP3_eMEDS
         public string Address { get; set; }
 
         // constructor to get user 
-        public User(int Id, string email, string passwrord, string address)
+        public User(int Id, string email, string password, string address)
         {
             this.Id = Id;
             this.Email = email;
-            this.Password = passwrord;
+            this.Password = password;
             this.Address = address;
         }
 

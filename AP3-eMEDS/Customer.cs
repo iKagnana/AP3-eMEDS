@@ -20,15 +20,26 @@ namespace AP3_eMEDS
         public string Name {get; set;}
         public string Siret { get; set;}
         public Status Status { get; set;}
-        public Customer(string Email, string Passwrord, string Address, string Name, string Siret, Status status) : 
-            base(Email, Passwrord, Address)
+        public bool ValidCustomer { get; set;} = true;
+
+        public Customer(string Email, string Password, string Address, string Name, string Siret, Status status) : 
+            base(Email, Password, Address)
         {
-            this.Name = Name;
-            this.Siret = Siret;
-            this.Email = Email;
-            this.Password = Passwrord;
-            this.Address = Address;
+            this.Name = EmptyField(Name);
+            this.Siret = EmptyField(Siret);
+            this.Email = EmptyField(Email);
+            this.Password = EmptyField(Password);
+            this.Address = EmptyField(Address);
             this.Status = status;
+        }
+
+        public string EmptyField(string text)
+        {
+            if (String.IsNullOrEmpty(text))
+            {
+                this.ValidCustomer = false;
+            }
+            return text;
         }
     }
 }

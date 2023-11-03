@@ -16,7 +16,7 @@ namespace AP3_eMEDS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AddDrugForm());
+            Application.Run(new LoginForm());
         }
     }
 }

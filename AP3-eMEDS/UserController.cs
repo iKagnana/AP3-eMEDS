@@ -15,6 +15,22 @@ namespace AP3_eMEDS
 
         public UserController() { }
 
+        // function to get the string associated with enum option 
+        public string GetStatus(Status status)
+        {
+            switch (status)
+            {
+                case Status.Waiting: 
+                    return "En attente de validation";
+                case Status.Confirmed:
+                    return "Validé";
+                case Status.Refused:
+                    return "Refusé";
+                default:
+                    return "";
+            }
+        }
+
         // method create user type customer
         public int AddCustomer(Customer customer)
         {
@@ -22,8 +38,8 @@ namespace AP3_eMEDS
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "INSERT INTO users (name, siret, email, password, address) " +
-                    "VALUES (@name, @siret, @email, @password, @address)";
+                string query = "INSERT INTO users (name, siret, email, password, address, status) " +
+                    "VALUES (@name, @siret, @email, @password, @address, @status)";
 
                 using (MySqlCommand command = new MySqlCommand(query, conn))
                 {
@@ -32,6 +48,7 @@ namespace AP3_eMEDS
                     command.Parameters.AddWithValue("@email", customer.Email);
                     command.Parameters.AddWithValue("@password", customer.Password);
                     command.Parameters.AddWithValue("@address", customer.Address);
+                    command.Parameters.AddWithValue("@status", GetStatus(customer.Status));
                     int result = command.ExecuteNonQuery();
                     conn.Close();
                     return result;
@@ -63,6 +80,34 @@ namespace AP3_eMEDS
             }
         }
 
+        // function to get all the user email to see if it's unique
+        public bool UniqueEmail(string email)
+        {
+            // create connection to the db to make query 
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT email FROM users WHERE email = @email";
+
+                using (MySqlCommand command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@email", email);
+                    
+                    MySqlDataReader reader = command.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        conn.Close();
+                        return true;
+                    } else
+                    {
+                        conn.Close();
+                        return false;
+                    }
+                    
+                }
+            }
+        }
+
         // login function
         public bool Login(User user)
         {
@@ -71,11 +116,11 @@ namespace AP3_eMEDS
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT email, password FROM users WHERE id = @id";
+                string query = "SELECT email, password FROM users WHERE email = @email";
 
                 using (MySqlCommand command = new MySqlCommand(query, conn))
                 {
-                    command.Parameters.AddWithValue("@id", user.Id);
+                    command.Parameters.AddWithValue("@email", user.Email);
 
                     // get data 
                     MySqlDataReader reader = command.ExecuteReader();
