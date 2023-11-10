@@ -109,14 +109,14 @@ namespace AP3_eMEDS
         }
 
         // login function
-        public bool Login(User user)
+        public string Login(User user)
         {
             // get the data of the customer
             // create connection to the db to make query 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT email, password FROM users WHERE email = @email";
+                string query = "SELECT email, password, status FROM users WHERE email = @email";
 
                 using (MySqlCommand command = new MySqlCommand(query, conn))
                 {
@@ -125,15 +125,35 @@ namespace AP3_eMEDS
                     // get data 
                     MySqlDataReader reader = command.ExecuteReader();
                     reader.Read();
-                    if (reader.GetString(0) == user.Email && reader.GetString(1) == user.Password)
+                    
+                    string status = reader.GetString(2);
+                    if (reader.GetString(0) == user.Email && 
+                        reader.GetString(1) == user.Password)
                     {
                         conn.Close();
-                        return true;
+
+                        string message = "";
+
+                        switch (status)
+                        {
+                            case "Validé":
+                                message = "LoggedIn";
+                                break;
+                            case "En attente de validation":
+                                message = "Waiting status";
+                                break;
+                            case "Refusé":
+                                message = "Invalid status";
+                                break;
+
+                        }
+                        return message;
+                            
                     }
                     else
                     {
                         conn.Close();
-                        return false;
+                        return "Invalid user authentification";
                     }
                     
                 }

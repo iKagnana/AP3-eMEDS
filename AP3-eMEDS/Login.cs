@@ -30,13 +30,21 @@ namespace AP3_eMEDS
 
             User user = new User(this.emailTxt.Text, this.passwordTxt.Text);
 
-            bool result = userController.Login(user);
-            if (result)
+            string result = userController.Login(user);
+            switch (result)
             {
-                MessageBox.Show("Vous êtes connecté !");
-            } else
-            {
-                MessageBox.Show("Vos identifiants sont invalides.");
+                case "LoggedIn":
+                    MessageBox.Show("Vous êtes connecté !");
+                    break;
+                case "Waiting status":
+                    MessageBox.Show("Votre inscription est toujours en attente.");
+                    break;
+                case "Invalid status":
+                    MessageBox.Show("Votre compte a été refusé par nos services.");
+                    break;
+                case "Invalid user authentification":
+                    MessageBox.Show("Vos identifiants sont invalides.");
+                    break;
             }
             Console.WriteLine(result);
         }
