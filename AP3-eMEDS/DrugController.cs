@@ -65,6 +65,7 @@ namespace AP3_eMEDS
             {
                 conn.Open();
                 string query = "SELECT * FROM drugs";
+                this.drugs = new List<Drug>();
 
                 using (MySqlCommand command = new MySqlCommand(query, conn))
                 {
@@ -75,11 +76,10 @@ namespace AP3_eMEDS
                     {
                         // Console.WriteLine(reader.GetString(0) + " " + reader.GetString(1) +  " " + reader.GetString(2));
                         Drug newDrug = new Drug(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetDouble(4), reader.GetInt32(5));
-                        newList.Add(newDrug);
+                        drugs.Add(newDrug);
                     }
                     conn.Close();
-                    this.drugs = newList;
-                    return newList;
+                    return drugs;
                 }
             }
         }
