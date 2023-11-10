@@ -48,7 +48,16 @@ namespace AP3_eMEDS
 
         private void supprBtn_Click(object sender, EventArgs e)
         {
-            // TODO
+            int result = drugDataAccess.DeleteDrugFromId(detailledDrug.Id);
+            if (result == 0)
+            {
+                MessageBox.Show("Il y a eu une erreur");
+            }
+            else if (result == 1)
+            {
+                MessageBox.Show("Médicament supprimé");
+                this.Close();
+            }
         }
 
         // check if only numeric value or not

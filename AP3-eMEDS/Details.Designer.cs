@@ -78,6 +78,7 @@
             this.supprBtn.TabIndex = 6;
             this.supprBtn.Text = "Supprimer le médicament";
             this.supprBtn.UseVisualStyleBackColor = true;
+            this.supprBtn.Click += new System.EventHandler(this.supprBtn_Click);
             // 
             // stocksField
             // 

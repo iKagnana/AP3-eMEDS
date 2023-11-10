@@ -107,5 +107,26 @@ namespace AP3_eMEDS
                 }
             }
         }
+
+        // delete item from its id
+        public int DeleteDrugFromId(int id)
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "DELETE FROM drugs WHERE id = @id";
+
+                using (MySqlCommand command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@id", id);
+                    int result = command.ExecuteNonQuery();
+                    conn.Close();
+                    return result;
+                }
+
+            }
+        }
+
+
     }
 }
