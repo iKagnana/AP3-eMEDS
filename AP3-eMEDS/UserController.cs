@@ -124,6 +124,7 @@ namespace AP3_eMEDS
 
                     // get data 
                     MySqlDataReader reader = command.ExecuteReader();
+                    reader.Read();
                     if (reader.GetString(0) == user.Email && reader.GetString(1) == user.Password)
                     {
                         conn.Close();

@@ -15,6 +15,7 @@ namespace AP3_eMEDS
     {
         private Customer _customer;
         private UserController _userController = new UserController();
+        private List<string> fieldsError = new List<string>();
 
         public CustomerForm()
         {
@@ -24,18 +25,51 @@ namespace AP3_eMEDS
         // function to test if no errors in the form 
         private bool ValideForm(Customer customer)
         {
-            // valid email ?
-            var match = Regex.Match(customer.Email, "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
-            Console.WriteLine(match.Success);
-            if (!match.Success)
+
+            // valid siret ?
+            var validSiret = Regex.Match(customer.Siret, "^\\d{14}$");
+            if (!validSiret.Success)
             {
-                return false;
+                // add error
+                helperTextSiret.Text = "Votre siret doit contenir 14 chiffres";
+                this.fieldsError.Add("siret");
+            } else
+            {
+                // remove error
+                helperTextSiret.Text = "";
+                this.fieldsError.RemoveAt(this.fieldsError.IndexOf("siret"));
             }
 
-            Console.WriteLine(customer.ValidCustomer);
+            // valid email ?
+            var match = Regex.Match(customer.Email, "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+            if (!match.Success)
+            {
+                // add error
+                helperTextEmail.Text = "Vérifier que votre email soit valide";
+                this.fieldsError.Add("email");
+            } else
+            {
+                // remove error
+                helperTextEmail.Text = "";
+                this.fieldsError.RemoveAt(this.fieldsError.IndexOf("email"));
+            }
+
+            // valid password ? 
+            var validPass = Regex.Match(customer.Password, "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$");
+            if (!validPass.Success)
+            {
+                // add error
+                helperTextPass.Text = "Votre mot de passe doit contenir au minimum 8 caractères, 1 majuscule, 1 minuscule, 1 chiffre et un caractère spécial";
+                this.fieldsError.Add("password");
+            } else
+            {
+                // remove error
+                helperTextPass.Text = "";
+                this.fieldsError.RemoveAt(this.fieldsError.IndexOf("password"));
+            }
             
             // check if empty values
-            return customer.ValidCustomer;
+            return this.fieldsError.Count == 0 && customer.ValidCustomer;
 
         }
 
@@ -73,5 +107,6 @@ namespace AP3_eMEDS
                 this.Close();
             }
         }
+
     }
 }

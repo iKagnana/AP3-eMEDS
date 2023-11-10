@@ -4,6 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+enum Role
+{
+    Admin,
+    Employee, 
+    Customer
+}
+
 namespace AP3_eMEDS
 {
     internal class User
@@ -12,6 +19,7 @@ namespace AP3_eMEDS
         public string Email { get; set; }
         public string Password { get; set; }
         public string Address { get; set; }
+        public Role Role { get; set; }    
 
         // constructor to get user 
         public User(int Id, string email, string password, string address)
@@ -20,6 +28,13 @@ namespace AP3_eMEDS
             this.Email = email;
             this.Password = password;
             this.Address = address;
+        }
+
+        // constructor to use for login 
+        public User(string Email, string Password)
+        {
+            this.Email= Email;
+            this.Password= Password;
         }
 
         // constructor to create user

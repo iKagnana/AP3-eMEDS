@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace AP3_eMEDS
 {
-    public partial class LoginForm : Form
+    public partial class MainForm : Form
     {
-        public LoginForm()
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -21,6 +21,18 @@ namespace AP3_eMEDS
         {
             CustomerForm customerForm = new CustomerForm();
             customerForm.Show();
+        }
+
+        private void loginCBtn_Click(object sender, EventArgs e)
+        {
+            Login login = new Login("Client");
+            login.Show();
+        }
+
+        private void loginEBtn_Click(object sender, EventArgs e)
+        {
+            Login login = new Login("Employé");
+            login.Show();
         }
     }
 }
