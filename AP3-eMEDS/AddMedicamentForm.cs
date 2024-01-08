@@ -108,21 +108,6 @@ namespace AP3_eMEDS
             UpdateGridView();
         }
 
-        // check if only numeric value or not
-        private void priceTxt_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-
-            // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
-        }
-
         // update list with filters
         private void searchTxt_TextChanged(object sender, EventArgs e)
         {

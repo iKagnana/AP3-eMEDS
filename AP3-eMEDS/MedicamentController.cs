@@ -68,7 +68,6 @@ namespace AP3_eMEDS
                 {
 
                     MySqlDataReader reader = command.ExecuteReader();
-                    List<Medicament> newList = new List<Medicament>();
                     while (reader.Read())
                     {
                         // Console.WriteLine(reader.GetString(0) + " " + reader.GetString(1) +  " " + reader.GetString(2));

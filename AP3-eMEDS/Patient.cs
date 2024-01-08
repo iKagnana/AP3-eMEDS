@@ -15,21 +15,28 @@ public enum Status
 namespace AP3_eMEDS
 
 {
-    internal class Patient
+    public class Patient
     {
         public int Id { get; set; }
-        public string Name {get; set;}
-        public string Siret { get; set;}
+        public string Nom {get; set;}
+        public string Prenom { get; set;}
         public string Sexe { get; set;}
-        public List<Antecedent> antecedents { get; set; }
 
-        public Patient(int id, string name, string siret, string sexe, List<Antecedent> antecedents)
+        // init from db simple Patient class
+        public Patient(int id, string lastname, string firstname, string sexe)
         {
-            Id = id;
-            Name = name;
-            Siret = siret;
-            Sexe = sexe;
-            this.antecedents = antecedents;
+            this.Id = id;
+            this.Nom = lastname;
+            this.Prenom = firstname;
+            this.Sexe = sexe;
+        }
+
+        // constructor for create patient
+        public Patient(string lastname, string firstname, string sexe)
+        {
+            this.Nom = lastname;
+            this.Prenom = firstname;
+            this.Sexe = sexe;
         }
     }
 }

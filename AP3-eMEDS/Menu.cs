@@ -22,5 +22,11 @@ namespace AP3_eMEDS
             AddMedicamentForm medicamentForm = new AddMedicamentForm();
             medicamentForm.ShowDialog();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AddPatientForm patientForm = new AddPatientForm();
+            patientForm.ShowDialog();
+        }
     }
 }
