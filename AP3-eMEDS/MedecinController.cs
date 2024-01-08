@@ -8,12 +8,12 @@ using MySql.Data.MySqlClient;
 
 namespace AP3_eMEDS
 {
-    internal class UserController
+    internal class MedecinController
     {
         // get value for localhost in App.config
         private string connectionString = ConfigurationManager.ConnectionStrings["localhost"].ConnectionString;
 
-        public UserController() { }
+        public MedecinController() { }
 
         // function to get the string associated with enum option 
         public string GetStatus(Status status)
@@ -31,48 +31,23 @@ namespace AP3_eMEDS
             }
         }
 
-        // method create user type customer
-        public int AddCustomer(Customer customer)
-        {
-            // create connection to the db to make query 
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
-            {
-                conn.Open();
-                string query = "INSERT INTO users (name, siret, email, password, address, status) " +
-                    "VALUES (@name, @siret, @email, @password, @address, @status)";
-
-                using (MySqlCommand command = new MySqlCommand(query, conn))
-                {
-                    command.Parameters.AddWithValue("@name", customer.Name);
-                    command.Parameters.AddWithValue("@siret", customer.Siret);
-                    command.Parameters.AddWithValue("@email", customer.Email);
-                    command.Parameters.AddWithValue("@password", customer.Password);
-                    command.Parameters.AddWithValue("@address", customer.Address);
-                    command.Parameters.AddWithValue("@status", GetStatus(customer.Status));
-                    int result = command.ExecuteNonQuery();
-                    conn.Close();
-                    return result;
-                }
-            }
-        }
-
         // method create user type employee
-        public int AddEmployee(Employee employee)
+        public int AddEmployee(Medecin medecin)
         {
             // create connection to the db to make query 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "INSERT INTO users (lastname, firstname, email, password, address) " +
-                    "VALUES (@lastname, @firstname, @email, @password, @address)";
+                string query = "INSERT INTO medecin (nom, prenom, login, password, date_naissance) " +
+                    "VALUES (@lastname, @firstname, @login, @password, @login)";
 
                 using (MySqlCommand command = new MySqlCommand(query, conn))
                 {
-                    command.Parameters.AddWithValue("@name", employee.Lastname);
-                    command.Parameters.AddWithValue("@siret", employee.FirstName);
-                    command.Parameters.AddWithValue("@email", employee.Email);
-                    command.Parameters.AddWithValue("@password", employee.Password);
-                    command.Parameters.AddWithValue("@address", employee.Address);
+                    command.Parameters.AddWithValue("@name", medecin.Lastname);
+                    command.Parameters.AddWithValue("@siret", medecin.FirstName);
+                    command.Parameters.AddWithValue("@login", medecin.Username);
+                    command.Parameters.AddWithValue("@password", medecin.Password);
+                    command.Parameters.AddWithValue("@birthdate", medecin.BirthDate);
                     int result = command.ExecuteNonQuery();
                     conn.Close();
                     return result;
@@ -109,45 +84,28 @@ namespace AP3_eMEDS
         }
 
         // login function
-        public string Login(User user)
+        public string Login(Medecin medecin)
         {
             // get the data of the customer
             // create connection to the db to make query 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT email, password, status FROM users WHERE email = @email";
+                string query = "SELECT login, password FROM medecin WHERE login = @login";
 
                 using (MySqlCommand command = new MySqlCommand(query, conn))
                 {
-                    command.Parameters.AddWithValue("@email", user.Email);
+                    command.Parameters.AddWithValue("@login", medecin.Username);
 
                     // get data 
                     MySqlDataReader reader = command.ExecuteReader();
                     reader.Read();
                     
-                    string status = reader.GetString(2);
-                    if (reader.GetString(0) == user.Email && 
-                        reader.GetString(1) == user.Password)
+                    if (reader.GetString(0) == medecin.Username && 
+                        reader.GetString(1) == medecin.Password)
                     {
                         conn.Close();
-
-                        string message = "";
-
-                        switch (status)
-                        {
-                            case "Validé":
-                                message = "LoggedIn";
-                                break;
-                            case "En attente de validation":
-                                message = "Waiting status";
-                                break;
-                            case "Refusé":
-                                message = "Invalid status";
-                                break;
-
-                        }
-                        return message;
+                        return "Bienvenu(e) DR.";
                             
                     }
                     else

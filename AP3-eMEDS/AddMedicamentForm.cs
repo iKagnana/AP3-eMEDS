@@ -11,32 +11,33 @@ using Microsoft.SqlServer.Server;
 
 namespace AP3_eMEDS
 {
-    public partial class AddDrugForm : Form
+    public partial class AddMedicamentForm : Form
     {
-        private DrugController dataAccess = new DrugController();
-        private List<Drug> drugs = new List<Drug>();
-        public AddDrugForm()
+        private MedicamentController dataAccess = new MedicamentController();
+        private List<Medicament> drugs = new List<Medicament>();
+        public AddMedicamentForm()
         {
             InitializeComponent();
             UpdateGridView();
 
             // init column size
-            this.dataGridView1.Columns[0].Width = 25;
-            this.dataGridView1.Columns[1].Width = 100;
-            this.dataGridView1.Columns[2].Width = 210;
-            this.dataGridView1.Columns[3].Width = 150;
-        }
+            this.dataGridView1.Columns[0].HeaderText = "Id";
+            this.dataGridView1.Columns[1].HeaderText = "Libellé";
+            this.dataGridView1.Columns[2].HeaderText = "Instructions";
+            this.dataGridView1.Columns[3].HeaderText = "Contre-indications";
 
+            this.dataGridView1.Columns[2].Width = 250;
+            this.dataGridView1.Columns[3].Width = 250;
+        }
+        
         // event when click on the button
         private void addBtn_Click(object sender, EventArgs e)
         {
             // create a new object drug
-            Drug drug = new Drug(
+            Medicament drug = new Medicament(
                 this.nameTxt.Text,
-                this.descTxt.Text,
-                this.targetTxt.Text,
-                Convert.ToDouble(this.priceTxt.Text),
-                Convert.ToInt32(this.stocksField.Text)
+                this.contreIndcTxt.Text,
+                this.instructionTxt.Text
                 );
             // get the saved row in db
             int result = dataAccess.addDrugToDB(drug);
@@ -69,10 +70,8 @@ namespace AP3_eMEDS
         private void ResetTextBoxes()
         {
             this.nameTxt.Text = "";
-            this.targetTxt.Text = "";
-            this.descTxt.Text = "";
-            this.priceTxt.Text = "";
-            this.priceTxt.Text = "";
+            this.contreIndcTxt.Text = "";
+            this.instructionTxt.Text = "";
         }
 
 
@@ -84,7 +83,7 @@ namespace AP3_eMEDS
                 DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
                 if (selectedRow != null)
                 {
-                    Drug selected = selectedRow.DataBoundItem as Drug;
+                    Medicament selected = selectedRow.DataBoundItem as Medicament;
                     Details details = new Details(selected);
                     // add closing event to the form
                     details.FormClosing += new FormClosingEventHandler(this.DetailsClosing);
@@ -127,13 +126,11 @@ namespace AP3_eMEDS
 
             }
 
-             List<Drug> filteredDrugs = new List<Drug>();
+             List<Medicament> filteredDrugs = new List<Medicament>();
 
             foreach (var drug in drugs)
             {
-                if (drug.Name.ToLower().Contains(searchTxt.Text.ToLower()) || 
-                    drug.Description.ToLower().Contains(searchTxt.Text.ToLower()) || 
-                        drug.Target.ToLower().Contains(searchTxt.Text.ToLower()))
+                if (drug.Libelle.ToLower().Contains(searchTxt.Text.ToLower()))
                 {
                     filteredDrugs.Add(drug);
                 }

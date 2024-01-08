@@ -13,11 +13,10 @@ namespace AP3_eMEDS
     public partial class Login : Form
     {
 
-        private UserController userController = new UserController();
-        public Login(string cat)
+        private MedecinController userController = new MedecinController();
+        public Login()
         {
             InitializeComponent();
-            this.labelCat.Text = cat;
         }
 
         private void ConfirmBtn_Click(object sender, EventArgs e)
@@ -28,9 +27,9 @@ namespace AP3_eMEDS
                 return;
             }
 
-            User user = new User(this.emailTxt.Text, this.passwordTxt.Text);
+            Medecin medecin = new Medecin(this.emailTxt.Text, this.passwordTxt.Text);
 
-            string result = userController.Login(user);
+            string result = userController.Login(medecin);
             switch (result)
             {
                 case "LoggedIn":

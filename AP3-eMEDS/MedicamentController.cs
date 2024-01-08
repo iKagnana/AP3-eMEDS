@@ -8,48 +8,46 @@ using MySql.Data.MySqlClient;
 
 namespace AP3_eMEDS
 {
-    internal class DrugController
+    internal class MedicamentController
     {
         // get value for localhost in App.config
         private string connectionString = ConfigurationManager.ConnectionStrings["localhost"].ConnectionString;
-        private List<Drug> drugs = new List<Drug>();
+        private List<Medicament> drugs = new List<Medicament>();
 
-        public DrugController() { }
+        public MedicamentController() { }
 
         // add drug to local list
-        public void AddDrug(Drug drug) {
+        public void AddDrug(Medicament drug) {
             this.drugs.Add(drug);
         }
 
         // get drugDataAccess's drugs value (drugs list)
-        public List<Drug> GetDrugList() { 
+        public List<Medicament> GetDrugList() { 
             return this.drugs; 
         }
 
         // get selected drug with its index
-        public Drug GetDrugById(int Id)
+        public Medicament GetDrugById(int Id)
         {
             return this.drugs[Id];
         }
 
         // DB functions
         // add drugs to db
-        public int addDrugToDB(Drug drug)
+        public int addDrugToDB(Medicament drug)
         {
             // create connection to the db to make query 
             using (MySqlConnection conn = new MySqlConnection(connectionString)) 
             { 
                 conn.Open();
-                string query = "INSERT INTO drugs (name, description, target, price, stocks) " +
-                    "VALUES (@name, @description, @target, @price, @stocks)";
+                string query = "INSERT INTO medicament (libellé, contre_indication, instructions) " +
+                    "VALUES (@libelle, @contre_indication, @instructions)";
 
                 using (MySqlCommand command = new MySqlCommand(query, conn)) 
                 {
-                    command.Parameters.AddWithValue("@name", drug.Name);
-                    command.Parameters.AddWithValue("@description", drug.Description);
-                    command.Parameters.AddWithValue("@target", drug.Target);
-                    command.Parameters.AddWithValue("@price", drug.Price);
-                    command.Parameters.AddWithValue("@stocks", drug.Stocks);
+                    command.Parameters.AddWithValue("@libelle", drug.Libelle);
+                    command.Parameters.AddWithValue("@contre_indication", drug.ContreIndication);
+                    command.Parameters.AddWithValue("@instructions", drug.Instructions);
                     int result = command.ExecuteNonQuery();
                     conn.Close();
                     return result;
@@ -58,24 +56,24 @@ namespace AP3_eMEDS
         }
 
         // get all drugs from db
-        public List<Drug> GetDrugs()
+        public List<Medicament> GetDrugs()
         {
             // create connection to the db to make query 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT * FROM drugs";
-                this.drugs = new List<Drug>();
+                string query = "SELECT * FROM medicament";
+                this.drugs = new List<Medicament>();
 
                 using (MySqlCommand command = new MySqlCommand(query, conn))
                 {
 
                     MySqlDataReader reader = command.ExecuteReader();
-                    List<Drug> newList = new List<Drug>();
+                    List<Medicament> newList = new List<Medicament>();
                     while (reader.Read())
                     {
                         // Console.WriteLine(reader.GetString(0) + " " + reader.GetString(1) +  " " + reader.GetString(2));
-                        Drug newDrug = new Drug(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetDouble(4), reader.GetInt32(5));
+                        Medicament newDrug = new Medicament(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3));
                         drugs.Add(newDrug);
                     }
                     conn.Close();
@@ -85,22 +83,20 @@ namespace AP3_eMEDS
         }
 
         // update item from its id
-        public int UpdateDrugFromId(Drug updatedDrug) 
+        public int UpdateDrugFromId(Medicament updatedDrug) 
         {
             // create connection to the db to make query 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "UPDATE drugs SET name = @name, description = @description, target = @target, price = @price, stocks = @stocks WHERE id = @id";
+                string query = "UPDATE medicament SET libellé = @libelle, contre_indication = @contre_indication, instructions = @instructions WHERE id_med = @id";
 
                 using (MySqlCommand command = new MySqlCommand(query, conn))
                 {
                     command.Parameters.AddWithValue("@id", updatedDrug.Id);
-                    command.Parameters.AddWithValue("@name", updatedDrug.Name);
-                    command.Parameters.AddWithValue("@description", updatedDrug.Description);
-                    command.Parameters.AddWithValue("@target", updatedDrug.Target);
-                    command.Parameters.AddWithValue("@price", updatedDrug.Price);
-                    command.Parameters.AddWithValue("@stocks", updatedDrug.Stocks);
+                    command.Parameters.AddWithValue("@libelle", updatedDrug.Libelle);
+                    command.Parameters.AddWithValue("@contre_indication", updatedDrug.ContreIndication);
+                    command.Parameters.AddWithValue("@instructions", updatedDrug.Instructions);
                     int result = command.ExecuteNonQuery();
                     conn.Close();
                     return result;
@@ -114,7 +110,7 @@ namespace AP3_eMEDS
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "DELETE FROM drugs WHERE id = @id";
+                string query = "DELETE FROM medicament WHERE id_med = @id";
 
                 using (MySqlCommand command = new MySqlCommand(query, conn))
                 {
