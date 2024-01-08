@@ -159,6 +159,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddMedicamentForm";
             this.Text = "Ajout de médicament - GSB";
+            this.Activated += new System.EventHandler(this.AddMedicamentForm_Activated);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

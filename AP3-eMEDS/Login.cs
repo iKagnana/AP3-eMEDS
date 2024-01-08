@@ -33,6 +33,9 @@ namespace AP3_eMEDS
             if (result)
             {
                 MessageBox.Show("Connexion réussie.");
+                Menu menu = new Menu();
+                menu.ShowDialog();
+                this.Close();
             } else
             {
                 MessageBox.Show("Identifiants invalides");

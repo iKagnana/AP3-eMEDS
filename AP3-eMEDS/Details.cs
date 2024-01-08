@@ -13,10 +13,11 @@ namespace AP3_eMEDS
     public partial class Details : Form
     {
         private readonly Medicament detailledDrug;
-        private readonly MedicamentController drugDataAccess = new MedicamentController();
+        private readonly MedicamentController medDataAccess = new MedicamentController();
         public Details(Medicament detailledDrug)
         {
             InitializeComponent();
+            this.detailledDrug = detailledDrug;
             this.nameTxt.Text = detailledDrug.Libelle;
             this.contreIndcTxt.Text = detailledDrug.ContreIndication;
         }
@@ -25,9 +26,8 @@ namespace AP3_eMEDS
         {
             Medicament updatedDrug = new Medicament(detailledDrug.Id, 
                                         nameTxt.Text, 
-                                        contreIndcTxt.Text
-                                        );
-            int result =  drugDataAccess.UpdateDrugFromId(updatedDrug);
+                                        contreIndcTxt.Text);
+            int result =  medDataAccess.UpdateDrugFromId(updatedDrug);
             Console.WriteLine(result);
             if (result == 0)
             {
@@ -42,7 +42,7 @@ namespace AP3_eMEDS
 
         private void supprBtn_Click(object sender, EventArgs e)
         {
-            int result = drugDataAccess.DeleteDrugFromId(detailledDrug.Id);
+            int result = medDataAccess.DeleteDrugFromId(detailledDrug.Id);
             if (result == 0)
             {
                 MessageBox.Show("Il y a eu une erreur");

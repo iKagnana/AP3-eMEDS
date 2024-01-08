@@ -91,7 +91,7 @@ namespace AP3_eMEDS
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT login_m, password_m FROM medecin WHERE login = @login";
+                string query = "SELECT login_m, password_m FROM medecin WHERE login_m = @login";
 
                 using (MySqlCommand command = new MySqlCommand(query, conn))
                 {

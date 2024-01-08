@@ -25,9 +25,21 @@ namespace AP3_eMEDS
             this.dataGridView1.Columns[1].HeaderText = "Libellé";
             this.dataGridView1.Columns[2].HeaderText = "Contre-indications";
 
-            this.dataGridView1.Columns[2].Width = 250;
+            this.dataGridView1.Columns[1].Width = 250;
+            this.dataGridView1.Columns[2].Width = 350;
         }
-        
+
+        private void AddMedicamentForm_Activated(object sender, EventArgs e)
+        {
+            // init column size
+            this.dataGridView1.Columns[0].HeaderText = "Id";
+            this.dataGridView1.Columns[1].HeaderText = "Libellé";
+            this.dataGridView1.Columns[2].HeaderText = "Contre-indications";
+
+            this.dataGridView1.Columns[1].Width = 250;
+            this.dataGridView1.Columns[2].Width = 350;
+        }
+
         // event when click on the button
         private void addBtn_Click(object sender, EventArgs e)
         {
@@ -134,5 +146,7 @@ namespace AP3_eMEDS
 
             this.dataGridView1.DataSource = filteredDrugs;
         }
+
+        
     }
 }
