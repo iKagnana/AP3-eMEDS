@@ -38,7 +38,7 @@ namespace AP3_eMEDS
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "INSERT INTO medecin (nom, prenom, login, password, date_naissance) " +
+                string query = "INSERT INTO medecin (nom_m, prenom_m, login_m, password_m, date_naissance_m) " +
                     "VALUES (@lastname, @firstname, @login, @password, @login)";
 
                 using (MySqlCommand command = new MySqlCommand(query, conn))
@@ -62,7 +62,7 @@ namespace AP3_eMEDS
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT email FROM users WHERE email = @email";
+                string query = "SELECT email FROM medecin WHERE email = @email";
 
                 using (MySqlCommand command = new MySqlCommand(query, conn))
                 {
@@ -84,14 +84,14 @@ namespace AP3_eMEDS
         }
 
         // login function
-        public string Login(Medecin medecin)
+        public bool Login(Medecin medecin)
         {
             // get the data of the customer
             // create connection to the db to make query 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT login, password FROM medecin WHERE login = @login";
+                string query = "SELECT login_m, password_m FROM medecin WHERE login = @login";
 
                 using (MySqlCommand command = new MySqlCommand(query, conn))
                 {
@@ -105,13 +105,13 @@ namespace AP3_eMEDS
                         reader.GetString(1) == medecin.Password)
                     {
                         conn.Close();
-                        return "Bienvenu(e) DR.";
+                        return true;
                             
                     }
                     else
                     {
                         conn.Close();
-                        return "Invalid user authentification";
+                        return false;
                     }
                     
                 }

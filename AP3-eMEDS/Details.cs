@@ -19,15 +19,13 @@ namespace AP3_eMEDS
             InitializeComponent();
             this.nameTxt.Text = detailledDrug.Libelle;
             this.contreIndcTxt.Text = detailledDrug.ContreIndication;
-            this.InstructionTxt.Text = detailledDrug.Instructions;
         }
 
         private void confirmBtn_Click(object sender, EventArgs e)
         {
             Medicament updatedDrug = new Medicament(detailledDrug.Id, 
                                         nameTxt.Text, 
-                                        contreIndcTxt.Text,
-                                        InstructionTxt.Text
+                                        contreIndcTxt.Text
                                         );
             int result =  drugDataAccess.UpdateDrugFromId(updatedDrug);
             Console.WriteLine(result);

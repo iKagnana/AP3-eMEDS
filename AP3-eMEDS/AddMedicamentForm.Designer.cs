@@ -35,8 +35,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.searchTxt = new System.Windows.Forms.TextBox();
             this.labelSearch = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.instructionTxt = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.contreIndcTxt = new System.Windows.Forms.TextBox();
@@ -69,7 +67,7 @@
             this.addBtn.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.addBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.addBtn.Location = new System.Drawing.Point(95, 422);
+            this.addBtn.Location = new System.Drawing.Point(91, 371);
             this.addBtn.Name = "addBtn";
             this.addBtn.Size = new System.Drawing.Size(204, 43);
             this.addBtn.TabIndex = 3;
@@ -106,31 +104,11 @@
             this.labelSearch.TabIndex = 16;
             this.labelSearch.Text = "Rechercher";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(92, 206);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 16);
-            this.label2.TabIndex = 28;
-            this.label2.Text = "Instructions";
-            // 
-            // instructionTxt
-            // 
-            this.instructionTxt.BackColor = System.Drawing.SystemColors.Window;
-            this.instructionTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.instructionTxt.Location = new System.Drawing.Point(95, 225);
-            this.instructionTxt.Multiline = true;
-            this.instructionTxt.Name = "instructionTxt";
-            this.instructionTxt.Size = new System.Drawing.Size(204, 65);
-            this.instructionTxt.TabIndex = 27;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(92, 308);
+            this.label4.Location = new System.Drawing.Point(88, 257);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(114, 16);
             this.label4.TabIndex = 26;
@@ -140,7 +118,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(92, 145);
+            this.label1.Location = new System.Drawing.Point(88, 195);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 18);
             this.label1.TabIndex = 25;
@@ -150,7 +128,7 @@
             // 
             this.contreIndcTxt.BackColor = System.Drawing.SystemColors.Window;
             this.contreIndcTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contreIndcTxt.Location = new System.Drawing.Point(95, 327);
+            this.contreIndcTxt.Location = new System.Drawing.Point(91, 276);
             this.contreIndcTxt.Multiline = true;
             this.contreIndcTxt.Name = "contreIndcTxt";
             this.contreIndcTxt.Size = new System.Drawing.Size(204, 65);
@@ -159,7 +137,7 @@
             // nameTxt
             // 
             this.nameTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameTxt.Location = new System.Drawing.Point(95, 166);
+            this.nameTxt.Location = new System.Drawing.Point(91, 216);
             this.nameTxt.Name = "nameTxt";
             this.nameTxt.Size = new System.Drawing.Size(204, 26);
             this.nameTxt.TabIndex = 23;
@@ -169,8 +147,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1186, 618);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.instructionTxt);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.contreIndcTxt);
@@ -195,8 +171,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox searchTxt;
         private System.Windows.Forms.Label labelSearch;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox instructionTxt;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox contreIndcTxt;

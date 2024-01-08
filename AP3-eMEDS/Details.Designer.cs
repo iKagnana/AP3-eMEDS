@@ -36,8 +36,6 @@
             this.nameTxt = new System.Windows.Forms.TextBox();
             this.confirmBtn = new System.Windows.Forms.Button();
             this.supprBtn = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.InstructionTxt = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -54,7 +52,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(170, 245);
+            this.label4.Location = new System.Drawing.Point(170, 146);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(114, 16);
             this.label4.TabIndex = 20;
@@ -74,7 +72,7 @@
             // 
             this.contreIndcTxt.BackColor = System.Drawing.SystemColors.Window;
             this.contreIndcTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contreIndcTxt.Location = new System.Drawing.Point(173, 264);
+            this.contreIndcTxt.Location = new System.Drawing.Point(173, 165);
             this.contreIndcTxt.Multiline = true;
             this.contreIndcTxt.Name = "contreIndcTxt";
             this.contreIndcTxt.Size = new System.Drawing.Size(204, 65);
@@ -93,7 +91,7 @@
             this.confirmBtn.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.confirmBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.confirmBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.confirmBtn.Location = new System.Drawing.Point(173, 354);
+            this.confirmBtn.Location = new System.Drawing.Point(173, 255);
             this.confirmBtn.Name = "confirmBtn";
             this.confirmBtn.Size = new System.Drawing.Size(204, 43);
             this.confirmBtn.TabIndex = 5;
@@ -105,7 +103,7 @@
             // 
             this.supprBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.supprBtn.ForeColor = System.Drawing.Color.Red;
-            this.supprBtn.Location = new System.Drawing.Point(173, 412);
+            this.supprBtn.Location = new System.Drawing.Point(173, 313);
             this.supprBtn.Name = "supprBtn";
             this.supprBtn.Size = new System.Drawing.Size(204, 31);
             this.supprBtn.TabIndex = 6;
@@ -113,33 +111,11 @@
             this.supprBtn.UseVisualStyleBackColor = true;
             this.supprBtn.Click += new System.EventHandler(this.supprBtn_Click);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(170, 143);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 16);
-            this.label2.TabIndex = 22;
-            this.label2.Text = "Instructions";
-            // 
-            // InstructionTxt
-            // 
-            this.InstructionTxt.BackColor = System.Drawing.SystemColors.Window;
-            this.InstructionTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InstructionTxt.Location = new System.Drawing.Point(173, 162);
-            this.InstructionTxt.Multiline = true;
-            this.InstructionTxt.Name = "InstructionTxt";
-            this.InstructionTxt.Size = new System.Drawing.Size(204, 65);
-            this.InstructionTxt.TabIndex = 21;
-            // 
             // Details
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(557, 480);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.InstructionTxt);
+            this.ClientSize = new System.Drawing.Size(557, 370);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.contreIndcTxt);
@@ -164,7 +140,5 @@
         private System.Windows.Forms.TextBox nameTxt;
         private System.Windows.Forms.Button confirmBtn;
         private System.Windows.Forms.Button supprBtn;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox InstructionTxt;
     }
 }

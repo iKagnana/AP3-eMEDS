@@ -13,7 +13,7 @@ namespace AP3_eMEDS
     public partial class Login : Form
     {
 
-        private MedecinController userController = new MedecinController();
+        private MedecinController medecinController = new MedecinController();
         public Login()
         {
             InitializeComponent();
@@ -29,21 +29,13 @@ namespace AP3_eMEDS
 
             Medecin medecin = new Medecin(this.emailTxt.Text, this.passwordTxt.Text);
 
-            string result = userController.Login(medecin);
-            switch (result)
+            bool result = medecinController.Login(medecin);
+            if (result)
             {
-                case "LoggedIn":
-                    MessageBox.Show("Vous êtes connecté !");
-                    break;
-                case "Waiting status":
-                    MessageBox.Show("Votre inscription est toujours en attente.");
-                    break;
-                case "Invalid status":
-                    MessageBox.Show("Votre compte a été refusé par nos services.");
-                    break;
-                case "Invalid user authentification":
-                    MessageBox.Show("Vos identifiants sont invalides.");
-                    break;
+                MessageBox.Show("Connexion réussie.");
+            } else
+            {
+                MessageBox.Show("Identifiants invalides");
             }
             Console.WriteLine(result);
         }

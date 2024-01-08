@@ -40,14 +40,13 @@ namespace AP3_eMEDS
             using (MySqlConnection conn = new MySqlConnection(connectionString)) 
             { 
                 conn.Open();
-                string query = "INSERT INTO medicament (libellé, contre_indication, instructions) " +
-                    "VALUES (@libelle, @contre_indication, @instructions)";
+                string query = "INSERT INTO medicament (libelle_med, contre_indication) " +
+                    "VALUES (@libelle, @contre_indication)";
 
                 using (MySqlCommand command = new MySqlCommand(query, conn)) 
                 {
                     command.Parameters.AddWithValue("@libelle", drug.Libelle);
                     command.Parameters.AddWithValue("@contre_indication", drug.ContreIndication);
-                    command.Parameters.AddWithValue("@instructions", drug.Instructions);
                     int result = command.ExecuteNonQuery();
                     conn.Close();
                     return result;
@@ -73,7 +72,7 @@ namespace AP3_eMEDS
                     while (reader.Read())
                     {
                         // Console.WriteLine(reader.GetString(0) + " " + reader.GetString(1) +  " " + reader.GetString(2));
-                        Medicament newDrug = new Medicament(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3));
+                        Medicament newDrug = new Medicament(reader.GetInt32(0), reader.GetString(1), reader.GetString(2));
                         drugs.Add(newDrug);
                     }
                     conn.Close();
@@ -89,14 +88,13 @@ namespace AP3_eMEDS
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "UPDATE medicament SET libellé = @libelle, contre_indication = @contre_indication, instructions = @instructions WHERE id_med = @id";
+                string query = "UPDATE medicament SET libelle_med = @libelle, contre_indication = @contre_indication WHERE id_med = @id";
 
                 using (MySqlCommand command = new MySqlCommand(query, conn))
                 {
                     command.Parameters.AddWithValue("@id", updatedDrug.Id);
                     command.Parameters.AddWithValue("@libelle", updatedDrug.Libelle);
                     command.Parameters.AddWithValue("@contre_indication", updatedDrug.ContreIndication);
-                    command.Parameters.AddWithValue("@instructions", updatedDrug.Instructions);
                     int result = command.ExecuteNonQuery();
                     conn.Close();
                     return result;

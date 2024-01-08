@@ -23,11 +23,9 @@ namespace AP3_eMEDS
             // init column size
             this.dataGridView1.Columns[0].HeaderText = "Id";
             this.dataGridView1.Columns[1].HeaderText = "Libellé";
-            this.dataGridView1.Columns[2].HeaderText = "Instructions";
-            this.dataGridView1.Columns[3].HeaderText = "Contre-indications";
+            this.dataGridView1.Columns[2].HeaderText = "Contre-indications";
 
             this.dataGridView1.Columns[2].Width = 250;
-            this.dataGridView1.Columns[3].Width = 250;
         }
         
         // event when click on the button
@@ -36,8 +34,7 @@ namespace AP3_eMEDS
             // create a new object drug
             Medicament drug = new Medicament(
                 this.nameTxt.Text,
-                this.contreIndcTxt.Text,
-                this.instructionTxt.Text
+                this.contreIndcTxt.Text
                 );
             // get the saved row in db
             int result = dataAccess.addDrugToDB(drug);
@@ -71,7 +68,6 @@ namespace AP3_eMEDS
         {
             this.nameTxt.Text = "";
             this.contreIndcTxt.Text = "";
-            this.instructionTxt.Text = "";
         }
 
 
