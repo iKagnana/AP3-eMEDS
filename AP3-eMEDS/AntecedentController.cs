@@ -8,79 +8,79 @@ using System.Threading.Tasks;
 
 namespace AP3_eMEDS
 {
-    internal class AllergieController
+    internal class AntecedentController
     {
         private string connectionString = ConfigurationManager.ConnectionStrings["localhost"].ConnectionString;
 
-        public AllergieController() { }
+        public AntecedentController() { }
 
-        // get all allergies
-        public List<ObjetPatient> GetAllergies()
+        // get all antecedent
+        public List<ObjetPatient> GetAntecedents()
         {
             using(MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT * FROM allergie";
+                string query = "SELECT * FROM antecedent";
 
-                List<ObjetPatient> allergies = new List<ObjetPatient>();
+                List<ObjetPatient> antecedents = new List<ObjetPatient>();
 
                 using(MySqlCommand command = new MySqlCommand(query, conn))
                 {
                     MySqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        allergies.Add(new ObjetPatient(reader.GetInt32(0), reader.GetString(2)));
+                        antecedents.Add(new ObjetPatient(reader.GetInt32(0), reader.GetString(1)));
                     }
 
-                    return allergies;
+                    return antecedents;
                 }
             }
         }
 
-        // add allergies 
-        public int AddAllergy(ObjetPatient allergie)
+        // add antecedent
+        public int AddAntecedent(ObjetPatient antecedent)
         {
             using(MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "INSERT INTO allergie (libelle_al) VALUES (@libelle)";
+                string query = "INSERT INTO antecedent (libelle_a) VALUES (@libelle)";
 
                 using(MySqlCommand command = new MySqlCommand(query, conn))
                 {
-                    command.Parameters.AddWithValue("libelle", allergie.Libelle);
+                    command.Parameters.AddWithValue("@libelle", antecedent.Libelle);
                     int result = command.ExecuteNonQuery();
                     return result;
                 }
             }
         }
 
-        // update allergy from its id 
-        public int UpdateAllergy(ObjetPatient allergie)
+        // update antecedent from its id
+        public int UpdateAntecedent(ObjetPatient antecedent)
         {
             using(MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "UPDATE allergie SET libelle_al = @libelle WHERE id_al = @id";
+                string query = "UPDATE antecedent SET libelle_a = @libelle WHERE id_a = @id";
+
                 using(MySqlCommand command = new MySqlCommand(query, conn))
                 {
-                    command.Parameters.AddWithValue("@libelle", allergie.Libelle);
-                    command.Parameters.AddWithValue("@id", allergie.Id);
+                    command.Parameters.AddWithValue("@libelle", antecedent.Libelle);
+                    command.Parameters.AddWithValue("@id", antecedent.Id);
                     int result = command.ExecuteNonQuery();
                     return result;
                 }
             }
         }
 
-        // delete allergy from its id 
-        public int DeleteAllergy(int id)
+        // delete antecedent from its id 
+        public int DeleteAntecedent(int id)
         {
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            using(MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "DELETE FROM allergie WHERE id_al = @id";
+                string query = "DELETE FROM antecedent WHERE id_a = @id";
 
-                using(MySqlCommand command = new MySqlCommand(query, conn))
-                {
+                using(MySqlCommand command = new MySqlCommand(query, conn)) {
                     command.Parameters.AddWithValue("@id", id);
                     int result = command.ExecuteNonQuery();
                     return result;

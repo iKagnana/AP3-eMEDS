@@ -111,6 +111,7 @@
       <DependentUpon>AddPatientStep1Form.cs</DependentUpon>
     </Compile>
     <Compile Include="AllergieController.cs" />
+    <Compile Include="AntecedentController.cs" />
     <Compile Include="DetailsPatient.cs">
       <SubType>Form</SubType>
     </Compile>
