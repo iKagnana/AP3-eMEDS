@@ -34,7 +34,7 @@ namespace AP3_eMEDS
 
         // DB functions
         // add drugs to db
-        public int addDrugToDB(Medicament drug)
+        public int AddMedicament(Medicament drug)
         {
             // create connection to the db to make query 
             using (MySqlConnection conn = new MySqlConnection(connectionString)) 
@@ -55,7 +55,7 @@ namespace AP3_eMEDS
         }
 
         // get all drugs from db
-        public List<Medicament> GetDrugs()
+        public List<Medicament> GetMedicaments()
         {
             // create connection to the db to make query 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
@@ -81,7 +81,7 @@ namespace AP3_eMEDS
         }
 
         // update item from its id
-        public int UpdateDrugFromId(Medicament updatedDrug) 
+        public int UpdateMedicamentFromId(Medicament updatedDrug) 
         {
             // create connection to the db to make query 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
@@ -102,7 +102,7 @@ namespace AP3_eMEDS
         }
 
         // delete item from its id
-        public int DeleteDrugFromId(int id)
+        public int DeleteMedicamentFromId(int id)
         {
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {

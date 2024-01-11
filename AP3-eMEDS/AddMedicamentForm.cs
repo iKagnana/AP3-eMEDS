@@ -49,7 +49,7 @@ namespace AP3_eMEDS
                 this.contreIndcTxt.Text
                 );
             // get the saved row in db
-            int result = dataAccess.addDrugToDB(drug);
+            int result = dataAccess.AddMedicament(drug);
             if (result == 0)
             {
                 MessageBox.Show("Il y a eu une erreur");
@@ -66,7 +66,7 @@ namespace AP3_eMEDS
         public void UpdateGridView()
         {
             // get updated data 
-            var drugs = dataAccess.GetDrugs();
+            var drugs = dataAccess.GetMedicaments();
 
             // reset research to avoid conflict
             this.drugs = drugs;
