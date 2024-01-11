@@ -60,14 +60,15 @@ namespace AP3_eMEDS
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "INSERT INTO patient (nom_p, prenom_p, sexe) " +
-                    "VALUES (@nom, @prenom, @sexe)";
+                string query = "INSERT INTO patient (nom_p, prenom_p, sexe_p, num_secu) " +
+                    "VALUES (@nom, @prenom, @sexe, @num_secu)";
 
                 using (MySqlCommand command = new MySqlCommand(query, conn))
                 {
                     command.Parameters.AddWithValue("@nom", patient.Nom);
                     command.Parameters.AddWithValue("@prenom", patient.Prenom);
                     command.Parameters.AddWithValue("@sexe", patient.Sexe);
+                    command.Parameters.AddWithValue("@num_secu", patient.NumSecu);
                     int result = command.ExecuteNonQuery();
                     conn.Close();
                     return result;
@@ -86,10 +87,11 @@ namespace AP3_eMEDS
 
                 using (MySqlCommand command = new MySqlCommand(query, conn))
                 {
+                    command.Parameters.AddWithValue("@num_secu", numSecu);
+
                     MySqlDataReader reader = command.ExecuteReader();
-                    while(reader.Read())
+                    while (reader.Read())
                     {
-                        command.Parameters.AddWithValue("@num_secu", numSecu);
                         result = reader.GetInt32(0);
                     }
                     conn.Close();
@@ -98,7 +100,102 @@ namespace AP3_eMEDS
             }
         }
 
-        // add patient's
+        // get patient's allergies
+        public List<ObjetPatient> GetPatientAllergies(int id)
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT allergie.id_al, libelle_al FROM patient " +
+                    "INNER JOIN etre ON patient.id_p = etre.id_p " +
+                    "INNER JOIN allergie ON etre.id_al = allergie.id_al " +
+                    "WHERE patient.id_p = @id";
+
+                List<ObjetPatient> allergies = new List<ObjetPatient>();
+
+                using (MySqlCommand command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@id", id);
+
+                    MySqlDataReader reader = command.ExecuteReader();
+                    while(reader.Read())
+                    {
+                        allergies.Add(new ObjetPatient(reader.GetInt32(0), reader.GetString(1)));
+                    }
+
+                    conn.Close();
+                    return allergies;
+                }
+            }
+        }
+        // get patient's antecedent
+        public List<ObjetPatient> GetPatientAntecedents(int id)
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT antecedent.id_a, libelle_a FROM patient " +
+                    "INNER JOIN avoir ON patient.id_p = avoir.id_p " +
+                    "INNER JOIN antecedent ON avoir.id_a = antecedent.id_a " +
+                    "WHERE patient.id_p = @id";
+
+                List<ObjetPatient> antecedents = new List<ObjetPatient>();
+
+                using (MySqlCommand command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@id", id);
+
+                    MySqlDataReader reader = command.ExecuteReader();
+                    while(reader.Read())
+                    {
+                        antecedents.Add(new ObjetPatient(reader.GetInt32(0), reader.GetString(1)));
+                    }
+
+                    conn.Close();
+                    return antecedents;
+                }
+            }
+        }
+
+
+        // add patient's allergy 
+        public int AddAllergyToPatient(int idAl, int idP)
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "INSERT INTO etre (id_al, id_p) VALUES (@id_al, @id_p)";
+
+                using (MySqlCommand command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@id_al", idAl);
+                    command.Parameters.AddWithValue("@id_p", idP);
+
+                    int result = command.ExecuteNonQuery();
+                    conn.Close();
+                    return result;
+                }
+            }
+        }
+
+        public int AddAntecedentToPatient(int idA, int idP)
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "INSERT INTO avoir (id_a, id_p) VALUES (@id_a, @id_p)";
+
+                using (MySqlCommand command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@id_a", idA);
+                    command.Parameters.AddWithValue("@id_p", idP);
+
+                     int result = command.ExecuteNonQuery();
+                    conn.Close();
+                    return result;
+                }
+            }
+        }
 
         // update patient with its id
         public int UpdatePatient(Patient patient)
@@ -138,6 +235,46 @@ namespace AP3_eMEDS
                     return result;
                 }
 
+            }
+        }
+
+        // delete patient allergy
+        public int DeletePatientAllergy(int idP, int idAl)
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "DELETE FROM etre WHERE id_al = @id_al and id_p = @id_p";
+
+                using (MySqlCommand command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@id_al", idAl);
+                    command.Parameters.AddWithValue("@id_p", idP);
+
+                    int result = command.ExecuteNonQuery();
+                    conn.Close();
+                    return result;
+                }
+            }
+        }
+
+        // delete patient antecedent
+        public int DeletePatientAntecedent(int idP, int idAn)
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "DELETE FROM avoir WHERE id_a = @id_a and id_p = @id_p";
+
+                using (MySqlCommand command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@id_a", idAn);
+                    command.Parameters.AddWithValue("@id_p", idP);
+
+                    int result = command.ExecuteNonQuery();
+                    conn.Close();
+                    return result;
+                }
             }
         }
     }

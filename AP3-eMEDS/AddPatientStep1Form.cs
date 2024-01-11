@@ -30,13 +30,23 @@ namespace AP3_eMEDS
             {
                 labelError.Visible = false;
                 Regex numSecuPattern = new Regex(@"^\\d{15}$");
-                if (!numSecuPattern.IsMatch(numSecuTxt.Text))
+                if (controller.GetIdPatientFromNumSecu(numSecuTxt.Text) == 0)
                 {
-                    labelErrorNumSecu.Visible = true;
-                } else if (controller.GetIdPatientFromNumSecu(numSecuTxt.Text) == 0)
-                {
+                    labelErrorNumSecu.Visible = false;
+
                     Patient newPatient = new Patient(lastNameTxt.Text, firstNameTxt.Text, sexe, numSecuTxt.Text);
-                    controller.AddPatient(newPatient);
+                    int result = controller.AddPatient(newPatient);
+                    if (result == 1)
+                    {
+                        MessageBox.Show("Patient ajouté");
+                    } else if (result == 0)
+                    {
+                        MessageBox.Show("Il y a eu une erreur.");
+                    }
+
+                    AddPatientStep2Form step2 = new AddPatientStep2Form(controller.GetIdPatientFromNumSecu(numSecuTxt.Text));
+                    step2.ShowDialog();
+                    this.Close();
                 } else
                 {
                     MessageBox.Show("Attention ce numéro est déjà utilisé !");

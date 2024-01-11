@@ -60,7 +60,7 @@
             // 
             this.lastNameTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lastNameTxt.Location = new System.Drawing.Point(175, 307);
-            this.lastNameTxt.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.lastNameTxt.Margin = new System.Windows.Forms.Padding(6);
             this.lastNameTxt.Name = "lastNameTxt";
             this.lastNameTxt.Size = new System.Drawing.Size(404, 44);
             this.lastNameTxt.TabIndex = 32;
@@ -82,7 +82,7 @@
             this.addBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.addBtn.Location = new System.Drawing.Point(174, 808);
-            this.addBtn.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.addBtn.Margin = new System.Windows.Forms.Padding(6);
             this.addBtn.Name = "addBtn";
             this.addBtn.Size = new System.Drawing.Size(408, 83);
             this.addBtn.TabIndex = 28;
@@ -105,7 +105,7 @@
             // 
             this.firstNameTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.firstNameTxt.Location = new System.Drawing.Point(175, 415);
-            this.firstNameTxt.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.firstNameTxt.Margin = new System.Windows.Forms.Padding(6);
             this.firstNameTxt.Name = "firstNameTxt";
             this.firstNameTxt.Size = new System.Drawing.Size(404, 44);
             this.firstNameTxt.TabIndex = 35;
@@ -114,7 +114,7 @@
             // 
             this.radioMale.AutoSize = true;
             this.radioMale.Location = new System.Drawing.Point(12, 37);
-            this.radioMale.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.radioMale.Margin = new System.Windows.Forms.Padding(6);
             this.radioMale.Name = "radioMale";
             this.radioMale.Size = new System.Drawing.Size(116, 29);
             this.radioMale.TabIndex = 37;
@@ -127,7 +127,7 @@
             // 
             this.radioFemale.AutoSize = true;
             this.radioFemale.Location = new System.Drawing.Point(12, 81);
-            this.radioFemale.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.radioFemale.Margin = new System.Windows.Forms.Padding(6);
             this.radioFemale.Name = "radioFemale";
             this.radioFemale.Size = new System.Drawing.Size(114, 29);
             this.radioFemale.TabIndex = 38;
@@ -141,9 +141,9 @@
             this.groupBox1.Controls.Add(this.radioMale);
             this.groupBox1.Controls.Add(this.radioFemale);
             this.groupBox1.Location = new System.Drawing.Point(174, 619);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(6);
             this.groupBox1.Size = new System.Drawing.Size(400, 150);
             this.groupBox1.TabIndex = 39;
             this.groupBox1.TabStop = false;
@@ -208,7 +208,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.addBtn);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "AddPatientStep1Form";
             this.Text = "Ajout du patient étape 1 - GSB";
             this.groupBox1.ResumeLayout(false);
