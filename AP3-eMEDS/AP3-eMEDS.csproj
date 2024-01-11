@@ -104,6 +104,12 @@
     <Compile Include="AddMedicamentForm.Designer.cs">
       <DependentUpon>AddMedicamentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddOrdonnanceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddOrdonnanceForm.Designer.cs">
+      <DependentUpon>AddOrdonnanceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddPatientStep1Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +143,8 @@
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="ObjetPatient.cs" />
+    <Compile Include="Ordonnance.cs" />
+    <Compile Include="OrdonnanceController.cs" />
     <Compile Include="Patient.cs" />
     <Compile Include="MedicamentController.cs" />
     <Compile Include="Details.cs">
@@ -159,6 +167,9 @@
     <Compile Include="MedecinController.cs" />
     <EmbeddedResource Include="AddMedicamentForm.resx">
       <DependentUpon>AddMedicamentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddOrdonnanceForm.resx">
+      <DependentUpon>AddOrdonnanceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddPatientStep1Form.resx">
       <DependentUpon>AddPatientStep1Form.cs</DependentUpon>
