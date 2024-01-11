@@ -26,7 +26,7 @@ namespace AP3_eMEDS
             {
                 conn.Open();
                
-                string query = "SELECT patient.id_p, nom_p, prenom_p, sexe_p, num_secu COUNT(id_al) as nb_allergie, COUNT(id_a) as nb_antecedent " +
+                string query = "SELECT patient.id_p, nom_p, prenom_p, sexe_p, num_secu, COUNT(id_al) as nb_allergie, COUNT(id_a) as nb_antecedent " +
                     "FROM patient " +
                     "LEFT OUTER JOIN etre ON patient.id_p = etre.id_p " +
                     "LEFT OUTER JOIN avoir ON patient.id_p = avoir.id_p " +
@@ -92,6 +92,7 @@ namespace AP3_eMEDS
                         command.Parameters.AddWithValue("@num_secu", numSecu);
                         result = reader.GetInt32(0);
                     }
+                    conn.Close();
                     return result;
                 }
             }

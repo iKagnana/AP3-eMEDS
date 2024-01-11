@@ -31,7 +31,7 @@ namespace AP3_eMEDS
                     {
                         antecedents.Add(new ObjetPatient(reader.GetInt32(0), reader.GetString(1)));
                     }
-
+                    conn.Close();
                     return antecedents;
                 }
             }
@@ -49,6 +49,7 @@ namespace AP3_eMEDS
                 {
                     command.Parameters.AddWithValue("@libelle", antecedent.Libelle);
                     int result = command.ExecuteNonQuery();
+                    conn.Close();
                     return result;
                 }
             }

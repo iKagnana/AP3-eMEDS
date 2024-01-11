@@ -91,29 +91,15 @@ namespace AP3_eMEDS
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT login_m, password_m FROM medecin WHERE login_m = @login";
+                string query = "SELECT COUNT(1) FROM medecin WHERE login_m = @login and password_m = @password";
 
                 using (MySqlCommand command = new MySqlCommand(query, conn))
                 {
                     command.Parameters.AddWithValue("@login", medecin.Username);
+                    command.Parameters.AddWithValue("@password", medecin.Password);
 
-                    // get data 
-                    MySqlDataReader reader = command.ExecuteReader();
-                    reader.Read();
-                    
-                    if (reader.GetString(0) == medecin.Username && 
-                        reader.GetString(1) == medecin.Password)
-                    {
-                        conn.Close();
-                        return true;
-                            
-                    }
-                    else
-                    {
-                        conn.Close();
-                        return false;
-                    }
-                    
+                    // test if we have one user returned
+                    return Convert.ToInt32(command.ExecuteScalar()) > 0;
                 }
             }
         }

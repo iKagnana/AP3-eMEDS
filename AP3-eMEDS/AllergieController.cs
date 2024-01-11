@@ -29,9 +29,9 @@ namespace AP3_eMEDS
                     MySqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        allergies.Add(new ObjetPatient(reader.GetInt32(0), reader.GetString(2)));
+                        allergies.Add(new ObjetPatient(reader.GetInt32(0), reader.GetString(1)));
                     }
-
+                    conn.Close();
                     return allergies;
                 }
             }
@@ -49,6 +49,7 @@ namespace AP3_eMEDS
                 {
                     command.Parameters.AddWithValue("libelle", allergie.Libelle);
                     int result = command.ExecuteNonQuery();
+                    conn.Close();
                     return result;
                 }
             }
@@ -66,6 +67,7 @@ namespace AP3_eMEDS
                     command.Parameters.AddWithValue("@libelle", allergie.Libelle);
                     command.Parameters.AddWithValue("@id", allergie.Id);
                     int result = command.ExecuteNonQuery();
+                    conn.Close();
                     return result;
                 }
             }
@@ -83,6 +85,7 @@ namespace AP3_eMEDS
                 {
                     command.Parameters.AddWithValue("@id", id);
                     int result = command.ExecuteNonQuery();
+                    conn.Close();
                     return result;
                 }
             }
