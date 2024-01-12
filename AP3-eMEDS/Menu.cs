@@ -12,9 +12,18 @@ namespace AP3_eMEDS
 {
     public partial class Menu : Form
     {
+        private readonly string role = Global.UserRole;
         public Menu()
         {
             InitializeComponent();
+
+            // hide elements when not admin 
+            if (role != "ADMIN")
+            {
+                this.groupMedecin.Visible = false;
+                this.groupPatientObject.Visible = false;
+            }
+            
         }
 
         private void medBtn_Click(object sender, EventArgs e)

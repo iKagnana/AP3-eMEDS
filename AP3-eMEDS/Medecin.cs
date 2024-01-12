@@ -14,8 +14,9 @@ namespace AP3_eMEDS
         public string BirthDate { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
+        public string Role { get; set; }
 
-        public Medecin(string id, string lastname, string firstName, string birthDate, string username, string password)
+        public Medecin(string id, string lastname, string firstName, string birthDate, string username, string password, string role)
         {
             Id = id;
             Lastname = lastname;
@@ -23,6 +24,7 @@ namespace AP3_eMEDS
             BirthDate = birthDate;
             Username = username;
             Password = password;
+            Role = role;
         }
 
         // constructor for login 

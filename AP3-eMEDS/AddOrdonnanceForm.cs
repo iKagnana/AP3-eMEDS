@@ -114,8 +114,9 @@ namespace AP3_eMEDS
 
             // create object ordonnance to send to db 
             Ordonnance newOrdo = new Ordonnance(posologieTxt.Text, duree, InstruSpeTxt.Text, code);
+            int idMedecin = Global.UserId;
             // send to db 
-            int result = controller.AddOrdonnance(newOrdo, 1, patient.Id);
+            int result = controller.AddOrdonnance(newOrdo, idMedecin, patient.Id);
             if (result == 1)
             {
                 int idOrdonnance = controller.GetIdWithCode(code);

@@ -133,6 +133,7 @@
     <Compile Include="AddPatientStep2Form.Designer.cs">
       <DependentUpon>AddPatientStep2Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Global.cs" />
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
     </Compile>

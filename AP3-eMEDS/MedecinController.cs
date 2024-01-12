@@ -15,22 +15,6 @@ namespace AP3_eMEDS
 
         public MedecinController() { }
 
-        // function to get the string associated with enum option 
-        public string GetStatus(Status status)
-        {
-            switch (status)
-            {
-                case Status.Waiting: 
-                    return "En attente de validation";
-                case Status.Confirmed:
-                    return "Validé";
-                case Status.Refused:
-                    return "Refusé";
-                default:
-                    return "";
-            }
-        }
-
         // method create user type employee
         public int AddEmployee(Medecin medecin)
         {
@@ -38,8 +22,8 @@ namespace AP3_eMEDS
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "INSERT INTO medecin (nom_m, prenom_m, login_m, password_m, date_naissance_m) " +
-                    "VALUES (@lastname, @firstname, @login, @password, @login)";
+                string query = "INSERT INTO medecin (nom_m, prenom_m, login_m, password_m, date_naissance_m, role) " +
+                    "VALUES (@lastname, @firstname, @login, @password, @login, @role)";
 
                 using (MySqlCommand command = new MySqlCommand(query, conn))
                 {
@@ -48,6 +32,7 @@ namespace AP3_eMEDS
                     command.Parameters.AddWithValue("@login", medecin.Username);
                     command.Parameters.AddWithValue("@password", medecin.Password);
                     command.Parameters.AddWithValue("@birthdate", medecin.BirthDate);
+                    command.Parameters.AddWithValue("@role", medecin.Role);
                     int result = command.ExecuteNonQuery();
                     conn.Close();
                     return result;
@@ -91,15 +76,33 @@ namespace AP3_eMEDS
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT COUNT(1) FROM medecin WHERE login_m = @login and password_m = @password";
+                string query = "SELECT id_m FROM medecin WHERE login_m = @login and password_m = @password";
+
+                int idMedecin = 0;
+                string role = "";
 
                 using (MySqlCommand command = new MySqlCommand(query, conn))
                 {
                     command.Parameters.AddWithValue("@login", medecin.Username);
                     command.Parameters.AddWithValue("@password", medecin.Password);
 
-                    // test if we have one user returned
-                    return Convert.ToInt32(command.ExecuteScalar()) > 0;
+                    idMedecin = Convert.ToInt32(command.ExecuteScalar());
+                    MySqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        idMedecin = reader.GetInt32(0);
+                        role = reader.GetString(1);
+                    }
+                    conn.Close();
+                    if (idMedecin > 0 && !role.Equals(""))
+                    {
+                        Global.UserId = idMedecin;
+                        Global.UserRole = role;
+                        return true;
+                    } else
+                    {
+                        return false;
+                    }
                 }
             }
         }

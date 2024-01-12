@@ -4,14 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public enum Status
-{
-    Waiting,
-    Confirmed,
-    Refused
-
-}
-
 namespace AP3_eMEDS
 
 {
