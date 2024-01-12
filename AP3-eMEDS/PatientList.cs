@@ -36,5 +36,21 @@ namespace AP3_eMEDS
             AddPatientStep1Form stepOne = new AddPatientStep1Form();
             stepOne.ShowDialog();
         }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
+                if (selectedRow != null)
+                {
+                    Patient selected = selectedRow.DataBoundItem as Patient;
+                    AddOrdonnanceForm ordonnanceForm = new AddOrdonnanceForm(selected);
+                    // add closing event to the form
+                    ordonnanceForm.ShowDialog();
+                }
+
+            }
+        }
     }
 }

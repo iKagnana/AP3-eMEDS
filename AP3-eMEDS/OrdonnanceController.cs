@@ -20,8 +20,7 @@ namespace AP3_eMEDS
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT ordonnance.id_o, posologie, duree_traitement, COUNT(id_m) as nb_meds FROM ordonnance " +
-                    "INNER JOIN ligne_ordonnance ON ligne_ordonnance.id_o = ordonnance.id_o WHERE id_p = @id_p";
+                string query = "SELECT * FROM ordonnance WHERE id_p = @id_p";
 
                 List<Ordonnance> ordonnances = new List<Ordonnance>();
 
@@ -32,7 +31,7 @@ namespace AP3_eMEDS
                     MySqlDataReader reader = command.ExecuteReader();
                     while(reader.Read())
                     {
-                        ordonnances.Add(new Ordonnance(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(4)));
+                        ordonnances.Add(new Ordonnance(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4)));
                     }
 
                     conn.Close();
@@ -81,6 +80,32 @@ namespace AP3_eMEDS
                     int result = command.ExecuteNonQuery();
                     conn.Close();
                     return result;
+                }
+            }
+        }
+
+        // get ordonnance id with code
+        public int GetIdWithCode(string code)
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT id_o FROM ordonnance WHERE code = @code";
+
+                int id = 0;
+
+                using (MySqlCommand command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@code", code);
+
+                    MySqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Console.WriteLine("id récupéré : " + id);
+                        id = reader.GetInt32(0);
+                    }
+                    conn.Close();
+                    return id;
                 }
             }
         }

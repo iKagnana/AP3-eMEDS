@@ -13,15 +13,15 @@ namespace AP3_eMEDS
         public string Posologie { get; set; }
         public string Duree {  get; set; }
         public string InstructionsSpe {  get; set; }
-        public int NbMeds { get; set; }
         public string Code { get; set; }
 
         // create item from db
-        public Ordonnance(int id, string posologie, string duree, int nbMeds ) {
+        public Ordonnance(int id, string posologie, string duree, string instructionSpe, string code ) {
             this.Id = id;
             this.Posologie = posologie;
             this.Duree = duree;
-            this.NbMeds = nbMeds;
+            this.InstructionsSpe = instructionSpe;
+            this.Code = code;
         }
 
         // create item to send to db

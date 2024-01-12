@@ -204,6 +204,7 @@
             this.comboBoxDate.Name = "comboBoxDate";
             this.comboBoxDate.Size = new System.Drawing.Size(174, 45);
             this.comboBoxDate.TabIndex = 29;
+            this.comboBoxDate.SelectedIndexChanged += new System.EventHandler(this.comboBoxDate_SelectedIndexChanged);
             // 
             // checkBox
             // 
