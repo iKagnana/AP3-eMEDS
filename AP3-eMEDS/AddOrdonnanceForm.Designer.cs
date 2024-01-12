@@ -42,8 +42,12 @@
             this.InstruSpeTxt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.addBtn = new System.Windows.Forms.Button();
+            this.nbDate = new System.Windows.Forms.NumericUpDown();
+            this.comboBoxDate = new System.Windows.Forms.ComboBox();
+            this.checkBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridListO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridMeds)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nbDate)).BeginInit();
             this.SuspendLayout();
             // 
             // patientInfos
@@ -64,6 +68,7 @@
             this.comboMeds.Name = "comboMeds";
             this.comboMeds.Size = new System.Drawing.Size(473, 45);
             this.comboMeds.TabIndex = 1;
+            this.comboMeds.SelectedIndexChanged += new System.EventHandler(this.comboMeds_SelectedIndexChanged);
             // 
             // medLabel
             // 
@@ -113,6 +118,7 @@
             this.addMedBtn.TabIndex = 7;
             this.addMedBtn.Text = "+";
             this.addMedBtn.UseVisualStyleBackColor = false;
+            this.addMedBtn.Click += new System.EventHandler(this.addMedBtn_Click);
             // 
             // posologieLabel
             // 
@@ -180,12 +186,44 @@
             this.addBtn.TabIndex = 27;
             this.addBtn.Text = "Ajouter";
             this.addBtn.UseVisualStyleBackColor = false;
+            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
+            // 
+            // nbDate
+            // 
+            this.nbDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.nbDate.Location = new System.Drawing.Point(382, 532);
+            this.nbDate.Name = "nbDate";
+            this.nbDate.Size = new System.Drawing.Size(82, 44);
+            this.nbDate.TabIndex = 28;
+            // 
+            // comboBoxDate
+            // 
+            this.comboBoxDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.comboBoxDate.FormattingEnabled = true;
+            this.comboBoxDate.Location = new System.Drawing.Point(470, 532);
+            this.comboBoxDate.Name = "comboBoxDate";
+            this.comboBoxDate.Size = new System.Drawing.Size(174, 45);
+            this.comboBoxDate.TabIndex = 29;
+            // 
+            // checkBox
+            // 
+            this.checkBox.AutoSize = true;
+            this.checkBox.Location = new System.Drawing.Point(485, 583);
+            this.checkBox.Name = "checkBox";
+            this.checkBox.Size = new System.Drawing.Size(159, 29);
+            this.checkBox.TabIndex = 30;
+            this.checkBox.Text = "Champ libre";
+            this.checkBox.UseVisualStyleBackColor = true;
+            this.checkBox.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
             // 
             // AddOrdonnanceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1678, 936);
+            this.Controls.Add(this.checkBox);
+            this.Controls.Add(this.comboBoxDate);
+            this.Controls.Add(this.nbDate);
             this.Controls.Add(this.addBtn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.InstruSpeTxt);
@@ -204,6 +242,7 @@
             this.Text = "AddOrdonnanceForm";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridListO)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridMeds)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nbDate)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -225,5 +264,8 @@
         private System.Windows.Forms.TextBox InstruSpeTxt;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button addBtn;
+        private System.Windows.Forms.NumericUpDown nbDate;
+        private System.Windows.Forms.ComboBox comboBoxDate;
+        private System.Windows.Forms.CheckBox checkBox;
     }
 }
