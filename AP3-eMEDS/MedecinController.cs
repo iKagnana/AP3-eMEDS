@@ -15,8 +15,28 @@ namespace AP3_eMEDS
 
         public MedecinController() { }
 
-        // method create user type employee
-        public int AddEmployee(Medecin medecin)
+        // get all medecins
+        public List<Medecin> GetMedecins()
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+                conn.Open();
+                string query = "SELECT id_m, nom_m, prenom_m, date_naissance_m, login_m, role FROM medecin";
+
+                List<Medecin> medecins = new List<Medecin>();
+
+                using (MySqlCommand command = new MySqlCommand(query, conn))
+                {
+                    MySqlDataReader reader = command.ExecuteReader();
+                    while(reader.Read())
+                    {
+                        medecins.Add(new Medecin())
+                    }
+                }
+            }
+        }
+
+        // method create user type medecin
+        public int AddMedecin(Medecin medecin)
         {
             // create connection to the db to make query 
             using (MySqlConnection conn = new MySqlConnection(connectionString))

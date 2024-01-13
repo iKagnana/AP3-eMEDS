@@ -101,6 +101,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddMedecin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddMedecin.Designer.cs">
+      <DependentUpon>AddMedecin.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddMedicamentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +175,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MedecinController.cs" />
+    <EmbeddedResource Include="AddMedecin.resx">
+      <DependentUpon>AddMedecin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddMedicamentForm.resx">
       <DependentUpon>AddMedicamentForm.cs</DependentUpon>
     </EmbeddedResource>
