@@ -127,6 +127,18 @@
     </Compile>
     <Compile Include="AllergieController.cs" />
     <Compile Include="AntecedentController.cs" />
+    <Compile Include="ChangePwForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangePwForm.Designer.cs">
+      <DependentUpon>ChangePwForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DetailsMedecin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetailsMedecin.Designer.cs">
+      <DependentUpon>DetailsMedecin.cs</DependentUpon>
+    </Compile>
     <Compile Include="DetailsPatient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,6 +198,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddPatientStep1Form.resx">
       <DependentUpon>AddPatientStep1Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangePwForm.resx">
+      <DependentUpon>ChangePwForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetailsMedecin.resx">
+      <DependentUpon>DetailsMedecin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DetailsPatient.resx">
       <DependentUpon>DetailsPatient.cs</DependentUpon>

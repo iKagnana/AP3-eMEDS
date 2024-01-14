@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace AP3_eMEDS
 {
-    internal class Medecin
+    public class Medecin
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Lastname { get; set; }
         public string FirstName { get; set; }
         public string BirthDate { get; set; }
@@ -16,15 +16,26 @@ namespace AP3_eMEDS
         public string Password { get; set; }
         public string Role { get; set; }
 
-        public Medecin(string id, string lastname, string firstName, string birthDate, string username, string password, string role)
+        // constructor when get data from db
+        public Medecin(int id, string lastname, string firstName, string birthDate, string username, string role)
         {
             Id = id;
             Lastname = lastname;
             FirstName = firstName;
             BirthDate = birthDate;
             Username = username;
-            Password = password;
             Role = role;
+        }
+
+        // constructor when add medecin in db 
+        public Medecin(string lastname, string firstName, string birthDate, string username, string password, string role)
+        {
+            this.Lastname = lastname;
+            this.FirstName = firstName;
+            this.BirthDate = birthDate; 
+            this.Username = username;
+            this.Password = password;
+            this.Role = role;
         }
 
         // constructor for login 

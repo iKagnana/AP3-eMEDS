@@ -37,5 +37,11 @@ namespace AP3_eMEDS
             PatientList patientForm = new PatientList();
             patientForm.ShowDialog();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddMedecinForm addMedecinForm = new AddMedecinForm();
+            addMedecinForm.ShowDialog();
+        }
     }
 }

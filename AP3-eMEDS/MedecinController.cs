@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using BCrypt.Net;
 
 namespace AP3_eMEDS
 {
@@ -29,8 +30,10 @@ namespace AP3_eMEDS
                     MySqlDataReader reader = command.ExecuteReader();
                     while(reader.Read())
                     {
-                        medecins.Add(new Medecin())
+                        medecins.Add(new Medecin(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5)));
                     }
+                    conn.Close(); 
+                    return medecins;
                 }
             }
         }
@@ -43,14 +46,16 @@ namespace AP3_eMEDS
             {
                 conn.Open();
                 string query = "INSERT INTO medecin (nom_m, prenom_m, login_m, password_m, date_naissance_m, role) " +
-                    "VALUES (@lastname, @firstname, @login, @password, @login, @role)";
+                    "VALUES (@lastname, @firstname, @login, @password, @birthdate, @role)";
 
                 using (MySqlCommand command = new MySqlCommand(query, conn))
                 {
-                    command.Parameters.AddWithValue("@name", medecin.Lastname);
-                    command.Parameters.AddWithValue("@siret", medecin.FirstName);
+                    // hash password
+                    string hashedPassword = BCrypt.Net.BCrypt.HashPassword(medecin.Password);
+                    command.Parameters.AddWithValue("@lastname", medecin.Lastname);
+                    command.Parameters.AddWithValue("@firstname", medecin.FirstName);
                     command.Parameters.AddWithValue("@login", medecin.Username);
-                    command.Parameters.AddWithValue("@password", medecin.Password);
+                    command.Parameters.AddWithValue("@password", hashedPassword);
                     command.Parameters.AddWithValue("@birthdate", medecin.BirthDate);
                     command.Parameters.AddWithValue("@role", medecin.Role);
                     int result = command.ExecuteNonQuery();
@@ -67,22 +72,12 @@ namespace AP3_eMEDS
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT email FROM medecin WHERE email = @email";
+                string query = "SELECT id_m n FROM medecin WHERE login_m = @email";
 
                 using (MySqlCommand command = new MySqlCommand(query, conn))
                 {
                     command.Parameters.AddWithValue("@email", email);
-                    
-                    MySqlDataReader reader = command.ExecuteReader();
-                    if (reader.Read())
-                    {
-                        conn.Close();
-                        return true;
-                    } else
-                    {
-                        conn.Close();
-                        return false;
-                    }
+                    return Convert.ToInt32(command.ExecuteScalar()) <  0;
                     
                 }
             }
@@ -96,15 +91,15 @@ namespace AP3_eMEDS
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT id_m FROM medecin WHERE login_m = @login and password_m = @password";
+                string query = "SELECT id_m, role, password_m FROM medecin WHERE login_m = @login";
 
                 int idMedecin = 0;
                 string role = "";
+                string hashedPassword = "";
 
                 using (MySqlCommand command = new MySqlCommand(query, conn))
                 {
                     command.Parameters.AddWithValue("@login", medecin.Username);
-                    command.Parameters.AddWithValue("@password", medecin.Password);
 
                     idMedecin = Convert.ToInt32(command.ExecuteScalar());
                     MySqlDataReader reader = command.ExecuteReader();
@@ -112,9 +107,10 @@ namespace AP3_eMEDS
                     {
                         idMedecin = reader.GetInt32(0);
                         role = reader.GetString(1);
+                        hashedPassword = reader.GetString(2);
                     }
                     conn.Close();
-                    if (idMedecin > 0 && !role.Equals(""))
+                    if (BCrypt.Net.BCrypt.Verify(medecin.Password, hashedPassword))
                     {
                         Global.UserId = idMedecin;
                         Global.UserRole = role;
@@ -123,6 +119,71 @@ namespace AP3_eMEDS
                     {
                         return false;
                     }
+                }
+            }
+        }
+
+        // update medecin 
+        public int UpdateMedecin(Medecin medecin)
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "UPDATE medecin SET nom_m = @lasttname, prenom_m = @firstname, date_naissance_m = @birthDate, login_m = @login, role = @role WHERE id_m = @id";
+
+                using (MySqlCommand command = new MySqlCommand(@query, conn))
+                {
+                    command.Parameters.AddWithValue("@lastname", medecin.Lastname);
+                    command.Parameters.AddWithValue("@firstname", medecin.FirstName);
+                    command.Parameters.AddWithValue("@login", medecin.Username);
+                    command.Parameters.AddWithValue("@birthdate", medecin.BirthDate);
+                    command.Parameters.AddWithValue("@role", medecin.Role);
+                    command.Parameters.AddWithValue("@id", medecin.Id);
+
+                    int result = command.ExecuteNonQuery();
+                    conn.Close();
+                    return result;
+                }
+            }
+        }
+
+        // udpate medecin's password
+        public int UpdateMedecinPassword(string password, int id)
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "UPDATE medecin SET password_m = @password WHERE id_m= @id";
+
+                using (MySqlCommand command = new MySqlCommand(query, conn))
+                {
+                    string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
+                    command.Parameters.AddWithValue("password", hashedPassword);
+                    command.Parameters.AddWithValue("id", id);
+
+                    int result = command.ExecuteNonQuery();
+                    conn.Close();
+                    return result;
+                }
+            }
+        }
+
+
+        // delete medecin 
+        public int UpdateMedecin(int id)
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "DELET FROM medecin WHERE id_m = @id";
+
+                using (MySqlCommand command = new MySqlCommand(@query, conn))
+                {
+                    command.Parameters.AddWithValue("@id", id);
+
+                    int result = command.ExecuteNonQuery();
+                    conn.Close();
+                    return result;
                 }
             }
         }
