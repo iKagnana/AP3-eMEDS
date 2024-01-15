@@ -86,18 +86,25 @@ namespace AP3_eMEDS
         // open the new form Details
         private void OpenForm(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            string role = Global.UserRole;
+            if (role == "ADMIN")
             {
-                DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
-                if (selectedRow != null)
+                if (e.RowIndex >= 0)
                 {
-                    Medicament selected = selectedRow.DataBoundItem as Medicament;
-                    Details details = new Details(selected);
-                    // add closing event to the form
-                    details.FormClosing += new FormClosingEventHandler(this.DetailsClosing);
-                    details.Show();
+                    DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
+                    if (selectedRow != null)
+                    {
+                        Medicament selected = selectedRow.DataBoundItem as Medicament;
+                        Details details = new Details(selected);
+                        // add closing event to the form
+                        details.FormClosing += new FormClosingEventHandler(this.DetailsClosing);
+                        details.Show();
+                    }
+
                 }
-                
+            } else
+            {
+                MessageBox.Show("Vous n'avez pas les droits pour modifier le médicament");
             }
 
         }
