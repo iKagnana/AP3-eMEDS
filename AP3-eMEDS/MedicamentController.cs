@@ -198,6 +198,64 @@ namespace AP3_eMEDS
             }
         }
 
+        // return true if incompatibily 
+        public bool GetIncompatibilityAllergy(int id_al, int id_med)
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT id_med FROM incompatible WHERE id_med = @id_med and id_al = @id_al";
+
+                using (MySqlCommand command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@id_al", id_al);
+                    command.Parameters.AddWithValue("@id_med", id_med);
+        
+
+            return Convert.ToInt32(command.ExecuteScalar()) > 0;
+                }
+            }
+        }
+
+        // return true if incompatibily 
+        public bool GetIncompatibilityAntecedent(int id_a, int id_med)
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT id_med FROM incompatible WHERE id_med = @id_med and id_a = @id_a";
+
+                using (MySqlCommand command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@id_al", id_a);
+                    command.Parameters.AddWithValue("@id_med", id_med);
+        
+
+            return Convert.ToInt32(command.ExecuteScalar()) > 0;
+                }
+            }
+        }
+
+        // return true if incompatibily 
+        public bool GetIncompatibilityMedicament(int id_med, int id_med_two)
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT id_med FROM incompatible WHERE id_med = @id_med and id_med_Medicament = @id_med_two";
+
+                using (MySqlCommand command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@id_med", id_med);
+                    command.Parameters.AddWithValue("@id_med_two", id_med_two);
+        
+
+            return Convert.ToInt32(command.ExecuteScalar()) > 0;
+                }
+            }
+        }
+
+
         // get all incompatible medecament
         public List<ObjetPatient> GetIncompatibleMedicament(int id)
         {

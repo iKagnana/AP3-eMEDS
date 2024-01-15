@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AP3_eMEDS
 {
-    internal class ObjetPatient
+    public class ObjetPatient
     {
         public int Id { get; set; }
         public string Libelle { get; set; }

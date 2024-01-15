@@ -45,6 +45,8 @@
             this.nbDate = new System.Windows.Forms.NumericUpDown();
             this.comboBoxDate = new System.Windows.Forms.ComboBox();
             this.checkBox = new System.Windows.Forms.CheckBox();
+            this.warningText = new System.Windows.Forms.Label();
+            this.warningMedsTxt = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridListO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridMeds)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nbDate)).BeginInit();
@@ -54,9 +56,10 @@
             // 
             this.patientInfos.AutoSize = true;
             this.patientInfos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientInfos.Location = new System.Drawing.Point(71, 68);
+            this.patientInfos.Location = new System.Drawing.Point(36, 35);
+            this.patientInfos.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.patientInfos.Name = "patientInfos";
-            this.patientInfos.Size = new System.Drawing.Size(344, 37);
+            this.patientInfos.Size = new System.Drawing.Size(173, 20);
             this.patientInfos.TabIndex = 0;
             this.patientInfos.Text = "Informations du patient";
             // 
@@ -64,57 +67,64 @@
             // 
             this.comboMeds.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.comboMeds.FormattingEnabled = true;
-            this.comboMeds.Location = new System.Drawing.Point(78, 204);
+            this.comboMeds.Location = new System.Drawing.Point(39, 103);
+            this.comboMeds.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboMeds.Name = "comboMeds";
-            this.comboMeds.Size = new System.Drawing.Size(473, 45);
+            this.comboMeds.Size = new System.Drawing.Size(238, 28);
             this.comboMeds.TabIndex = 1;
             this.comboMeds.SelectedIndexChanged += new System.EventHandler(this.comboMeds_SelectedIndexChanged);
             // 
             // medLabel
             // 
             this.medLabel.AutoSize = true;
-            this.medLabel.Location = new System.Drawing.Point(78, 173);
+            this.medLabel.Location = new System.Drawing.Point(39, 87);
+            this.medLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.medLabel.Name = "medLabel";
-            this.medLabel.Size = new System.Drawing.Size(154, 25);
+            this.medLabel.Size = new System.Drawing.Size(76, 13);
             this.medLabel.TabIndex = 2;
             this.medLabel.Text = "Médicament(s)";
             // 
             // dataGridListO
             // 
             this.dataGridListO.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridListO.Location = new System.Drawing.Point(1027, 68);
+            this.dataGridListO.Location = new System.Drawing.Point(514, 35);
+            this.dataGridListO.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridListO.Name = "dataGridListO";
             this.dataGridListO.RowHeadersWidth = 82;
             this.dataGridListO.RowTemplate.Height = 33;
-            this.dataGridListO.Size = new System.Drawing.Size(618, 800);
+            this.dataGridListO.Size = new System.Drawing.Size(309, 416);
             this.dataGridListO.TabIndex = 3;
             // 
             // ordonnanceListLabel
             // 
             this.ordonnanceListLabel.AutoSize = true;
-            this.ordonnanceListLabel.Location = new System.Drawing.Point(1022, 40);
+            this.ordonnanceListLabel.Location = new System.Drawing.Point(511, 21);
+            this.ordonnanceListLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ordonnanceListLabel.Name = "ordonnanceListLabel";
-            this.ordonnanceListLabel.Size = new System.Drawing.Size(230, 25);
+            this.ordonnanceListLabel.Size = new System.Drawing.Size(114, 13);
             this.ordonnanceListLabel.TabIndex = 4;
             this.ordonnanceListLabel.Text = "Liste des ordonnances";
             // 
             // dataGridMeds
             // 
             this.dataGridMeds.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridMeds.Location = new System.Drawing.Point(78, 264);
+            this.dataGridMeds.Location = new System.Drawing.Point(39, 134);
+            this.dataGridMeds.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridMeds.Name = "dataGridMeds";
             this.dataGridMeds.RowHeadersWidth = 82;
             this.dataGridMeds.RowTemplate.Height = 33;
-            this.dataGridMeds.Size = new System.Drawing.Size(566, 184);
+            this.dataGridMeds.Size = new System.Drawing.Size(283, 96);
             this.dataGridMeds.TabIndex = 5;
+            this.dataGridMeds.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridMeds_CellContentClick);
             // 
             // addMedBtn
             // 
             this.addMedBtn.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.addMedBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addMedBtn.Location = new System.Drawing.Point(578, 206);
+            this.addMedBtn.Location = new System.Drawing.Point(289, 103);
+            this.addMedBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addMedBtn.Name = "addMedBtn";
-            this.addMedBtn.Size = new System.Drawing.Size(66, 45);
+            this.addMedBtn.Size = new System.Drawing.Size(33, 28);
             this.addMedBtn.TabIndex = 7;
             this.addMedBtn.Text = "+";
             this.addMedBtn.UseVisualStyleBackColor = false;
@@ -123,34 +133,38 @@
             // posologieLabel
             // 
             this.posologieLabel.AutoSize = true;
-            this.posologieLabel.Location = new System.Drawing.Point(78, 504);
+            this.posologieLabel.Location = new System.Drawing.Point(39, 252);
+            this.posologieLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.posologieLabel.Name = "posologieLabel";
-            this.posologieLabel.Size = new System.Drawing.Size(107, 25);
+            this.posologieLabel.Size = new System.Drawing.Size(53, 13);
             this.posologieLabel.TabIndex = 8;
             this.posologieLabel.Text = "Posologie";
             // 
             // posologieTxt
             // 
             this.posologieTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.posologieTxt.Location = new System.Drawing.Point(78, 532);
+            this.posologieTxt.Location = new System.Drawing.Point(39, 267);
+            this.posologieTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.posologieTxt.Name = "posologieTxt";
-            this.posologieTxt.Size = new System.Drawing.Size(262, 44);
+            this.posologieTxt.Size = new System.Drawing.Size(133, 26);
             this.posologieTxt.TabIndex = 9;
             // 
             // dureeTxt
             // 
             this.dureeTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.dureeTxt.Location = new System.Drawing.Point(382, 532);
+            this.dureeTxt.Location = new System.Drawing.Point(191, 267);
+            this.dureeTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dureeTxt.Name = "dureeTxt";
-            this.dureeTxt.Size = new System.Drawing.Size(262, 44);
+            this.dureeTxt.Size = new System.Drawing.Size(133, 26);
             this.dureeTxt.TabIndex = 11;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(382, 504);
+            this.label1.Location = new System.Drawing.Point(191, 252);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(201, 25);
+            this.label1.Size = new System.Drawing.Size(100, 13);
             this.label1.TabIndex = 10;
             this.label1.Text = "Durée du traitement";
             // 
@@ -158,19 +172,19 @@
             // 
             this.InstruSpeTxt.BackColor = System.Drawing.SystemColors.Window;
             this.InstruSpeTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InstruSpeTxt.Location = new System.Drawing.Point(78, 648);
-            this.InstruSpeTxt.Margin = new System.Windows.Forms.Padding(6);
+            this.InstruSpeTxt.Location = new System.Drawing.Point(39, 327);
             this.InstruSpeTxt.Multiline = true;
             this.InstruSpeTxt.Name = "InstruSpeTxt";
-            this.InstruSpeTxt.Size = new System.Drawing.Size(566, 121);
+            this.InstruSpeTxt.Size = new System.Drawing.Size(285, 65);
             this.InstruSpeTxt.TabIndex = 25;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(78, 617);
+            this.label2.Location = new System.Drawing.Point(39, 311);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(237, 25);
+            this.label2.Size = new System.Drawing.Size(117, 13);
             this.label2.TabIndex = 26;
             this.label2.Text = "Instructions spécifiques";
             // 
@@ -179,10 +193,9 @@
             this.addBtn.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.addBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.addBtn.Location = new System.Drawing.Point(163, 809);
-            this.addBtn.Margin = new System.Windows.Forms.Padding(6);
+            this.addBtn.Location = new System.Drawing.Point(82, 421);
             this.addBtn.Name = "addBtn";
-            this.addBtn.Size = new System.Drawing.Size(408, 83);
+            this.addBtn.Size = new System.Drawing.Size(204, 43);
             this.addBtn.TabIndex = 27;
             this.addBtn.Text = "Ajouter";
             this.addBtn.UseVisualStyleBackColor = false;
@@ -191,37 +204,63 @@
             // nbDate
             // 
             this.nbDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.nbDate.Location = new System.Drawing.Point(382, 532);
+            this.nbDate.Location = new System.Drawing.Point(191, 267);
+            this.nbDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.nbDate.Name = "nbDate";
-            this.nbDate.Size = new System.Drawing.Size(82, 44);
+            this.nbDate.Size = new System.Drawing.Size(41, 26);
             this.nbDate.TabIndex = 28;
             // 
             // comboBoxDate
             // 
             this.comboBoxDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.comboBoxDate.FormattingEnabled = true;
-            this.comboBoxDate.Location = new System.Drawing.Point(470, 532);
+            this.comboBoxDate.Location = new System.Drawing.Point(235, 267);
+            this.comboBoxDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBoxDate.Name = "comboBoxDate";
-            this.comboBoxDate.Size = new System.Drawing.Size(174, 45);
+            this.comboBoxDate.Size = new System.Drawing.Size(89, 28);
             this.comboBoxDate.TabIndex = 29;
             this.comboBoxDate.SelectedIndexChanged += new System.EventHandler(this.comboBoxDate_SelectedIndexChanged);
             // 
             // checkBox
             // 
             this.checkBox.AutoSize = true;
-            this.checkBox.Location = new System.Drawing.Point(485, 583);
+            this.checkBox.Location = new System.Drawing.Point(242, 293);
+            this.checkBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.checkBox.Name = "checkBox";
-            this.checkBox.Size = new System.Drawing.Size(159, 29);
+            this.checkBox.Size = new System.Drawing.Size(81, 17);
             this.checkBox.TabIndex = 30;
             this.checkBox.Text = "Champ libre";
             this.checkBox.UseVisualStyleBackColor = true;
             this.checkBox.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
             // 
+            // warningText
+            // 
+            this.warningText.AutoSize = true;
+            this.warningText.BackColor = System.Drawing.SystemColors.Control;
+            this.warningText.ForeColor = System.Drawing.Color.Red;
+            this.warningText.Location = new System.Drawing.Point(24, 395);
+            this.warningText.Name = "warningText";
+            this.warningText.Size = new System.Drawing.Size(312, 13);
+            this.warningText.TabIndex = 31;
+            this.warningText.Text = "Attention certains médicaments sont incompatible avec le patient";
+            // 
+            // warningMedsTxt
+            // 
+            this.warningMedsTxt.AutoSize = true;
+            this.warningMedsTxt.ForeColor = System.Drawing.Color.Red;
+            this.warningMedsTxt.Location = new System.Drawing.Point(36, 232);
+            this.warningMedsTxt.Name = "warningMedsTxt";
+            this.warningMedsTxt.Size = new System.Drawing.Size(291, 13);
+            this.warningMedsTxt.TabIndex = 32;
+            this.warningMedsTxt.Text = "Attention certains médicaments sont incompatibles entre eux";
+            // 
             // AddOrdonnanceForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1678, 936);
+            this.ClientSize = new System.Drawing.Size(839, 487);
+            this.Controls.Add(this.warningMedsTxt);
+            this.Controls.Add(this.warningText);
             this.Controls.Add(this.checkBox);
             this.Controls.Add(this.comboBoxDate);
             this.Controls.Add(this.nbDate);
@@ -239,6 +278,7 @@
             this.Controls.Add(this.medLabel);
             this.Controls.Add(this.comboMeds);
             this.Controls.Add(this.patientInfos);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "AddOrdonnanceForm";
             this.Text = "AddOrdonnanceForm";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridListO)).EndInit();
@@ -268,5 +308,7 @@
         private System.Windows.Forms.NumericUpDown nbDate;
         private System.Windows.Forms.ComboBox comboBoxDate;
         private System.Windows.Forms.CheckBox checkBox;
+        private System.Windows.Forms.Label warningText;
+        private System.Windows.Forms.Label warningMedsTxt;
     }
 }
