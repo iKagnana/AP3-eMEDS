@@ -1,6 +1,6 @@
 ﻿namespace AP3_eMEDS
 {
-    partial class DeleteItem
+    partial class DeleteItemPatient
     {
         /// <summary>
         /// Required designer variable.

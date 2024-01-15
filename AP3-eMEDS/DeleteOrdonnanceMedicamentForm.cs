@@ -27,6 +27,7 @@ namespace AP3_eMEDS
         private void supprBtn_Click(object sender, EventArgs e)
         {
             form.DeleteMedicament(selectedMed);
+            this.Close();
         }
 
         private void confirmBtn_Click(object sender, EventArgs e)

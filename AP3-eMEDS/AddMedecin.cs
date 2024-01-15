@@ -24,6 +24,14 @@ namespace AP3_eMEDS
             this.comboBoxRole.DataSource = roles;
 
             UpdateDataGrid();
+            // init column size
+            this.dataGridMedecin.Columns[0].HeaderText = "Id";
+            this.dataGridMedecin.Columns[1].HeaderText = "Nom";
+            this.dataGridMedecin.Columns[2].HeaderText = "Prénom";
+            this.dataGridMedecin.Columns[3].HeaderText = "Date de naissance";
+            this.dataGridMedecin.Columns[4].HeaderText = "Email";
+            this.dataGridMedecin.Columns[5].HeaderText = "Mot de passe";
+            this.dataGridMedecin.Columns[6].HeaderText = "Rôle";
 
         }
 

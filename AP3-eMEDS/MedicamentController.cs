@@ -227,7 +227,7 @@ namespace AP3_eMEDS
 
                 using (MySqlCommand command = new MySqlCommand(query, conn))
                 {
-                    command.Parameters.AddWithValue("@id_al", id_a);
+                    command.Parameters.AddWithValue("@id_a", id_a);
                     command.Parameters.AddWithValue("@id_med", id_med);
         
 

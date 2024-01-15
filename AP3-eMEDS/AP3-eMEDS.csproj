@@ -133,11 +133,11 @@
     <Compile Include="ChangePwForm.Designer.cs">
       <DependentUpon>ChangePwForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DeleteItem.cs">
+    <Compile Include="DeleteItemPatient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DeleteItem.Designer.cs">
-      <DependentUpon>DeleteItem.cs</DependentUpon>
+    <Compile Include="DeleteItemPatient.Designer.cs">
+      <DependentUpon>DeleteItemPatient.cs</DependentUpon>
     </Compile>
     <Compile Include="DeleteOrdonnanceMedicamentForm.cs">
       <SubType>Form</SubType>
@@ -221,8 +221,8 @@
     <EmbeddedResource Include="ChangePwForm.resx">
       <DependentUpon>ChangePwForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DeleteItem.resx">
-      <DependentUpon>DeleteItem.cs</DependentUpon>
+    <EmbeddedResource Include="DeleteItemPatient.resx">
+      <DependentUpon>DeleteItemPatient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DeleteOrdonnanceMedicamentForm.resx">
       <DependentUpon>DeleteOrdonnanceMedicamentForm.cs</DependentUpon>

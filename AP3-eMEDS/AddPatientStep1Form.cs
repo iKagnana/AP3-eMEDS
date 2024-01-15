@@ -29,7 +29,6 @@ namespace AP3_eMEDS
                 !sexe.Equals("") && !numSecuTxt.Text.Equals(""))
             {
                 labelError.Visible = false;
-                Regex numSecuPattern = new Regex(@"^\\d{15}$");
                 if (controller.GetIdPatientFromNumSecu(numSecuTxt.Text) == 0)
                 {
                     labelErrorNumSecu.Visible = false;
@@ -46,6 +45,7 @@ namespace AP3_eMEDS
 
                     AddPatientStep2Form step2 = new AddPatientStep2Form(controller.GetIdPatientFromNumSecu(numSecuTxt.Text));
                     step2.ShowDialog();
+                    ResetForm();
                     this.Close();
                 } else
                 {
@@ -58,6 +58,13 @@ namespace AP3_eMEDS
             }
         }
 
+        private void ResetForm()
+        {
+            this.lastNameTxt.Text = string.Empty; 
+            this.firstNameTxt.Text = string.Empty; 
+            this.numSecuTxt.Text = string.Empty;
+        }
+
         private void radioMale_CheckedChanged(object sender, EventArgs e)
         {
             this.sexe = "M";
@@ -66,6 +73,11 @@ namespace AP3_eMEDS
         private void radioFemale_CheckedChanged(object sender, EventArgs e)
         {
             this.sexe = "F";
+        }
+
+        private void numSecuTxt_TextChanged(object sender, EventArgs e)
+        {
+            this.labelErrorNumSecu.Visible = this.numSecuTxt.Text.Length == 15;
         }
     }
 }

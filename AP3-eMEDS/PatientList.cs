@@ -18,6 +18,15 @@ namespace AP3_eMEDS
         {
             InitializeComponent();
             GetPatients();
+
+            DataGridViewButtonColumn modifyButton = new DataGridViewButtonColumn();
+            modifyButton.Name = "Modifier";
+            modifyButton.Text = "Modifier";
+            int columnIndex = 1;
+            if (dataGridView1.Columns["modify"] == null)
+            {
+                dataGridView1.Columns.Insert(columnIndex, modifyButton);
+            }
         }
 
         private void GetPatients()
@@ -45,12 +54,26 @@ namespace AP3_eMEDS
                 if (selectedRow != null)
                 {
                     Patient selected = selectedRow.DataBoundItem as Patient;
-                    AddOrdonnanceForm ordonnanceForm = new AddOrdonnanceForm(selected);
-                    // add closing event to the form
-                    ordonnanceForm.ShowDialog();
+                    if (e.ColumnIndex == dataGridView1.Columns["Modifier"].Index)
+                    {
+                        DetailsPatient details = new DetailsPatient(selected);
+                        // add closing event to the form
+                        details.FormClosing += new FormClosingEventHandler(this.DetailsClosing);
+                        details.ShowDialog();
+                    }
+                    else
+                    {
+                        AddOrdonnanceForm ordonnanceForm = new AddOrdonnanceForm(selected);
+                        ordonnanceForm.ShowDialog();
+                    }
                 }
+                
+            } 
+        }
 
-            }
+        private void DetailsClosing(object sender, FormClosingEventArgs e)
+        {
+            GetPatients();
         }
     }
 }

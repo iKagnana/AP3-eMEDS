@@ -110,7 +110,7 @@ namespace AP3_eMEDS
                         hashedPassword = reader.GetString(2);
                     }
                     conn.Close();
-                    if (BCrypt.Net.BCrypt.Verify(medecin.Password, hashedPassword))
+                    if (!hashedPassword.Equals("") && BCrypt.Net.BCrypt.Verify(medecin.Password, hashedPassword) )
                     {
                         Global.UserId = idMedecin;
                         Global.UserRole = role;

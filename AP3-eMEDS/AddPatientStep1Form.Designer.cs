@@ -49,30 +49,27 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(169, 267);
-            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label1.Location = new System.Drawing.Point(84, 139);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 36);
+            this.label1.Size = new System.Drawing.Size(41, 18);
             this.label1.TabIndex = 34;
             this.label1.Text = "Nom";
             // 
             // lastNameTxt
             // 
             this.lastNameTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lastNameTxt.Location = new System.Drawing.Point(175, 307);
-            this.lastNameTxt.Margin = new System.Windows.Forms.Padding(6);
+            this.lastNameTxt.Location = new System.Drawing.Point(88, 160);
             this.lastNameTxt.Name = "lastNameTxt";
-            this.lastNameTxt.Size = new System.Drawing.Size(404, 44);
+            this.lastNameTxt.Size = new System.Drawing.Size(204, 26);
             this.lastNameTxt.TabIndex = 32;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(163, 173);
-            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label3.Location = new System.Drawing.Point(82, 90);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(402, 63);
+            this.label3.Size = new System.Drawing.Size(202, 31);
             this.label3.TabIndex = 29;
             this.label3.Text = "Ajout de patient";
             // 
@@ -81,10 +78,9 @@
             this.addBtn.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.addBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.addBtn.Location = new System.Drawing.Point(174, 808);
-            this.addBtn.Margin = new System.Windows.Forms.Padding(6);
+            this.addBtn.Location = new System.Drawing.Point(87, 420);
             this.addBtn.Name = "addBtn";
-            this.addBtn.Size = new System.Drawing.Size(408, 83);
+            this.addBtn.Size = new System.Drawing.Size(204, 43);
             this.addBtn.TabIndex = 28;
             this.addBtn.Text = "Ajouter";
             this.addBtn.UseVisualStyleBackColor = false;
@@ -94,29 +90,26 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(169, 374);
-            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label2.Location = new System.Drawing.Point(84, 194);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(118, 36);
+            this.label2.Size = new System.Drawing.Size(61, 18);
             this.label2.TabIndex = 36;
             this.label2.Text = "Prénom";
             // 
             // firstNameTxt
             // 
             this.firstNameTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.firstNameTxt.Location = new System.Drawing.Point(175, 415);
-            this.firstNameTxt.Margin = new System.Windows.Forms.Padding(6);
+            this.firstNameTxt.Location = new System.Drawing.Point(88, 216);
             this.firstNameTxt.Name = "firstNameTxt";
-            this.firstNameTxt.Size = new System.Drawing.Size(404, 44);
+            this.firstNameTxt.Size = new System.Drawing.Size(204, 26);
             this.firstNameTxt.TabIndex = 35;
             // 
             // radioMale
             // 
             this.radioMale.AutoSize = true;
-            this.radioMale.Location = new System.Drawing.Point(12, 37);
-            this.radioMale.Margin = new System.Windows.Forms.Padding(6);
+            this.radioMale.Location = new System.Drawing.Point(6, 19);
             this.radioMale.Name = "radioMale";
-            this.radioMale.Size = new System.Drawing.Size(116, 29);
+            this.radioMale.Size = new System.Drawing.Size(61, 17);
             this.radioMale.TabIndex = 37;
             this.radioMale.TabStop = true;
             this.radioMale.Text = "Homme";
@@ -126,10 +119,9 @@
             // radioFemale
             // 
             this.radioFemale.AutoSize = true;
-            this.radioFemale.Location = new System.Drawing.Point(12, 81);
-            this.radioFemale.Margin = new System.Windows.Forms.Padding(6);
+            this.radioFemale.Location = new System.Drawing.Point(6, 42);
             this.radioFemale.Name = "radioFemale";
-            this.radioFemale.Size = new System.Drawing.Size(114, 29);
+            this.radioFemale.Size = new System.Drawing.Size(59, 17);
             this.radioFemale.TabIndex = 38;
             this.radioFemale.TabStop = true;
             this.radioFemale.Text = "Femme";
@@ -140,11 +132,9 @@
             // 
             this.groupBox1.Controls.Add(this.radioMale);
             this.groupBox1.Controls.Add(this.radioFemale);
-            this.groupBox1.Location = new System.Drawing.Point(174, 619);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(6);
+            this.groupBox1.Location = new System.Drawing.Point(87, 322);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(6);
-            this.groupBox1.Size = new System.Drawing.Size(400, 150);
+            this.groupBox1.Size = new System.Drawing.Size(200, 78);
             this.groupBox1.TabIndex = 39;
             this.groupBox1.TabStop = false;
             // 
@@ -152,30 +142,30 @@
             // 
             this.NumSecuLabel.AutoSize = true;
             this.NumSecuLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NumSecuLabel.Location = new System.Drawing.Point(169, 480);
-            this.NumSecuLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.NumSecuLabel.Location = new System.Drawing.Point(84, 250);
             this.NumSecuLabel.Name = "NumSecuLabel";
-            this.NumSecuLabel.Size = new System.Drawing.Size(384, 36);
+            this.NumSecuLabel.Size = new System.Drawing.Size(193, 18);
             this.NumSecuLabel.TabIndex = 41;
             this.NumSecuLabel.Text = "Numéro de Sécurité Sociale";
             // 
             // numSecuTxt
             // 
             this.numSecuTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numSecuTxt.Location = new System.Drawing.Point(175, 521);
-            this.numSecuTxt.Margin = new System.Windows.Forms.Padding(6);
+            this.numSecuTxt.Location = new System.Drawing.Point(88, 271);
             this.numSecuTxt.Name = "numSecuTxt";
-            this.numSecuTxt.Size = new System.Drawing.Size(404, 44);
+            this.numSecuTxt.Size = new System.Drawing.Size(204, 26);
             this.numSecuTxt.TabIndex = 40;
+            this.numSecuTxt.TextChanged += new System.EventHandler(this.numSecuTxt_TextChanged);
             // 
             // labelError
             // 
             this.labelError.AutoSize = true;
             this.labelError.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(47, 90);
+            this.labelError.Location = new System.Drawing.Point(24, 47);
+            this.labelError.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelError.Name = "labelError";
-            this.labelError.Size = new System.Drawing.Size(691, 37);
+            this.labelError.Size = new System.Drawing.Size(342, 20);
             this.labelError.TabIndex = 42;
             this.labelError.Text = "Attention ! Certains champs ont été mal remplis";
             this.labelError.Visible = false;
@@ -184,18 +174,19 @@
             // 
             this.labelErrorNumSecu.AutoSize = true;
             this.labelErrorNumSecu.ForeColor = System.Drawing.Color.Red;
-            this.labelErrorNumSecu.Location = new System.Drawing.Point(227, 571);
+            this.labelErrorNumSecu.Location = new System.Drawing.Point(114, 297);
+            this.labelErrorNumSecu.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelErrorNumSecu.Name = "labelErrorNumSecu";
-            this.labelErrorNumSecu.Size = new System.Drawing.Size(355, 25);
+            this.labelErrorNumSecu.Size = new System.Drawing.Size(176, 13);
             this.labelErrorNumSecu.TabIndex = 43;
             this.labelErrorNumSecu.Text = "Le champ doit comporter 15 chiffres";
             this.labelErrorNumSecu.Visible = false;
             // 
             // AddPatientStep1Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(779, 1188);
+            this.ClientSize = new System.Drawing.Size(390, 552);
             this.Controls.Add(this.labelErrorNumSecu);
             this.Controls.Add(this.labelError);
             this.Controls.Add(this.NumSecuLabel);
@@ -208,7 +199,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.addBtn);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "AddPatientStep1Form";
             this.Text = "Ajout du patient étape 1 - GSB";
             this.groupBox1.ResumeLayout(false);
