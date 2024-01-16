@@ -42,7 +42,9 @@ namespace AP3_eMEDS
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AddPatientStep1Form stepOne = new AddPatientStep1Form();
+            AddPatientStep2Form stepTwo = new AddPatientStep2Form(0);
+            stepTwo.FormClosing += new FormClosingEventHandler(this.DetailsClosing);
+            AddPatientStep1Form stepOne = new AddPatientStep1Form(stepTwo);
             stepOne.ShowDialog();
         }
 
@@ -72,6 +74,33 @@ namespace AP3_eMEDS
         }
 
         private void DetailsClosing(object sender, FormClosingEventArgs e)
+        {
+            GetPatients();
+        }
+
+        private void searchTxt_TextChanged(object sender, EventArgs e)
+        {
+            if (searchTxt.Text == "")
+            {
+                this.dataGridView1.DataSource = patients;
+                return;
+
+            }
+
+            List<Patient> filteredPatient = new List<Patient>();
+
+            foreach (var patient in patients)
+            {
+                if (patient.Nom.ToLower().Contains(searchTxt.Text.ToLower()) || patient.Prenom.ToLower().Contains(searchTxt.Text.ToLower()))
+                {
+                    filteredPatient.Add(patient);
+                }
+            }
+
+            this.dataGridView1.DataSource = filteredPatient;
+        }
+
+        private void reloadBtn_Click(object sender, EventArgs e)
         {
             GetPatients();
         }

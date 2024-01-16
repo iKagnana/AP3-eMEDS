@@ -26,7 +26,7 @@ namespace AP3_eMEDS
         private List<ObjetPatient> patientAl = new List<ObjetPatient>();
         private List<ObjetPatient> patientAn = new List<ObjetPatient>();
         //// passed values 
-        private int idPatient;
+        public int idPatient;
 
         public AddPatientStep2Form(int idPatient)
         {
@@ -45,6 +45,12 @@ namespace AP3_eMEDS
             this.comboAn.DataSource = anController.GetAntecedents();
             this.comboAn.ValueMember = "Id";
             this.comboAn.DisplayMember = "Libelle";
+
+            // warning 
+            if (idPatient == 0)
+            {
+                MessageBox.Show("Les modifications ne seront pas enregistrés pour le précédent patient.");
+            }
         }
 
         // update data in data grid -> allergies
@@ -118,6 +124,46 @@ namespace AP3_eMEDS
         private void addBtn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dataGridAl_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = dataGridAl.Rows[e.RowIndex];
+                if (selectedRow != null)
+                {
+                    ObjetPatient selected = selectedRow.DataBoundItem as ObjetPatient;
+                    DeleteItemPatient details = new DeleteItemPatient(selected, idPatient, typeItem.Antecedent);
+                    // add closing event to the form
+                    details.FormClosing += new FormClosingEventHandler(this.DetailsClosing);
+                    details.Show();
+                }
+
+            }
+        }
+
+        private void dataGridAn_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = dataGridAn.Rows[e.RowIndex];
+                if (selectedRow != null)
+                {
+                    ObjetPatient selected = selectedRow.DataBoundItem as ObjetPatient;
+                    DeleteItemPatient details = new DeleteItemPatient(selected, idPatient, typeItem.Antecedent);
+                    // add closing event to the form
+                    details.FormClosing += new FormClosingEventHandler(this.DetailsClosing);
+                    details.Show();
+                }
+
+            }
+        }
+
+        private void DetailsClosing(object sender, FormClosingEventArgs e)
+        {
+            UpdateGridAllergie();
+            UpdateGridAntecedent();
         }
     }
 }

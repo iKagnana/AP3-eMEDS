@@ -15,12 +15,13 @@ namespace AP3_eMEDS
     public partial class AddPatientStep1Form : Form
     {
         private PatientController controller = new PatientController();
-        private List<Patient> patients = new List<Patient>();
         private string sexe = "";
-        public AddPatientStep1Form()
+        private AddPatientStep2Form patientFormStepTwo;
+        // pass in order to reload data when this window is closed
+        public AddPatientStep1Form(AddPatientStep2Form patientFormStepTwo)
         {
             InitializeComponent();
-
+            this.patientFormStepTwo = patientFormStepTwo;
         }
 
         private void addBtn_Click(object sender, EventArgs e)
@@ -29,6 +30,12 @@ namespace AP3_eMEDS
                 !sexe.Equals("") && !numSecuTxt.Text.Equals(""))
             {
                 labelError.Visible = false;
+                // can't have invalid num secu 
+                if (numSecuTxt.Text.Length != 15)
+                {
+                    return;
+                }
+
                 if (controller.GetIdPatientFromNumSecu(numSecuTxt.Text) == 0)
                 {
                     labelErrorNumSecu.Visible = false;
@@ -42,9 +49,9 @@ namespace AP3_eMEDS
                     {
                         MessageBox.Show("Il y a eu une erreur.");
                     }
-
-                    AddPatientStep2Form step2 = new AddPatientStep2Form(controller.GetIdPatientFromNumSecu(numSecuTxt.Text));
-                    step2.ShowDialog();
+                    // set valid id 
+                    patientFormStepTwo.idPatient = controller.GetIdPatientFromNumSecu(numSecuTxt.Text);
+                    patientFormStepTwo.ShowDialog();
                     ResetForm();
                     this.Close();
                 } else
@@ -77,7 +84,7 @@ namespace AP3_eMEDS
 
         private void numSecuTxt_TextChanged(object sender, EventArgs e)
         {
-            this.labelErrorNumSecu.Visible = this.numSecuTxt.Text.Length == 15;
+            this.labelErrorNumSecu.Visible = this.numSecuTxt.Text.Length != 15;
         }
     }
 }

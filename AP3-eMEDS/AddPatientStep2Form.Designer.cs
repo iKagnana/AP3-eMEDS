@@ -45,27 +45,30 @@
             // 
             this.comboAl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.comboAl.FormattingEnabled = true;
-            this.comboAl.Location = new System.Drawing.Point(131, 220);
+            this.comboAl.Location = new System.Drawing.Point(66, 114);
+            this.comboAl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboAl.Name = "comboAl";
-            this.comboAl.Size = new System.Drawing.Size(473, 45);
+            this.comboAl.Size = new System.Drawing.Size(238, 28);
             this.comboAl.TabIndex = 0;
             this.comboAl.SelectedIndexChanged += new System.EventHandler(this.comboAl_SelectedIndexChanged);
             // 
             // labelAl
             // 
             this.labelAl.AutoSize = true;
-            this.labelAl.Location = new System.Drawing.Point(131, 189);
+            this.labelAl.Location = new System.Drawing.Point(66, 98);
+            this.labelAl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelAl.Name = "labelAl";
-            this.labelAl.Size = new System.Drawing.Size(109, 25);
+            this.labelAl.Size = new System.Drawing.Size(52, 13);
             this.labelAl.TabIndex = 1;
             this.labelAl.Text = "Allergie(s)";
             // 
             // labelAn
             // 
             this.labelAn.AutoSize = true;
-            this.labelAn.Location = new System.Drawing.Point(858, 189);
+            this.labelAn.Location = new System.Drawing.Point(429, 98);
+            this.labelAn.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelAn.Name = "labelAn";
-            this.labelAn.Size = new System.Drawing.Size(146, 25);
+            this.labelAn.Size = new System.Drawing.Size(73, 13);
             this.labelAn.TabIndex = 3;
             this.labelAn.Text = "Antécédent(s)";
             // 
@@ -73,39 +76,45 @@
             // 
             this.comboAn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.comboAn.FormattingEnabled = true;
-            this.comboAn.Location = new System.Drawing.Point(858, 220);
+            this.comboAn.Location = new System.Drawing.Point(429, 114);
+            this.comboAn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboAn.Name = "comboAn";
-            this.comboAn.Size = new System.Drawing.Size(473, 45);
+            this.comboAn.Size = new System.Drawing.Size(238, 28);
             this.comboAn.TabIndex = 2;
             this.comboAn.SelectedIndexChanged += new System.EventHandler(this.comboAn_SelectedIndexChanged);
             // 
             // dataGridAl
             // 
             this.dataGridAl.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridAl.Location = new System.Drawing.Point(131, 306);
+            this.dataGridAl.Location = new System.Drawing.Point(66, 159);
+            this.dataGridAl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridAl.Name = "dataGridAl";
             this.dataGridAl.RowHeadersWidth = 82;
             this.dataGridAl.RowTemplate.Height = 33;
-            this.dataGridAl.Size = new System.Drawing.Size(570, 398);
+            this.dataGridAl.Size = new System.Drawing.Size(285, 207);
             this.dataGridAl.TabIndex = 4;
+            this.dataGridAl.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridAl_CellContentClick);
             // 
             // dataGridAn
             // 
             this.dataGridAn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridAn.Location = new System.Drawing.Point(858, 306);
+            this.dataGridAn.Location = new System.Drawing.Point(429, 159);
+            this.dataGridAn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridAn.Name = "dataGridAn";
             this.dataGridAn.RowHeadersWidth = 82;
             this.dataGridAn.RowTemplate.Height = 33;
-            this.dataGridAn.Size = new System.Drawing.Size(570, 398);
+            this.dataGridAn.Size = new System.Drawing.Size(285, 207);
             this.dataGridAn.TabIndex = 5;
+            this.dataGridAn.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridAn_CellContentClick);
             // 
             // addAlBtn
             // 
             this.addAlBtn.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.addAlBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addAlBtn.Location = new System.Drawing.Point(635, 222);
+            this.addAlBtn.Location = new System.Drawing.Point(318, 115);
+            this.addAlBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addAlBtn.Name = "addAlBtn";
-            this.addAlBtn.Size = new System.Drawing.Size(66, 45);
+            this.addAlBtn.Size = new System.Drawing.Size(33, 23);
             this.addAlBtn.TabIndex = 6;
             this.addAlBtn.Text = "+";
             this.addAlBtn.UseVisualStyleBackColor = false;
@@ -115,9 +124,10 @@
             // 
             this.addAnBtn.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.addAnBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addAnBtn.Location = new System.Drawing.Point(1362, 222);
+            this.addAnBtn.Location = new System.Drawing.Point(681, 115);
+            this.addAnBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addAnBtn.Name = "addAnBtn";
-            this.addAnBtn.Size = new System.Drawing.Size(66, 45);
+            this.addAnBtn.Size = new System.Drawing.Size(33, 23);
             this.addAnBtn.TabIndex = 9;
             this.addAnBtn.Text = "+";
             this.addAnBtn.UseVisualStyleBackColor = false;
@@ -128,10 +138,9 @@
             this.addBtn.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.addBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.addBtn.Location = new System.Drawing.Point(1044, 818);
-            this.addBtn.Margin = new System.Windows.Forms.Padding(6);
+            this.addBtn.Location = new System.Drawing.Point(522, 425);
             this.addBtn.Name = "addBtn";
-            this.addBtn.Size = new System.Drawing.Size(408, 83);
+            this.addBtn.Size = new System.Drawing.Size(204, 43);
             this.addBtn.TabIndex = 29;
             this.addBtn.Text = "Passer";
             this.addBtn.UseVisualStyleBackColor = false;
@@ -139,9 +148,9 @@
             // 
             // AddPatientStep2Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1516, 958);
+            this.ClientSize = new System.Drawing.Size(737, 469);
             this.Controls.Add(this.addBtn);
             this.Controls.Add(this.addAnBtn);
             this.Controls.Add(this.addAlBtn);
@@ -151,6 +160,7 @@
             this.Controls.Add(this.comboAn);
             this.Controls.Add(this.labelAl);
             this.Controls.Add(this.comboAl);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "AddPatientStep2Form";
             this.Text = "Ajout d\'un patient étape 2 - GSB";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAl)).EndInit();
