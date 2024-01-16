@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,25 +10,19 @@ using System.Windows.Forms;
 
 namespace AP3_eMEDS
 {
-    public enum typeItem
+    public partial class DeleteMedIncompatibility : Form
     {
-        Medicament, 
-        Allergy, 
-        Antecedent
-    }
-    public partial class DeleteItemPatient : Form
-    {
-        private readonly PatientController controller = new PatientController();
-        private ObjetPatient selected;
-        private int idP;
-        private typeItem typeItem;
-        public DeleteItemPatient(ObjetPatient obj, int idP, typeItem type)
+        private readonly MedicamentController controller = new MedicamentController();
+        private typeItem type;
+        private int idMed;
+        private ObjetPatient selectedObj;
+        public DeleteMedIncompatibility(ObjetPatient obj, int idMed, typeItem type)
         {
             InitializeComponent();
 
-            this.selected = obj;
-            this.idP = idP;
-            this.typeItem = type;
+            this.selectedObj = obj;
+            this.idMed = idMed;
+            this.type = type;
 
             // init label
             switch (type)
@@ -43,18 +36,20 @@ namespace AP3_eMEDS
 
 
             }
-            
         }
 
         private void supprBtn_Click(object sender, EventArgs e)
         {
-            switch (this.typeItem)
+            switch (this.type)
             {
                 case typeItem.Allergy:
-                    controller.DeletePatientAllergy(idP, selected.Id);
+                    controller.DeleteAllergyIncompatibility(selectedObj.Id, idMed);
                     break;
                 case typeItem.Antecedent:
-                   controller.DeletePatientAntecedent(idP, selected.Id);
+                    controller.deleteAntecedentIncompatibility(selectedObj.Id, idMed);
+                    break;
+                case typeItem.Medicament:
+                    controller.deleteMedicamentIncompatibility(selectedObj.Id, idMed);
                     break;
 
 

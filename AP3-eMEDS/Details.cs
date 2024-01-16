@@ -205,5 +205,63 @@ namespace AP3_eMEDS
                 }
             }
         }
+
+        private void dataGridAl_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = dataGridAl.Rows[e.RowIndex];
+                if (selectedRow != null)
+                {
+                    ObjetPatient selected = selectedRow.DataBoundItem as ObjetPatient;
+                    DeleteMedIncompatibility details = new DeleteMedIncompatibility(selected, detailledMed.Id, typeItem.Allergy);
+                    // add closing event to the form
+                    details.FormClosing += new FormClosingEventHandler(this.DetailsClosing);
+                    details.Show();
+                }
+
+            }
+        }
+
+        private void dataGridAn_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = dataGridAl.Rows[e.RowIndex];
+                if (selectedRow != null)
+                {
+                    ObjetPatient selected = selectedRow.DataBoundItem as ObjetPatient;
+                    DeleteMedIncompatibility details = new DeleteMedIncompatibility(selected, detailledMed.Id, typeItem.Antecedent);
+                    // add closing event to the form
+                    details.FormClosing += new FormClosingEventHandler(this.DetailsClosing);
+                    details.Show();
+                }
+
+            }
+        }
+
+        private void dataGridMed_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = dataGridAl.Rows[e.RowIndex];
+                if (selectedRow != null)
+                {
+                    ObjetPatient selected = selectedRow.DataBoundItem as ObjetPatient;
+                    DeleteMedIncompatibility details = new DeleteMedIncompatibility(selected, detailledMed.Id, typeItem.Medicament);
+                    // add closing event to the form
+                    details.FormClosing += new FormClosingEventHandler(this.DetailsClosing);
+                    details.Show();
+                }
+
+            }
+        }
+
+        private void DetailsClosing(object sender, FormClosingEventArgs e)
+        {
+            UpdateAllergyDataGrid();
+            UpdateAntecedentDataGrid();
+            UpdateMedicamentDataGrid();
+        }
     }
 }

@@ -324,6 +324,71 @@ namespace AP3_eMEDS
             }
         }
 
+        // delete allergy for incompatibility
+        public int DeleteAllergyIncompatibility(int idAl, int idMed)
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "DELETE FROM incompatible WHERE id_al = @id_al and id_med = @id_med";
+
+                using (MySqlCommand command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@id_al", idAl);
+                    command.Parameters.AddWithValue("@id_med", idMed);
+
+                    int result = command.ExecuteNonQuery();
+                    conn.Close();
+                    return result;
+                }
+            }
+        }
+
+        // delete antecedent for incompatibility
+        public int deleteAntecedentIncompatibility(int idA, int idMed)
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "DELETE FROM incompatible WHERE id_a = @id_a and id_med = @id_med";
+
+                using (MySqlCommand command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@id_a", idA);
+                    command.Parameters.AddWithValue("@id_med", idMed);
+
+                    int result = command.ExecuteNonQuery();
+                    conn.Close();
+                    return result;
+
+                    
+                }
+
+            }
+        }
+
+        // delete medicament for incompatibility
+        public int deleteMedicamentIncompatibility(int idMedTwo, int idMed)
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "DELETE FROM incompatible WHERE id_med_Medicament = @id_medTwo and id_med = @id_med";
+
+                using (MySqlCommand command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@id_medTwo", idMedTwo);
+                    command.Parameters.AddWithValue("@id_med", idMed);
+
+                    int result = command.ExecuteNonQuery();
+                    conn.Close();
+                    return result;
+
+
+                }
+
+            }
+        }
 
     }
 }
