@@ -54,6 +54,13 @@ namespace AP3_eMEDS
 
 
             }
+
+            this.Close();
+        }
+
+        private void confirmBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -66,8 +66,9 @@
             this.confirmBtn.TabIndex = 7;
             this.confirmBtn.Text = "Annuler";
             this.confirmBtn.UseVisualStyleBackColor = false;
+            this.confirmBtn.Click += new System.EventHandler(this.confirmBtn_Click);
             // 
-            // DeleteItem
+            // DeleteItemPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -75,7 +76,7 @@
             this.Controls.Add(this.supprBtn);
             this.Controls.Add(this.confirmBtn);
             this.Controls.Add(this.titleLabel);
-            this.Name = "DeleteItem";
+            this.Name = "DeleteItemPatient";
             this.Text = "Confirmation de suppression - GSB";
             this.ResumeLayout(false);
             this.PerformLayout();

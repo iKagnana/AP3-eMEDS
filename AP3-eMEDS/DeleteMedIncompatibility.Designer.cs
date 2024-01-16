@@ -56,6 +56,7 @@
             this.confirmBtn.TabIndex = 10;
             this.confirmBtn.Text = "Annuler";
             this.confirmBtn.UseVisualStyleBackColor = false;
+            this.confirmBtn.Click += new System.EventHandler(this.confirmBtn_Click);
             // 
             // titleLabel
             // 
