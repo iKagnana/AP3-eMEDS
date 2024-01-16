@@ -18,15 +18,6 @@ namespace AP3_eMEDS
         {
             InitializeComponent();
             GetPatients();
-
-            DataGridViewButtonColumn modifyButton = new DataGridViewButtonColumn();
-            modifyButton.Name = "Modifier";
-            modifyButton.Text = "Modifier";
-            int columnIndex = 1;
-            if (dataGridView1.Columns["modify"] == null)
-            {
-                dataGridView1.Columns.Insert(columnIndex, modifyButton);
-            }
         }
 
         private void GetPatients()
@@ -36,8 +27,16 @@ namespace AP3_eMEDS
 
             // reset research to avoid conflict
             this.patients = patients;
+
             this.dataGridView1.DataSource = null;
             this.dataGridView1.DataSource = patients;
+            DataGridViewButtonColumn ordonnanceButton = new DataGridViewButtonColumn();
+            ordonnanceButton.Name = "Accès ordonnance";
+            ordonnanceButton.Text = "Accès ordonnance";
+            if (dataGridView1.Columns["Accès ordonnance"] == null)
+            {
+                dataGridView1.Columns.Insert(0, ordonnanceButton);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -56,17 +55,19 @@ namespace AP3_eMEDS
                 if (selectedRow != null)
                 {
                     Patient selected = selectedRow.DataBoundItem as Patient;
-                    if (e.ColumnIndex == dataGridView1.Columns["Modifier"].Index)
+                    if (e.ColumnIndex == dataGridView1.Columns["Accès ordonnance"].Index)
+                    {
+                        AddOrdonnanceForm ordonnanceForm = new AddOrdonnanceForm(selected);
+                        ordonnanceForm.ShowDialog();
+
+                        
+                    }
+                    else
                     {
                         DetailsPatient details = new DetailsPatient(selected);
                         // add closing event to the form
                         details.FormClosing += new FormClosingEventHandler(this.DetailsClosing);
                         details.ShowDialog();
-                    }
-                    else
-                    {
-                        AddOrdonnanceForm ordonnanceForm = new AddOrdonnanceForm(selected);
-                        ordonnanceForm.ShowDialog();
                     }
                 }
                 

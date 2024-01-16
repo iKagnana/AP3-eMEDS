@@ -60,8 +60,17 @@ namespace AP3_eMEDS
             this.ordonnances = controller.GetOrdonnances(patient.Id);
 
             // data grid 
+            DataGridViewButtonColumn modifyButton = new DataGridViewButtonColumn();
+            modifyButton.Name = "Générer le pdf";
+            modifyButton.Text = "Générer le pdf";
+            int columnIndex = 0;
+            if (dataGridListO.Columns["modify"] == null)
+            {
+                dataGridListO.Columns.Insert(columnIndex, modifyButton);
+            }
             this.dataGridListO.DataSource = null;
             this.dataGridListO.DataSource = ordonnances;
+
         }
 
         // update data grid with ordonnance's medicament
@@ -259,6 +268,24 @@ namespace AP3_eMEDS
                 incompatibilities.RemoveAt(incompatibilityIndex);
                 this.warningMedsTxt.Visible = incompatibilities.Exists(inco => inco.type == typeItem.Medicament);
                 this.warningText.Visible = incompatibilities.Exists(inco => inco.type == typeItem.Allergy) || incompatibilities.Exists(inco => inco.type == typeItem.Antecedent);
+
+            }
+        }
+
+        private void dataGridListO_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = dataGridListO.Rows[e.RowIndex];
+                if (selectedRow != null)
+                {
+                    Ordonnance selected = selectedRow.DataBoundItem as Ordonnance;
+                    if (e.ColumnIndex == dataGridListO.Columns["Générer le pdf"].Index)
+                    {
+                        // generate pdf 
+                        selected.GeneratePDF(controller.GetAllMeds(selected.Id));
+                    }
+                }
 
             }
         }

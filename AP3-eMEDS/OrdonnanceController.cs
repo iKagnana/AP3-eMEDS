@@ -109,5 +109,33 @@ namespace AP3_eMEDS
                 }
             }
         }
+
+        // get all meds in ordonnance 
+        public List<Medicament> GetAllMeds(int idO)
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT medicament.libelle_med, medicament.contre_indication FROM ordonnance " +
+                    "INNER JOIN ligne_ordonnance ON ligne_ordonnance.id_o = ordonnance.id_o " +
+                    "INNER JOIN medicament ON ligne_ordonnance.id_med = medicament.id_med " +
+                    "WHERE ordonnance.id_o = @id_o";
+
+                List<Medicament> meds = new List<Medicament>();
+
+                using (MySqlCommand command = new MySqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@id_o", idO);
+
+                    MySqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        meds.Add(new Medicament(reader.GetString(0), reader.GetString(1)));
+                    }
+                    conn.Close();
+                    return meds;
+                }
+            }
+        }
     }
 }

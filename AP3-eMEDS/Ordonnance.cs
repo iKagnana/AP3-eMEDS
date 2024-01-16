@@ -1,5 +1,8 @@
-﻿using System;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
@@ -32,5 +35,64 @@ namespace AP3_eMEDS
             this.InstructionsSpe = instructionSpe;
             this.Code = code;
         }
+
+        // method to generate the entire pdf
+        public void GeneratePDF(List<Medicament> meds)
+        {
+            // create document and add table
+            Document doc = new Document();
+            PdfPTable tableLayout = new PdfPTable(2);
+
+            PdfWriter.GetInstance(doc, new FileStream("Sample.pdf", FileMode.Create));
+            doc.Open();
+
+            doc.Add(GeneratePdfTable(tableLayout, meds));
+            doc.Close();
+        }
+
+        // method to generate pdf table medicament
+        private PdfPTable GeneratePdfTable(PdfPTable tableLayout, List<Medicament> medicament)
+        {
+            tableLayout.AddCell(new PdfPCell(new Phrase("Creating PDF file using iTextsharp", new Font(Font.NORMAL, 13, 1, new iTextSharp.text.BaseColor(153, 51, 0))))
+            {
+                Colspan = 4,
+                Border = 0,
+                PaddingBottom = 20,
+                HorizontalAlignment = Element.ALIGN_CENTER
+            });
+            //Add header  
+            AddCellToHeader(tableLayout, "Libellé du médicament");
+            AddCellToHeader(tableLayout, "Contre-indications");
+            //Add body
+            foreach (Medicament med in medicament)
+            {
+                AddCellToBody(tableLayout, med.Libelle);
+                AddCellToBody(tableLayout, med.ContreIndication);
+            }
+            return tableLayout;
+        }
+
+        // Method to add single cell to the header  
+        private static void AddCellToHeader(PdfPTable tableLayout, string cellText)
+        {
+            tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.NORMAL, 8, 1, iTextSharp.text.BaseColor.WHITE)))
+            {
+                HorizontalAlignment = Element.ALIGN_CENTER,
+                Padding = 5,
+                BackgroundColor = new iTextSharp.text.BaseColor(0, 51, 102)
+            });
+        }
+        // Method to add single cell to the body  
+        private static void AddCellToBody(PdfPTable tableLayout, string cellText)
+        {
+            tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.NORMAL, 8, 1, iTextSharp.text.BaseColor.BLACK)))
+            {
+                HorizontalAlignment = Element.ALIGN_CENTER,
+                Padding = 5,
+                BackgroundColor = iTextSharp.text.BaseColor.WHITE
+            });
+        }
     }
+
+
 }

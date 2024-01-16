@@ -94,6 +94,7 @@
             this.dataGridListO.RowTemplate.Height = 33;
             this.dataGridListO.Size = new System.Drawing.Size(535, 493);
             this.dataGridListO.TabIndex = 3;
+            this.dataGridListO.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridListO_CellClick);
             // 
             // ordonnanceListLabel
             // 
@@ -280,7 +281,7 @@
             this.Controls.Add(this.patientInfos);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AddOrdonnanceForm";
-            this.Text = "AddOrdonnanceForm";
+            this.Text = "Ajout d\'ordonnance - GSB";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridListO)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridMeds)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nbDate)).EndInit();
