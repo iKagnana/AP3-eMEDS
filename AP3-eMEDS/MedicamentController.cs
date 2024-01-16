@@ -243,6 +243,44 @@ namespace AP3_eMEDS
             }
         }
 
+        // get all incompaible meds
+        public List<ObjetPatient> GetIncompatibleMedicament(int id)
+        {
+            List<ObjetPatient> antecedent = new List<ObjetPatient>();
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "SELECT incompatible.id_med_Medicament, libelle_med FROM incompatible " +
+                     "INNER JOIN medicament ON medicament.id_med = incompatible.id_med " +
+                     "WHERE incompatible.id_med_Medicament IS NOT NULL and incompatible.id_med = @id_med";
+
+                    using (MySqlCommand command = new MySqlCommand(query, conn))
+                    {
+                        command.Parameters.AddWithValue("@id_med", id);
+                        MySqlDataReader reader = command.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            antecedent.Add(new ObjetPatient(reader.GetInt32(0), reader.GetString(1)));
+                        }
+
+                        conn.Close();
+                        return antecedent;
+                    }
+                }
+            }
+            catch (MySqlException e)
+            {
+                ErrorHandler handler = new ErrorHandler(e);
+                Console.WriteLine(handler.GetMessageError());
+                MessageBox.Show("Impossible de récupérer les médicaments incompatibles avec ce médicament pour le moment.");
+                return antecedent;
+            }
+        }
+
         // return true if incompatibily 
         public RequestStatus GetIncompatibilityAllergy(int id_al, int id_med)
         {

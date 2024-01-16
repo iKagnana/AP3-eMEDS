@@ -78,30 +78,29 @@ namespace AP3_eMEDS
 
         private void confirmBtn_Click(object sender, EventArgs e)
         {
-            Medicament updatedDrug = new Medicament(detailledMed.Id, 
+            Medicament updatedMed = new Medicament(detailledMed.Id, 
                                         nameTxt.Text, 
                                         contreIndcTxt.Text);
-            int result =  controller.UpdateMedicamentFromId(updatedDrug);
-            Console.WriteLine(result);
-            if (result == 0)
-            {
-                MessageBox.Show("Il y a eu une erreur");
-            }
-            else if (result == 1)
+            RequestStatus status =  controller.UpdateMedicamentFromId(updatedMed);
+            if (status.success)
             {
                 MessageBox.Show("Médicament modifié");
                 this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Une erreur s'est produite.");
             }
         }
 
         private void supprBtn_Click(object sender, EventArgs e)
         {
-            int result = controller.DeleteMedicamentFromId(detailledMed.Id);
-            if (result == 0)
+            RequestStatus status = controller.DeleteMedicamentFromId(detailledMed.Id);
+            if (!status.success)
             {
                 MessageBox.Show("Il y a eu une erreur");
             }
-            else if (result == 1)
+            else
             {
                 MessageBox.Show("Médicament supprimé");
                 this.Close();
@@ -163,8 +162,8 @@ namespace AP3_eMEDS
         {
             if (allergies.FindIndex(al => al.Id == selectedAl) == -1 && selectedAl != 0)
             {
-                int result = controller.AddIncompatibilityAllergy(detailledMed.Id, selectedAl);
-                if (result == 1)
+                RequestStatus status = controller.AddIncompatibilityAllergy(detailledMed.Id, selectedAl);
+                if (status.success)
                 {
                     UpdateAllergyDataGrid();
                 } else
@@ -178,8 +177,8 @@ namespace AP3_eMEDS
         {
             if (antecedent.FindIndex(an => an.Id == selectedAn) == -1 && selectedAn != 0)
             {
-                int result = controller.AddIncompatibilityAntecedent(detailledMed.Id, selectedAn);
-                if (result == 1)
+                RequestStatus status = controller.AddIncompatibilityAntecedent(detailledMed.Id, selectedAn);
+                if (status.success)
                 {
                     UpdateAntecedentDataGrid();
                 }
@@ -194,8 +193,8 @@ namespace AP3_eMEDS
         {
             if (medicaments.FindIndex(med => med.Id == selectedMed) == -1 && selectedMed != 0)
             {
-                int result = controller.AddIncompatibilityMedicament(detailledMed.Id, selectedMed);
-                if (result == 1)
+                RequestStatus status = controller.AddIncompatibilityMedicament(detailledMed.Id, selectedMed);
+                if (status.success)
                 {
                     UpdateMedicamentDataGrid();
                 }

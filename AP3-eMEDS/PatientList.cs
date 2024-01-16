@@ -37,6 +37,11 @@ namespace AP3_eMEDS
             {
                 dataGridView1.Columns.Insert(0, ordonnanceButton);
             }
+
+            this.dataGridView1.Columns[3].HeaderText = "Prénom";
+            this.dataGridView1.Columns[5].HeaderText = "Numéro de Sécu";
+            this.dataGridView1.Columns[6].HeaderText = "Allergies";
+            this.dataGridView1.Columns[7].HeaderText = "Antécédents";
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -44,17 +44,17 @@ namespace AP3_eMEDS
         private void addBtn_Click(object sender, EventArgs e)
         {
             // create a new object drug
-            Medicament drug = new Medicament(
+            Medicament medicament = new Medicament(
                 this.nameTxt.Text,
                 this.contreIndcTxt.Text
                 );
             // get the saved row in db
-            int result = dataAccess.AddMedicament(drug);
-            if (result == 0)
+            RequestStatus status = dataAccess.AddMedicament(medicament);
+            if (!status.success)
             {
                 MessageBox.Show("Il y a eu une erreur");
             }
-            else if (result == 1)
+            else
             {
                 MessageBox.Show("Médicament ajouté");
             }

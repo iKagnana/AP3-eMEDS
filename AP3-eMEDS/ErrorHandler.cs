@@ -21,7 +21,6 @@ namespace AP3_eMEDS
     public class ErrorHandler
     {
         public typeError type { get; set; }
-        public string message { get; set; }
 
         public ErrorHandler(MySqlException e) {
             GetErrorType(e);

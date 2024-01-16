@@ -71,6 +71,10 @@ namespace AP3_eMEDS
             this.dataGridListO.DataSource = null;
             this.dataGridListO.DataSource = ordonnances;
 
+            // init header names
+            this.dataGridListO.Columns[4].HeaderText = "Durée";
+            this.dataGridListO.Columns[5].HeaderText = "Instructions spécifiques";
+
         }
 
         // update data grid with ordonnance's medicament
