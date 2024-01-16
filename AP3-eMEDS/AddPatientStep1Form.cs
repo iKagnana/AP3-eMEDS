@@ -41,11 +41,11 @@ namespace AP3_eMEDS
                     labelErrorNumSecu.Visible = false;
 
                     Patient newPatient = new Patient(lastNameTxt.Text, firstNameTxt.Text, sexe, numSecuTxt.Text);
-                    int result = controller.AddPatient(newPatient);
-                    if (result == 1)
+                    RequestStatus status = controller.AddPatient(newPatient);
+                    if (status.success)
                     {
                         MessageBox.Show("Patient ajouté");
-                    } else if (result == 0)
+                    } else
                     {
                         MessageBox.Show("Il y a eu une erreur.");
                     }

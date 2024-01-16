@@ -278,7 +278,7 @@
             this.supprBtn.TabIndex = 64;
             this.supprBtn.Text = "Supprimer le patient";
             this.supprBtn.UseVisualStyleBackColor = true;
-            this.supprBtn.Click += new System.EventHandler(this.supprBtn_Click_1);
+            this.supprBtn.Click += new System.EventHandler(this.supprBtn_Click);
             // 
             // confirmBtn
             // 

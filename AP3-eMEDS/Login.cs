@@ -29,18 +29,20 @@ namespace AP3_eMEDS
 
             Medecin medecin = new Medecin(this.emailTxt.Text, this.passwordTxt.Text);
 
-            bool result = medecinController.Login(medecin);
-            if (result)
+            RequestStatus status = medecinController.Login(medecin);
+            if (status.success)
             {
                 MessageBox.Show("Connexion réussie.");
                 Menu menu = new Menu();
                 menu.ShowDialog();
                 this.Close();
+            } else if (!status.success && status.typeError == typeError.NoConnection)
+            {
+                MessageBox.Show("Problèmes liés au serveur ");
             } else
             {
                 MessageBox.Show("Identifiants invalides");
             }
-            Console.WriteLine(result);
         }
     }
 }

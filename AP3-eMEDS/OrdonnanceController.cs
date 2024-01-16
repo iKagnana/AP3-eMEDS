@@ -17,124 +17,165 @@ namespace AP3_eMEDS
         // add ordonnance
         public List<Ordonnance> GetOrdonnances(int id)
         {
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            List<Ordonnance> ordonnances = new List<Ordonnance>();
+            try
             {
-                conn.Open();
-                string query = "SELECT * FROM ordonnance WHERE id_p = @id_p";
-
-                List<Ordonnance> ordonnances = new List<Ordonnance>();
-
-                using (MySqlCommand command = new MySqlCommand(query, conn))
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
-                    command.Parameters.AddWithValue("@id_p", id);
+                    conn.Open();
+                    string query = "SELECT * FROM ordonnance WHERE id_p = @id_p";
 
-                    MySqlDataReader reader = command.ExecuteReader();
-                    while(reader.Read())
+                    using (MySqlCommand command = new MySqlCommand(query, conn))
                     {
-                        ordonnances.Add(new Ordonnance(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4)));
-                    }
+                        command.Parameters.AddWithValue("@id_p", id);
 
-                    conn.Close();
-                    return ordonnances;
+                        MySqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            ordonnances.Add(new Ordonnance(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4)));
+                        }
+
+                        conn.Close();
+                        return ordonnances;
+                    }
                 }
+            } catch (MySqlException e)
+            {
+                ErrorHandler handler = new ErrorHandler(e);
+                Console.WriteLine(handler.GetMessageError());
+                return ordonnances;
             }
         }
 
         // add ordonnance
-        public int AddOrdonnance(Ordonnance ordonnance, int idM, int idP)
+        public RequestStatus AddOrdonnance(Ordonnance ordonnance, int idM, int idP)
         {
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            RequestStatus status = new RequestStatus();
+            try
             {
-                conn.Open();
-                string query = "INSERT INTO ordonnance (posologie, duree_traitement, instructions_specifique, code, id_m, id_p) VALUES (@posologie, @duree, @instruSpe, @code, @id_m, @id_p)";
-
-                using (MySqlCommand command = new MySqlCommand(query, conn))
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
-                    command.Parameters.AddWithValue("@posologie", ordonnance.Posologie);
-                    command.Parameters.AddWithValue("@duree", ordonnance.Duree);
-                    command.Parameters.AddWithValue("@instruSpe", ordonnance.InstructionsSpe);
-                    command.Parameters.AddWithValue("@code", ordonnance.Code);
-                    command.Parameters.AddWithValue("@id_m", idM);
-                    command.Parameters.AddWithValue("@id_p", idP);
+                    conn.Open();
+                    string query = "INSERT INTO ordonnance (posologie, duree_traitement, instructions_specifique, code, id_m, id_p) VALUES (@posologie, @duree, @instruSpe, @code, @id_m, @id_p)";
 
-                    int result = command.ExecuteNonQuery();
-                    conn.Close();
-                    return result;
+                    using (MySqlCommand command = new MySqlCommand(query, conn))
+                    {
+                        command.Parameters.AddWithValue("@posologie", ordonnance.Posologie);
+                        command.Parameters.AddWithValue("@duree", ordonnance.Duree);
+                        command.Parameters.AddWithValue("@instruSpe", ordonnance.InstructionsSpe);
+                        command.Parameters.AddWithValue("@code", ordonnance.Code);
+                        command.Parameters.AddWithValue("@id_m", idM);
+                        command.Parameters.AddWithValue("@id_p", idP);
+
+                        int result = command.ExecuteNonQuery();
+                        conn.Close();
+                        return status.GetRequestStatusNoError(result);
+                    }
                 }
+            } catch (MySqlException e)
+            {
+                ErrorHandler handler = new ErrorHandler(e);
+                Console.WriteLine(handler.GetMessageError());
+                return status.GetRequestStatusError(handler.type);
             }
         }
 
         // add medicament in ordonnance
-        public int AddMedsInOrdonnance(int idO, int idMed)
+        public RequestStatus AddMedsInOrdonnance(int idO, int idMed)
         {
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            RequestStatus status = new RequestStatus();
+            try
             {
-                conn.Open();
-                string query = "INSERT INTO ligne_ordonnance (id_o, id_med) VALUES (@id_o, @id_med)";
-
-                using (MySqlCommand command = new MySqlCommand(query, conn))
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
-                    command.Parameters.AddWithValue("@id_o", idO);
-                    command.Parameters.AddWithValue("@id_med", idMed);
+                    conn.Open();
+                    string query = "INSERT INTO ligne_ordonnance (id_o, id_med) VALUES (@id_o, @id_med)";
 
-                    int result = command.ExecuteNonQuery();
-                    conn.Close();
-                    return result;
+                    using (MySqlCommand command = new MySqlCommand(query, conn))
+                    {
+                        command.Parameters.AddWithValue("@id_o", idO);
+                        command.Parameters.AddWithValue("@id_med", idMed);
+
+                        int result = command.ExecuteNonQuery();
+                        conn.Close();
+                        return status.GetRequestStatusNoError(result);
+                    }
                 }
+            } catch (MySqlException e)
+            {
+                ErrorHandler handler = new ErrorHandler(e);
+                Console.WriteLine(handler.GetMessageError());
+                return status.GetRequestStatusError(handler.type);
             }
         }
 
         // get ordonnance id with code
         public int GetIdWithCode(string code)
         {
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            try
             {
-                conn.Open();
-                string query = "SELECT id_o FROM ordonnance WHERE code = @code";
-
-                int id = 0;
-
-                using (MySqlCommand command = new MySqlCommand(query, conn))
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
-                    command.Parameters.AddWithValue("@code", code);
+                    conn.Open();
+                    string query = "SELECT id_o FROM ordonnance WHERE code = @code";
 
-                    MySqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
+                    int id = 0;
+
+                    using (MySqlCommand command = new MySqlCommand(query, conn))
                     {
-                        Console.WriteLine("id récupéré : " + id);
-                        id = reader.GetInt32(0);
+                        command.Parameters.AddWithValue("@code", code);
+
+                        MySqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            Console.WriteLine("id récupéré : " + id);
+                            id = reader.GetInt32(0);
+                        }
+                        conn.Close();
+                        return id;
                     }
-                    conn.Close();
-                    return id;
                 }
+            } catch (MySqlException e)
+            {
+                ErrorHandler handler = new ErrorHandler(e);
+                Console.WriteLine(handler.GetMessageError());
+                return 0;
             }
         }
 
         // get all meds in ordonnance 
         public List<Medicament> GetAllMeds(int idO)
         {
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            List<Medicament> meds = new List<Medicament>();
+
+            try
             {
-                conn.Open();
-                string query = "SELECT medicament.libelle_med, medicament.contre_indication FROM ordonnance " +
-                    "INNER JOIN ligne_ordonnance ON ligne_ordonnance.id_o = ordonnance.id_o " +
-                    "INNER JOIN medicament ON ligne_ordonnance.id_med = medicament.id_med " +
-                    "WHERE ordonnance.id_o = @id_o";
-
-                List<Medicament> meds = new List<Medicament>();
-
-                using (MySqlCommand command = new MySqlCommand(query, conn))
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
-                    command.Parameters.AddWithValue("@id_o", idO);
+                    conn.Open();
+                    string query = "SELECT medicament.libelle_med, medicament.contre_indication FROM ordonnance " +
+                        "INNER JOIN ligne_ordonnance ON ligne_ordonnance.id_o = ordonnance.id_o " +
+                        "INNER JOIN medicament ON ligne_ordonnance.id_med = medicament.id_med " +
+                        "WHERE ordonnance.id_o = @id_o";
 
-                    MySqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
+                    using (MySqlCommand command = new MySqlCommand(query, conn))
                     {
-                        meds.Add(new Medicament(reader.GetString(0), reader.GetString(1)));
+                        command.Parameters.AddWithValue("@id_o", idO);
+
+                        MySqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            meds.Add(new Medicament(reader.GetString(0), reader.GetString(1)));
+                        }
+                        conn.Close();
+                        return meds;
                     }
-                    conn.Close();
-                    return meds;
                 }
+            } catch (MySqlException e)
+            {
+                ErrorHandler handler = new ErrorHandler(e);
+                Console.WriteLine(handler.GetMessageError());
+                return meds;
             }
         }
     }

@@ -13,6 +13,7 @@ namespace AP3_eMEDS
     public partial class DetailsMedecin : Form
     {
         private Medecin selectedMedecin;
+        private readonly MedecinController controller = new MedecinController();
         public DetailsMedecin(Medecin medecin)
         {
             InitializeComponent();
@@ -40,6 +41,25 @@ namespace AP3_eMEDS
         {
             ChangePwForm changePwForm = new ChangePwForm(selectedMedecin.Id);
             changePwForm.ShowDialog();
+        }
+
+        private void supprBtn_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Supress Médecin ", selectedMedecin.Id);
+            RequestStatus status = controller.DeleteMedecin(selectedMedecin.Id);
+
+            if (status.success)
+            {
+                MessageBox.Show("Suppression du médecin réussi");
+            } else if (!status.success && status.typeError == typeError.CannotDelete)
+            {
+                MessageBox.Show("Vous ne pouvez pas supprimer ce médecin");
+            } else
+            {
+                MessageBox.Show("Erreur lors de la suppression");
+            }
+
+            this.Close();
         }
     }
 }

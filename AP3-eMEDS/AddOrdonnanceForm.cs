@@ -113,10 +113,15 @@ namespace AP3_eMEDS
             // test if incompatibility with patient's antecedent
             foreach (ObjetPatient antecedent in patientAntecedents)
             {
-                if (medController.GetIncompatibilityAntecedent(antecedent.Id, med.Id))
+                RequestStatus status = medController.GetIncompatibilityAntecedent(antecedent.Id, med.Id);
+                if (status.success)
                 {
                     incompatibilities.Add(new Incompatibility(typeItem.Antecedent, med, antecedent));
                     this.warningText.Visible = true;
+                    break;
+                } else if (!status.success && (status.typeError == typeError.NoConnection || status.typeError == typeError.InvalidCredentials ))
+                {
+                    MessageBox.Show("Attention aucune possibilité de vérifier s'il y a une incompatibilité avec le médicament sélectionné.");
                     break;
                 }
             }
@@ -124,17 +129,24 @@ namespace AP3_eMEDS
             // test if incompatibility with patient's allergies 
             foreach (ObjetPatient allergy in patientAllergies)
             {
-                if (medController.GetIncompatibilityAllergy(allergy.Id, med.Id))
+                RequestStatus status = medController.GetIncompatibilityAllergy(allergy.Id, med.Id);
+                if (status.success)
                 {
                     incompatibilities.Add(new Incompatibility(typeItem.Allergy, med, allergy));
                     this.warningText.Visible = true;
+                    break;
+                }
+                else if (!status.success && (status.typeError == typeError.NoConnection || status.typeError == typeError.InvalidCredentials))
+                {
+                    MessageBox.Show("Attention aucune possibilité de vérifier s'il y a une incompatibilité avec le médicament sélectionné.");
                     break;
                 }
             }
             // test if incompatibility with other medicament in list
             foreach (ObjetPatient meds in medicaments)
             {
-                if (medController.GetIncompatibilityMedicament(meds.Id, med.Id))
+                RequestStatus status = medController.GetIncompatibilityMedicament(meds.Id, med.Id);
+                if (status.success)
                 {
                     incompatibilities.Add(new Incompatibility(typeItem.Medicament, med, meds));
                     this.warningText.Visible = true;
@@ -148,6 +160,11 @@ namespace AP3_eMEDS
                     {
                         return;
                     }
+                    break;
+                }
+                else if (!status.success && (status.typeError == typeError.NoConnection || status.typeError == typeError.InvalidCredentials))
+                {
+                    MessageBox.Show("Attention aucune possibilité de vérifier s'il y a une incompatibilité avec le médicament sélectionné.");
                     break;
                 }
             }
@@ -203,17 +220,16 @@ namespace AP3_eMEDS
             Ordonnance newOrdo = new Ordonnance(posologieTxt.Text, duree, InstruSpeTxt.Text, code);
             int idMedecin = Global.UserId;
             // send to db 
-            int result = controller.AddOrdonnance(newOrdo, idMedecin, patient.Id);
-            if (result == 1)
+            RequestStatus status = controller.AddOrdonnance(newOrdo, idMedecin, patient.Id);
+            if (status.success)
             {
                 int idOrdonnance = controller.GetIdWithCode(code);
                 if (idOrdonnance != 0)
                 {
                     foreach (ObjetPatient meds in medicaments)
                     {
-                        int addedMeds = controller.AddMedsInOrdonnance(idOrdonnance, meds.Id);
-                        Console.WriteLine("réussite ajout médicament : " + addedMeds);
-                        if (addedMeds != 1)
+                        RequestStatus statusAddedMeds = controller.AddMedsInOrdonnance(idOrdonnance, meds.Id);
+                        if (statusAddedMeds.success)
                         {
                             MessageBox.Show($"Une erreur s'est produite en ajoutant le médicament : {meds.Libelle}");
                             break;

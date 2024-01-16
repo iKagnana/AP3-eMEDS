@@ -189,6 +189,7 @@
             this.supprBtn.TabIndex = 59;
             this.supprBtn.Text = "Supprimer le médecin";
             this.supprBtn.UseVisualStyleBackColor = true;
+            this.supprBtn.Click += new System.EventHandler(this.supprBtn_Click);
             // 
             // changePwBtn
             // 

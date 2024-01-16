@@ -22,8 +22,8 @@ namespace AP3_eMEDS
 
         private void changePwBtn_Click(object sender, EventArgs e)
         {
-            int result = controller.UpdateMedecinPassword(this.pwTxt.Text, idMedecin);
-            if (result == 1)
+            RequestStatus status = controller.UpdateMedecinPassword(this.pwTxt.Text, idMedecin);
+            if (status.success)
             {
                 MessageBox.Show("Le mot de passe a bien été modifié");
                 this.Close();

@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace AP3_eMEDS
 {
@@ -17,75 +18,111 @@ namespace AP3_eMEDS
         // get all antecedent
         public List<ObjetPatient> GetAntecedents()
         {
-            using(MySqlConnection conn = new MySqlConnection(connectionString))
+            List<ObjetPatient> antecedents = new List<ObjetPatient>();
+            try
             {
-                conn.Open();
-                string query = "SELECT * FROM antecedent";
-
-                List<ObjetPatient> antecedents = new List<ObjetPatient>();
-
-                using(MySqlCommand command = new MySqlCommand(query, conn))
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
-                    MySqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
+                    conn.Open();
+                    string query = "SELECT * FROM antecedent";
+
+                    using (MySqlCommand command = new MySqlCommand(query, conn))
                     {
-                        antecedents.Add(new ObjetPatient(reader.GetInt32(0), reader.GetString(1)));
+                        MySqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            antecedents.Add(new ObjetPatient(reader.GetInt32(0), reader.GetString(1)));
+                        }
+                        conn.Close();
+                        return antecedents;
                     }
-                    conn.Close();
-                    return antecedents;
                 }
+            } catch (MySqlException e)
+            {
+                ErrorHandler handler = new ErrorHandler(e);
+                Console.WriteLine(handler.GetMessageError());
+                MessageBox.Show("Impossible de récupérer la liste des antécédents pour le moment.");
+                return antecedents;
             }
         }
 
         // add antecedent
-        public int AddAntecedent(ObjetPatient antecedent)
+        public RequestStatus AddAntecedent(ObjetPatient antecedent)
         {
-            using(MySqlConnection conn = new MySqlConnection(connectionString))
+            RequestStatus status = new RequestStatus();
+            try
             {
-                conn.Open();
-                string query = "INSERT INTO antecedent (libelle_a) VALUES (@libelle)";
-
-                using(MySqlCommand command = new MySqlCommand(query, conn))
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
-                    command.Parameters.AddWithValue("@libelle", antecedent.Libelle);
-                    int result = command.ExecuteNonQuery();
-                    conn.Close();
-                    return result;
+                    conn.Open();
+                    string query = "INSERT INTO antecedent (libelle_a) VALUES (@libelle)";
+
+                    using (MySqlCommand command = new MySqlCommand(query, conn))
+                    {
+                        command.Parameters.AddWithValue("@libelle", antecedent.Libelle);
+                        int result = command.ExecuteNonQuery();
+                        conn.Close();
+                        return status.GetRequestStatusNoError(result);
+                    }
                 }
+            } catch (MySqlException e)
+            {
+                ErrorHandler handler = new ErrorHandler(e);
+                Console.WriteLine(handler.GetMessageError());
+                return status.GetRequestStatusError(handler.type);
             }
         }
 
         // update antecedent from its id
-        public int UpdateAntecedent(ObjetPatient antecedent)
+        public RequestStatus UpdateAntecedent(ObjetPatient antecedent)
         {
-            using(MySqlConnection conn = new MySqlConnection(connectionString))
+            RequestStatus status = new RequestStatus();
+            try
             {
-                conn.Open();
-                string query = "UPDATE antecedent SET libelle_a = @libelle WHERE id_a = @id";
-
-                using(MySqlCommand command = new MySqlCommand(query, conn))
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
-                    command.Parameters.AddWithValue("@libelle", antecedent.Libelle);
-                    command.Parameters.AddWithValue("@id", antecedent.Id);
-                    int result = command.ExecuteNonQuery();
-                    return result;
+                    conn.Open();
+                    string query = "UPDATE antecedent SET libelle_a = @libelle WHERE id_a = @id";
+
+                    using (MySqlCommand command = new MySqlCommand(query, conn))
+                    {
+                        command.Parameters.AddWithValue("@libelle", antecedent.Libelle);
+                        command.Parameters.AddWithValue("@id", antecedent.Id);
+                        int result = command.ExecuteNonQuery();
+                        return status.GetRequestStatusNoError(result);
+                    }
                 }
+            } catch (MySqlException e)
+            {
+                ErrorHandler handler = new ErrorHandler(e);
+                Console.WriteLine(handler.GetMessageError());
+                return status.GetRequestStatusError(handler.type);
             }
         }
 
         // delete antecedent from its id 
-        public int DeleteAntecedent(int id)
+        public RequestStatus DeleteAntecedent(int id)
         {
-            using(MySqlConnection conn = new MySqlConnection(connectionString))
+            RequestStatus status = new RequestStatus();
+            try
             {
-                conn.Open();
-                string query = "DELETE FROM antecedent WHERE id_a = @id";
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "DELETE FROM antecedent WHERE id_a = @id";
 
-                using(MySqlCommand command = new MySqlCommand(query, conn)) {
-                    command.Parameters.AddWithValue("@id", id);
-                    int result = command.ExecuteNonQuery();
-                    return result;
+                    using (MySqlCommand command = new MySqlCommand(query, conn))
+                    {
+                        command.Parameters.AddWithValue("@id", id);
+                        int result = command.ExecuteNonQuery();
+                        return status.GetRequestStatusNoError(result);
+                    }
                 }
+            } catch (MySqlException e)
+            {
+                ErrorHandler handler = new ErrorHandler(e);
+                Console.WriteLine(handler.GetMessageError());
+                return status.GetRequestStatusError(handler.type);
             }
         }
     }

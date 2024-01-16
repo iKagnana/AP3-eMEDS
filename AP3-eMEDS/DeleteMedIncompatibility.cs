@@ -46,10 +46,10 @@ namespace AP3_eMEDS
                     controller.DeleteAllergyIncompatibility(selectedObj.Id, idMed);
                     break;
                 case typeItem.Antecedent:
-                    controller.deleteAntecedentIncompatibility(selectedObj.Id, idMed);
+                    controller.DeleteAntecedentIncompatibility(selectedObj.Id, idMed);
                     break;
                 case typeItem.Medicament:
-                    controller.deleteMedicamentIncompatibility(selectedObj.Id, idMed);
+                    controller.DeleteMedicamentIncompatibility(selectedObj.Id, idMed);
                     break;
 
 

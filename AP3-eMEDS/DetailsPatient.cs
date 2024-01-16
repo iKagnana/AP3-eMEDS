@@ -58,12 +58,13 @@ namespace AP3_eMEDS
                 this.updatedPatient.Nom = this.firstNameTxt.Text;
                 this.updatedPatient.Prenom = this.lastNameTxt.Text;
                 this.updatedPatient.NumSecu = this.numSecuTxt.Text;
-                int result = controller.UpdatePatient(updatedPatient);
-                if (result == 0)
+
+                RequestStatus status = controller.UpdatePatient(updatedPatient);
+                if (status.success)
                 {
                     MessageBox.Show("Il y a eu une erreur");
                 }
-                else if (result == 1)
+                else
                 {
                     MessageBox.Show("Patient modifié");
                     this.Close();
@@ -76,16 +77,19 @@ namespace AP3_eMEDS
 
         private void supprBtn_Click(object sender, EventArgs e)
         {
-            int result = controller.DeletePatient(updatedPatient.Id);
-            if (result == 0)
-            {
-                MessageBox.Show("Il y a eu une erreur");
-            }
-            else if (result == 1)
+            RequestStatus status = controller.DeletePatient(updatedPatient.Id);
+            if (status.success)
             {
                 MessageBox.Show("Patient supprimé");
-                this.Close();
             }
+            else if (!status.success && status.typeError == typeError.CannotDelete)
+            {
+                MessageBox.Show("Ce patient ne peut pas être supprimé");
+            } else
+            {
+                MessageBox.Show("Erreur lors de la suppression du patient");
+            }
+            this.Close();
         }
 
         private void UpdateAntecedentDataGrid()
@@ -112,18 +116,6 @@ namespace AP3_eMEDS
         private void Female_CheckedChanged(object sender, EventArgs e)
         {
             this.updatedPatient.Sexe = "F";
-        }
-
-        private void supprBtn_Click_1(object sender, EventArgs e)
-        {
-            int result = controller.DeletePatient(updatedPatient.Id);
-            if (result == 1)
-            {
-                MessageBox.Show("Suppression du patient réussi");
-            } else
-            {
-                MessageBox.Show("Erreur lors de la suppresion du patient");
-            }
         }
 
         private void numSecuTxt_TextChanged(object sender, EventArgs e)

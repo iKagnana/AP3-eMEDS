@@ -177,6 +177,7 @@
     <Compile Include="AddPatientStep2Form.Designer.cs">
       <DependentUpon>AddPatientStep2Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="ErrorHandler.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="Incompatibility.cs" />
     <Compile Include="Menu.cs">
@@ -220,6 +221,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MedecinController.cs" />
+    <Compile Include="RequestStatus.cs" />
     <EmbeddedResource Include="AddMedecin.resx">
       <DependentUpon>AddMedecin.cs</DependentUpon>
     </EmbeddedResource>

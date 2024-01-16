@@ -61,8 +61,8 @@ namespace AP3_eMEDS
                                              this.emailTxt.Text,
                                              this.pwTxt.Text, 
                                              this.selectedRole);
-            int result = controller.AddMedecin(newMedecin);
-            if (result == 1)
+            RequestStatus status = controller.AddMedecin(newMedecin);
+            if (status.success)
             {
                 MessageBox.Show("Médecin ajouté");
                 UpdateDataGrid();
