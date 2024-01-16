@@ -22,9 +22,28 @@ namespace AP3_eMEDS
             // init combo box
             string[] roles = { "ADMIN", "USER" };
             this.comboBoxRole.DataSource = roles;
+            this.comboBoxRole.SelectedIndex = 1;
 
             UpdateDataGrid();
+
+        }
+
+        private void ResetForm()
+        {
+            this.lastnameTxt.Text = "";
+            this.firstnameTxt.Text = "";
+            this.emailTxt.Text = "";
+            this.pwTxt.Text = "";
+            this.comboBoxRole.SelectedIndex = 1;
+        }
+
+        private void UpdateDataGrid()
+        {
+            this.medecins = controller.GetMedecins();
             // init column size
+
+            this.dataGridMedecin.DataSource = null;
+            this.dataGridMedecin.DataSource = this.medecins;
             this.dataGridMedecin.Columns[0].HeaderText = "Id";
             this.dataGridMedecin.Columns[1].HeaderText = "Nom";
             this.dataGridMedecin.Columns[2].HeaderText = "Prénom";
@@ -32,23 +51,6 @@ namespace AP3_eMEDS
             this.dataGridMedecin.Columns[4].HeaderText = "Email";
             this.dataGridMedecin.Columns[5].HeaderText = "Mot de passe";
             this.dataGridMedecin.Columns[6].HeaderText = "Rôle";
-
-        }
-
-        private void ResetForm()
-        {
-            this.lastnameTxt.Text = "";
-            this.firstnameLabel.Text = "";
-            this.emailTxt.Text = "";
-            this.pwTxt.Text = "";
-        }
-
-        private void UpdateDataGrid()
-        {
-            this.medecins = controller.GetMedecins();
-
-            this.dataGridMedecin.DataSource = null;
-            this.dataGridMedecin.DataSource = this.medecins;
         }
 
         private void addBtn_Click(object sender, EventArgs e)
@@ -63,6 +65,7 @@ namespace AP3_eMEDS
             if (result == 1)
             {
                 MessageBox.Show("Médecin ajouté");
+                UpdateDataGrid();
                 ResetForm();
             } else
             {
@@ -100,7 +103,7 @@ namespace AP3_eMEDS
                 }
             }
 
-            this.dataGridMedecin.DataSource = medecins;
+            this.dataGridMedecin.DataSource = filteredMedecins;
         }
 
         private void dataGridMedecin_CellContentClick(object sender, DataGridViewCellEventArgs e)

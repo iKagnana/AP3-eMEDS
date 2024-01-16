@@ -27,7 +27,7 @@ namespace AP3_eMEDS
 
             string[] roles = { "ADMIN", "USER" };
             this.comboBoxRole.DataSource = roles;
-            // TODO set role init
+            this.comboBoxRole.SelectedIndex = Array.FindIndex(roles, role => role == medecin.Role);
 
         }
 
