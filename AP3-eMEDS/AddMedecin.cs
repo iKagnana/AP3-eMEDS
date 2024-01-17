@@ -61,15 +61,23 @@ namespace AP3_eMEDS
                                              this.emailTxt.Text,
                                              this.pwTxt.Text, 
                                              this.selectedRole);
+            // test if email already attribuated 
+            RequestStatus statusUnique = controller.UniqueEmail(this.emailTxt.Text);
+            if (!statusUnique.success)
+            {
+                MessageBox.Show("Cet email a déjà été attribué.");
+                // exit func
+                return;
+            }
             RequestStatus status = controller.AddMedecin(newMedecin);
             if (status.success)
             {
-                MessageBox.Show("Médecin ajouté");
+                MessageBox.Show("Médecin ajouté.");
                 UpdateDataGrid();
                 ResetForm();
             } else
             {
-                MessageBox.Show("Erreur lors de l'ajout du médecin");
+                MessageBox.Show("Erreur lors de l'ajout du médecin.");
             }
         }
 

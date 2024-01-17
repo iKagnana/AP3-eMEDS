@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace AP3_eMEDS
 {
+    public enum typeObjetPatient
+    {
+        Allergie,
+        Antecedent
+    }
     public class ObjetPatient
     {
         public int Id { get; set; }

@@ -208,6 +208,7 @@ namespace AP3_eMEDS
                     return;
                 }
             }
+
             // pass UUID in field code for ordonnance to make easier adding meds
             string code = Guid.NewGuid().ToString();
             string duree;
@@ -218,6 +219,15 @@ namespace AP3_eMEDS
             } else
             {
                 duree = $"{nbDate.Value} {comboBoxDate.SelectedValue}";
+            }
+
+            // test if fields are empty
+            if (this.InstruSpeTxt.Text.Length == 0 || this.posologieTxt.Text.Length == 0
+                || duree.Length == 0 && this.medicaments.Count == 0)
+            {
+                MessageBox.Show("Vérifiez vos champs.");
+                // exit
+                return;
             }
 
             // create object ordonnance to send to db 
@@ -233,16 +243,17 @@ namespace AP3_eMEDS
                     foreach (ObjetPatient meds in medicaments)
                     {
                         RequestStatus statusAddedMeds = controller.AddMedsInOrdonnance(idOrdonnance, meds.Id);
-                        if (statusAddedMeds.success)
+                        if (!statusAddedMeds.success)
                         {
                             MessageBox.Show($"Une erreur s'est produite en ajoutant le médicament : {meds.Libelle}");
                             break;
                         }
                     }
                     MessageBox.Show("Ajout de l'ordonnance réussit.");
+                    UpdateOrdonnance();
                 } else
                 {
-                    MessageBox.Show("Récupération d'aucun id");
+                    MessageBox.Show("Erreur dans l'ajout de médicament pour l'ordonnance");
                 }
             } else
             {

@@ -43,5 +43,17 @@ namespace AP3_eMEDS
             AddMedecinForm addMedecinForm = new AddMedecinForm();
             addMedecinForm.ShowDialog();
         }
+
+        private void alBtn_Click(object sender, EventArgs e)
+        {
+            AddObjetPatientForm objetPatientForm = new AddObjetPatientForm(typeObjetPatient.Allergie);
+            objetPatientForm.ShowDialog();
+        }
+
+        private void anBtn_Click(object sender, EventArgs e)
+        {
+            AddObjetPatientForm objetPatientForm = new AddObjetPatientForm(typeObjetPatient.Antecedent);
+            objetPatientForm.ShowDialog();
+        }
     }
 }
