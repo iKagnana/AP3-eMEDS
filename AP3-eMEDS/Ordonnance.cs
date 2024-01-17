@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace AP3_eMEDS
 {
-    internal class Ordonnance
+    public class Ordonnance
     {
         public int Id { get; set; }
         public string Posologie { get; set; }

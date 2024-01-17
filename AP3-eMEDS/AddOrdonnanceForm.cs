@@ -315,6 +315,10 @@ namespace AP3_eMEDS
                     {
                         // generate pdf 
                         selected.GeneratePDF(controller.GetAllMeds(selected.Id));
+                    } else
+                    {
+                        ConsultOrdonnance consultOrdonnance = new ConsultOrdonnance(patient, selected);
+                        consultOrdonnance.ShowDialog();
                     }
                 }
 

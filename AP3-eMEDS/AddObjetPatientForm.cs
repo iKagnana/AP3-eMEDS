@@ -43,11 +43,16 @@ namespace AP3_eMEDS
             this.dataGridObjetPatient.DataSource = objets;
         }
 
+        private void ResetForm()
+        {
+            this.nameTxt.Text = String.Empty;
+        }
+
         private void addBtn_Click(object sender, EventArgs e)
         {
             if (this.nameTxt.Text.Length == 0)
             {
-                MessageBox.Show("Vous ne pouvez pas avoir de chmap vide");
+                MessageBox.Show("Vous ne pouvez pas avoir de champs vides");
                 return;
             }
 
@@ -66,6 +71,7 @@ namespace AP3_eMEDS
             if (status.success)
             {
                 MessageBox.Show("Elément ajouté");
+                ResetForm();
             } else
             {
                 MessageBox.Show("Il y a eu une erreur");
