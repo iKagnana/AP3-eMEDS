@@ -31,6 +31,7 @@
             this.supprBtn = new System.Windows.Forms.Button();
             this.confirmBtn = new System.Windows.Forms.Button();
             this.titleLabel = new System.Windows.Forms.Label();
+            this.subtitle = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // supprBtn
@@ -68,11 +69,22 @@
             this.titleLabel.TabIndex = 9;
             this.titleLabel.Text = "Voulez vous supprimer ?";
             // 
+            // subtitle
+            // 
+            this.subtitle.AutoSize = true;
+            this.subtitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subtitle.Location = new System.Drawing.Point(79, 61);
+            this.subtitle.Name = "subtitle";
+            this.subtitle.Size = new System.Drawing.Size(143, 20);
+            this.subtitle.TabIndex = 12;
+            this.subtitle.Text = "Exemple texte long";
+            // 
             // DeleteMedIncompatibility
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(370, 279);
+            this.Controls.Add(this.subtitle);
             this.Controls.Add(this.supprBtn);
             this.Controls.Add(this.confirmBtn);
             this.Controls.Add(this.titleLabel);
@@ -88,5 +100,6 @@
         private System.Windows.Forms.Button supprBtn;
         private System.Windows.Forms.Button confirmBtn;
         private System.Windows.Forms.Label titleLabel;
+        private System.Windows.Forms.Label subtitle;
     }
 }

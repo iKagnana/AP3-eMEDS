@@ -105,7 +105,7 @@ namespace AP3_eMEDS
 
             foreach (var medecin in medecins)
             {
-                if (medecin.Lastname.ToLower().Contains(searchTxt.Text.ToLower()) || medecin.FirstName.ToLower().Contains(searchTxt.Text.ToLower()))
+                if (medecin.Nom.ToLower().Contains(searchTxt.Text.ToLower()) || medecin.Prenom.ToLower().Contains(searchTxt.Text.ToLower()))
                 {
                     filteredMedecins.Add(medecin);
                 }

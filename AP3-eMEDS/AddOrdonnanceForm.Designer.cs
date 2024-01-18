@@ -92,7 +92,7 @@
             this.dataGridListO.Name = "dataGridListO";
             this.dataGridListO.RowHeadersWidth = 82;
             this.dataGridListO.RowTemplate.Height = 33;
-            this.dataGridListO.Size = new System.Drawing.Size(535, 493);
+            this.dataGridListO.Size = new System.Drawing.Size(616, 493);
             this.dataGridListO.TabIndex = 3;
             this.dataGridListO.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridListO_CellClick);
             // 

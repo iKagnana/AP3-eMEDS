@@ -99,11 +99,11 @@ namespace AP3_eMEDS
                     {
                         // hash password
                         string hashedPassword = BCrypt.Net.BCrypt.HashPassword(medecin.Password);
-                        command.Parameters.AddWithValue("@lastname", medecin.Lastname);
-                        command.Parameters.AddWithValue("@firstname", medecin.FirstName);
-                        command.Parameters.AddWithValue("@login", medecin.Username);
+                        command.Parameters.AddWithValue("@lastname", medecin.Nom);
+                        command.Parameters.AddWithValue("@firstname", medecin.Prenom);
+                        command.Parameters.AddWithValue("@login", medecin.Email);
                         command.Parameters.AddWithValue("@password", hashedPassword);
-                        command.Parameters.AddWithValue("@birthdate", medecin.BirthDate);
+                        command.Parameters.AddWithValue("@birthdate", medecin.DateNaissance);
                         command.Parameters.AddWithValue("@role", medecin.Role);
                         int result = command.ExecuteNonQuery();
                         conn.Close();
@@ -168,7 +168,7 @@ namespace AP3_eMEDS
 
                     using (MySqlCommand command = new MySqlCommand(query, conn))
                     {
-                        command.Parameters.AddWithValue("@login", medecin.Username.ToLower());
+                        command.Parameters.AddWithValue("@login", medecin.Email.ToLower());
 
                         idMedecin = Convert.ToInt32(command.ExecuteScalar());
                         MySqlDataReader reader = command.ExecuteReader();
@@ -212,10 +212,10 @@ namespace AP3_eMEDS
 
                     using (MySqlCommand command = new MySqlCommand(@query, conn))
                     {
-                        command.Parameters.AddWithValue("@lastname", medecin.Lastname);
-                        command.Parameters.AddWithValue("@firstname", medecin.FirstName);
-                        command.Parameters.AddWithValue("@login", medecin.Username);
-                        command.Parameters.AddWithValue("@birthdate", medecin.BirthDate);
+                        command.Parameters.AddWithValue("@lastname", medecin.Nom);
+                        command.Parameters.AddWithValue("@firstname", medecin.Prenom);
+                        command.Parameters.AddWithValue("@login", medecin.Email);
+                        command.Parameters.AddWithValue("@birthdate", medecin.DateNaissance);
                         command.Parameters.AddWithValue("@role", medecin.Role);
                         command.Parameters.AddWithValue("@id", medecin.Id);
 

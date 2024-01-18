@@ -21,7 +21,7 @@ namespace AP3_eMEDS
             // to use the parent form func
             this.form = actualForm;
             this.selectedMed = med;
-            this.titleLabel.Text = $"Voulez-vous supprimer le médicament {med.Libelle} ?";
+            this.subtitle.Text = $"le médicament {med.Libelle} ?";
         }
 
         private void supprBtn_Click(object sender, EventArgs e)

@@ -9,10 +9,10 @@ namespace AP3_eMEDS
     public class Medecin
     {
         public int Id { get; set; }
-        public string Lastname { get; set; }
-        public string FirstName { get; set; }
-        public string BirthDate { get; set; }
-        public string Username { get; set; }
+        public string Nom { get; set; }
+        public string Prenom { get; set; }
+        public string DateNaissance { get; set; }
+        public string Email { get; set; }
         public string Password { get; set; }
         public string Role { get; set; }
 
@@ -20,20 +20,20 @@ namespace AP3_eMEDS
         public Medecin(int id, string lastname, string firstName, string birthDate, string username, string role)
         {
             Id = id;
-            Lastname = lastname;
-            FirstName = firstName;
-            BirthDate = birthDate;
-            Username = username;
+            Nom = lastname;
+            Prenom = firstName;
+            DateNaissance = birthDate;
+            Email = username;
             Role = role;
         }
 
         // constructor when add medecin in db 
         public Medecin(string lastname, string firstName, string birthDate, string username, string password, string role)
         {
-            this.Lastname = lastname;
-            this.FirstName = firstName;
-            this.BirthDate = birthDate; 
-            this.Username = username;
+            this.Nom = lastname;
+            this.Prenom = firstName;
+            this.DateNaissance = birthDate; 
+            this.Email = username;
             this.Password = password;
             this.Role = role;
         }
@@ -41,7 +41,7 @@ namespace AP3_eMEDS
         // constructor for login 
         public Medecin(string username, string password)
         {
-            this.Username = username;
+            this.Email = username;
             this.Password = password;
         }
     }

@@ -21,10 +21,10 @@ namespace AP3_eMEDS
             this.selectedMedecin = medecin;
 
             // init fields
-            this.lastnameTxt.Text = medecin.Lastname;
-            this.firstnameTxt.Text = medecin.FirstName;
-            this.birthDatePicker.Text = medecin.BirthDate;
-            this.emailTxt.Text = medecin.Username;
+            this.lastnameTxt.Text = medecin.Nom;
+            this.firstnameTxt.Text = medecin.Prenom;
+            this.birthDatePicker.Text = medecin.DateNaissance;
+            this.emailTxt.Text = medecin.Email;
 
             string[] roles = { "ADMIN", "USER" };
             this.comboBoxRole.DataSource = roles;
