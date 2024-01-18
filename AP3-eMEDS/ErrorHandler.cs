@@ -50,10 +50,12 @@ namespace AP3_eMEDS
             Console.WriteLine($"GetErrorType ErrorHandler error code : {error.Number}");
             switch (error.Number)
             {
-                case 0:
+                case 2003:
+                case 2005:
                     this.type = typeError.NoConnection;
                     break;
                 case 1045:
+                case 2009:
                     this.type = typeError.InvalidCredentials;
                     break;
                 case 1451:

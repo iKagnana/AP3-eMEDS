@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -366,7 +366,7 @@ namespace AP3_eMEDS
                         {
                             return status.GetRequestStatusNoError(1);
                         }
-                        return status.GetRequestStatusError(0);
+                        return status.GetRequestStatusNoError(0);
                     }
                 }
             } catch (MySqlException e)

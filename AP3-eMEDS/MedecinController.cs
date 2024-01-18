@@ -49,6 +49,39 @@ namespace AP3_eMEDS
             }
         }
 
+        // get medecin with id 
+        public Medecin GetMedecinFromId(int id)
+        {
+            Medecin medecin = null;
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "SELECT id_m, nom_m, prenom_m, date_naissance_m, login_m, role FROM medecin WHERE id_m = @id";
+
+                    using (MySqlCommand command = new MySqlCommand(query, conn))
+                    {
+                        command.Parameters.AddWithValue("@id", id);
+                        MySqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            medecin = new Medecin(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5));
+                        }
+                        conn.Close();
+                        return medecin;
+                    }
+                }
+            }
+            catch (MySqlException e)
+            {
+                ErrorHandler handler = new ErrorHandler(e);
+                Console.WriteLine(handler.GetMessageError());
+                MessageBox.Show("Impossible de récupérer la liste des médecins pour le moment.");
+                return medecin;
+            }
+        }
+
         // method create user type medecin
         public RequestStatus AddMedecin(Medecin medecin)
         {

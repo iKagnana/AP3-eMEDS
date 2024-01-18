@@ -2,6 +2,7 @@
 using iTextSharp.text.pdf;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Security.Policy;
@@ -37,17 +38,37 @@ namespace AP3_eMEDS
         }
 
         // method to generate the entire pdf
-        public void GeneratePDF(List<Medicament> meds)
+        public void GeneratePDF(Patient patient, Medecin medecin, Ordonnance ordonnance, List<Medicament> meds, string fileName)
         {
+            // create path to dl file 
+            string outFile = Environment.CurrentDirectory + $"/{fileName}.pdf";
             // create document and add table
             Document doc = new Document();
             PdfPTable tableLayout = new PdfPTable(2);
 
-            PdfWriter.GetInstance(doc, new FileStream("Sample.pdf", FileMode.Create));
+            PdfWriter.GetInstance(doc, new FileStream(outFile, FileMode.Create));
             doc.Open();
 
+            Paragraph patientInfos = new Paragraph($"{patient.Nom} {patient.Prenom} {patient.Sexe} - {patient.NumSecu}");
+            patientInfos.Alignment = Element.ALIGN_LEFT;
+            doc.Add(patientInfos);
+
+            Paragraph medecinInfo = new Paragraph($"{medecin.Lastname} {medecin.FirstName}");
+            medecinInfo.Alignment = Element.ALIGN_RIGHT;
+            doc.Add(medecinInfo);
+
             doc.Add(GeneratePdfTable(tableLayout, meds));
+
+            Paragraph posologie = new Paragraph($"Posologie : {ordonnance.Posologie}");
+            posologie.Alignment = Element.ALIGN_LEFT;
+            doc.Add(posologie);
+
+            Paragraph duree = new Paragraph($"Durée du traitement : {ordonnance.Duree}");
+            duree.Alignment = Element.ALIGN_LEFT;
+            doc.Add(duree);
+
             doc.Close();
+            Process.Start(@"cmd.exe", @"/c " + outFile);
         }
 
         // method to generate pdf table medicament

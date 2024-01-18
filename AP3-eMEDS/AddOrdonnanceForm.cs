@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -100,14 +100,16 @@ namespace AP3_eMEDS
             // use the class ObjetPatient and not Medicament
             // only id return by comboBox -> create ObjetPatient for display in dataGrid
             // get the medicament's label
-            if (selectedMed != -1)
+            if (selectedMed != -1 && !medicaments.Exists(med => med.Id == allMeds[selectedMed].Id))
             {
-                ObjetPatient newMed = new ObjetPatient(selectedMed, allMeds[selectedMed].Libelle);
+                Medicament _selectedMed = allMeds[selectedMed];
+                ObjetPatient newMed = new ObjetPatient(_selectedMed.Id, _selectedMed.Libelle);
                 this.TestIncompatibilty(newMed);
                 medicaments.Add(newMed);
-                allMeds.RemoveAt(selectedMed);
-                UpdateComboBoxMeds();
                 UpdateMedicamentDG();
+            } else if (medicaments.Exists(med => med.Id == allMeds[selectedMed].Id))
+            {
+                MessageBox.Show("Médicament déjà ajouté.");
             }
         }
 
@@ -125,7 +127,7 @@ namespace AP3_eMEDS
                     break;
                 } else if (!status.success && (status.typeError == typeError.NoConnection || status.typeError == typeError.InvalidCredentials ))
                 {
-                    MessageBox.Show("Attention aucune possibilité de vérifier s'il y a une incompatibilité avec le médicament sélectionné.");
+                    MessageBox.Show("Attention aucune possibilité de vérifier s'il y a une incompatibilité avec le médicament sélectionné et une allergie du patient.");
                     break;
                 }
             }
@@ -142,7 +144,7 @@ namespace AP3_eMEDS
                 }
                 else if (!status.success && (status.typeError == typeError.NoConnection || status.typeError == typeError.InvalidCredentials))
                 {
-                    MessageBox.Show("Attention aucune possibilité de vérifier s'il y a une incompatibilité avec le médicament sélectionné.");
+                    MessageBox.Show("Attention aucune possibilité de vérifier s'il y a une incompatibilité avec le médicament sélectionné et un antécédent du patient.");
                     break;
                 }
             }
@@ -168,7 +170,7 @@ namespace AP3_eMEDS
                 }
                 else if (!status.success && (status.typeError == typeError.NoConnection || status.typeError == typeError.InvalidCredentials))
                 {
-                    MessageBox.Show("Attention aucune possibilité de vérifier s'il y a une incompatibilité avec le médicament sélectionné.");
+                    MessageBox.Show("Attention aucune possibilité de vérifier s'il y a une incompatibilité avec le médicament sélectionné et un autre médicament selectionné.");
                     break;
                 }
             }
@@ -313,8 +315,18 @@ namespace AP3_eMEDS
                     Ordonnance selected = selectedRow.DataBoundItem as Ordonnance;
                     if (e.ColumnIndex == dataGridListO.Columns["Générer le pdf"].Index)
                     {
+                        MedecinController medecinController = new MedecinController();
+                        int idMedecin = Global.UserId;
+                        Medecin medecin = medecinController.GetMedecinFromId(idMedecin);
+
+                        if (medecin.Equals(null))
+                        {
+                            Console.WriteLine("Oops");
+                            return;
+                        }
+
                         // generate pdf 
-                        selected.GeneratePDF(controller.GetAllMeds(selected.Id));
+                        selected.GeneratePDF(patient, medecin, selected, controller.GetAllMeds(selected.Id), $"ordonnance {patient.Nom} {patient.Prenom}");
                     } else
                     {
                         ConsultOrdonnance consultOrdonnance = new ConsultOrdonnance(patient, selected);
