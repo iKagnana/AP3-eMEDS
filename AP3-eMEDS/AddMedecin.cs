@@ -55,6 +55,15 @@ namespace AP3_eMEDS
 
         private void addBtn_Click(object sender, EventArgs e)
         {
+            // check if fields empty
+            if (this.lastnameTxt.Text.Length == 0 || 
+                this.firstnameTxt.Text.Length == 0 ||
+                this.birthDatePicker.Text.Length == 0 ||
+                this.emailTxt.Text.Length == 0 ||
+                this.pwTxt.Text.Length == 0)
+            {
+                return;
+            }
             Medecin newMedecin = new Medecin(this.lastnameTxt.Text,
                                              this.firstnameTxt.Text,
                                              this.birthDatePicker.Text,

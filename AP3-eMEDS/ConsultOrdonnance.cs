@@ -20,9 +20,10 @@ namespace AP3_eMEDS
         public ConsultOrdonnance(Patient patient, Ordonnance ordonnance)
         {
             InitializeComponent();
-            UpdateDataGrid();
             this.patient = patient;
             this.ordonnance = ordonnance;
+
+            UpdateDataGrid();
 
             // init form
             this.labelInfos.Text = $"{patient.Nom} {patient.Prenom} {patient.Sexe} - {patient.NumSecu}";
@@ -34,6 +35,7 @@ namespace AP3_eMEDS
 
         private void UpdateDataGrid()
         {
+            Console.WriteLine(ordonnance.Code);
             this.medicament = controller.GetAllMeds(ordonnance.Id);
 
             this.dataGridMeds.DataSource = null;

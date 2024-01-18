@@ -313,6 +313,7 @@ namespace AP3_eMEDS
                 if (selectedRow != null)
                 {
                     Ordonnance selected = selectedRow.DataBoundItem as Ordonnance;
+                    Console.WriteLine(selected.Code);
                     if (e.ColumnIndex == dataGridListO.Columns["Générer le pdf"].Index)
                     {
                         MedecinController medecinController = new MedecinController();
@@ -329,6 +330,7 @@ namespace AP3_eMEDS
                         selected.GeneratePDF(patient, medecin, selected, controller.GetAllMeds(selected.Id), $"ordonnance {patient.Nom} {patient.Prenom}");
                     } else
                     {
+                        Console.WriteLine($"Consult ordonnance for ordonnance {selected.Id}");
                         ConsultOrdonnance consultOrdonnance = new ConsultOrdonnance(patient, selected);
                         consultOrdonnance.ShowDialog();
                     }
