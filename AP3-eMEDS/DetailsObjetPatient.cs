@@ -32,6 +32,8 @@ namespace AP3_eMEDS
                     this.Text = "Détails d'un antécédent - GSB";
                     break;
             }
+
+            this.nameTxt.Text = objetPatient.Libelle;
         }
 
         private void addBtn_Click(object sender, EventArgs e)

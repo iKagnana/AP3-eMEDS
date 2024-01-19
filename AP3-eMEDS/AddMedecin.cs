@@ -66,12 +66,13 @@ namespace AP3_eMEDS
             }
             Medecin newMedecin = new Medecin(this.lastnameTxt.Text,
                                              this.firstnameTxt.Text,
-                                             this.birthDatePicker.Text,
+                                             this.birthDatePicker.Value.ToString("yyyy-MM-dd"),
                                              this.emailTxt.Text,
                                              this.pwTxt.Text, 
                                              this.selectedRole);
             // test if email already attribuated 
             RequestStatus statusUnique = controller.UniqueEmail(this.emailTxt.Text);
+            Console.WriteLine(statusUnique.success);
             if (!statusUnique.success)
             {
                 MessageBox.Show("Cet email a déjà été attribué.");

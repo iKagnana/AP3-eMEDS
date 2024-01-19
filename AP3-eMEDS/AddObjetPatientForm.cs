@@ -19,11 +19,14 @@ namespace AP3_eMEDS
         public AddObjetPatientForm(typeObjetPatient type)
         {
             InitializeComponent();
-            updateDataGrid();
+            UpdateDataGrid();
+
+            // data grid column width 
+            this.dataGridObjetPatient.Columns[1].Width = 300;
 
         }
 
-        private void updateDataGrid()
+        private void UpdateDataGrid()
         {
             switch (type)
             {
@@ -71,6 +74,7 @@ namespace AP3_eMEDS
             if (status.success)
             {
                 MessageBox.Show("Elément ajouté");
+                UpdateDataGrid();
                 ResetForm();
             } else
             {
@@ -96,7 +100,7 @@ namespace AP3_eMEDS
         }
         private void DetailsClosing(object sender, FormClosingEventArgs e)
         {
-            updateDataGrid();
+            UpdateDataGrid();
         }
 
         private void searchTxt_TextChanged(object sender, EventArgs e)

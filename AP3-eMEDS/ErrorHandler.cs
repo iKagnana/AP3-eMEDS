@@ -52,6 +52,7 @@ namespace AP3_eMEDS
             {
                 case 2003:
                 case 2005:
+                case 1042:
                     this.type = typeError.NoConnection;
                     break;
                 case 1045:

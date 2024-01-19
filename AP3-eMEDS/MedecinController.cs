@@ -128,12 +128,13 @@ namespace AP3_eMEDS
                 using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     conn.Open();
-                    string query = "SELECT id_m n FROM medecin WHERE login_m = @email";
+                    string query = "SELECT id_m FROM medecin WHERE login_m = @email";
 
                     using (MySqlCommand command = new MySqlCommand(query, conn))
                     {
                         command.Parameters.AddWithValue("@email", email);
-                        if (Convert.ToInt32(command.ExecuteScalar()) < 0)
+                        Console.WriteLine(Convert.ToInt32(command.ExecuteScalar()));
+                        if (Convert.ToInt32(command.ExecuteScalar()) == 0)
                         {
                             return status.GetRequestStatusNoError(1);
                         }
