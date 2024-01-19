@@ -95,7 +95,7 @@ namespace AP3_eMEDS
                     if (selectedRow != null)
                     {
                         Medicament selected = selectedRow.DataBoundItem as Medicament;
-                        Details details = new Details(selected);
+                        DetailsMedicament details = new DetailsMedicament(selected);
                         // add closing event to the form
                         details.FormClosing += new FormClosingEventHandler(this.DetailsClosing);
                         details.Show();

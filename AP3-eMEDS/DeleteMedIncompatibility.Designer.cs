@@ -91,7 +91,7 @@
             this.Controls.Add(this.titleLabel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DeleteMedIncompatibility";
-            this.Text = "Suppression - GSB";
+            this.Text = "Confirmation de suppression - GSB";
             this.ResumeLayout(false);
             this.PerformLayout();
 

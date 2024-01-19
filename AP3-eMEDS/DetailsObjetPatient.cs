@@ -29,7 +29,7 @@ namespace AP3_eMEDS
                     this.Text = "Détails d'un antécédent - GSB";
                     break;
                 case typeObjetPatient.Allergie:
-                    this.Text = "Détails d'un antécédent - GSB";
+                    this.Text = "Détails d'une allergie - GSB";
                     break;
             }
 

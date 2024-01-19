@@ -254,7 +254,7 @@ namespace AP3_eMEDS
                 {
                     conn.Open();
                     string query = "SELECT incompatible.id_med_Medicament, libelle_med FROM incompatible " +
-                     "INNER JOIN medicament ON medicament.id_med = incompatible.id_med " +
+                     "INNER JOIN medicament ON medicament.id_med = incompatible.id_med_Medicament " +
                      "WHERE incompatible.id_med_Medicament IS NOT NULL and incompatible.id_med = @id_med";
 
                     using (MySqlCommand command = new MySqlCommand(query, conn))

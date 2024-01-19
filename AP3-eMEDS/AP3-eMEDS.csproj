@@ -216,11 +216,11 @@
     <Compile Include="OrdonnanceController.cs" />
     <Compile Include="Patient.cs" />
     <Compile Include="MedicamentController.cs" />
-    <Compile Include="Details.cs">
+    <Compile Include="DetailsMedicament.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Details.Designer.cs">
-      <DependentUpon>Details.cs</DependentUpon>
+    <Compile Include="DetailsMedicament.Designer.cs">
+      <DependentUpon>DetailsMedicament.cs</DependentUpon>
     </Compile>
     <Compile Include="Medecin.cs" />
     <Compile Include="Medicament.cs" />
@@ -277,8 +277,8 @@
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Details.resx">
-      <DependentUpon>Details.cs</DependentUpon>
+    <EmbeddedResource Include="DetailsMedicament.resx">
+      <DependentUpon>DetailsMedicament.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>

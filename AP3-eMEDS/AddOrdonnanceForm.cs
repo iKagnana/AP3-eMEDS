@@ -72,8 +72,8 @@ namespace AP3_eMEDS
             this.dataGridListO.DataSource = ordonnances;
 
             // init header names
-            this.dataGridListO.Columns[4].HeaderText = "Durée";
-            this.dataGridListO.Columns[5].HeaderText = "Instructions spécifiques";
+            this.dataGridListO.Columns[3].HeaderText = "Durée";
+            this.dataGridListO.Columns[4].HeaderText = "Instructions spécifiques";
 
         }
 
@@ -104,7 +104,10 @@ namespace AP3_eMEDS
             {
                 Medicament _selectedMed = allMeds[selectedMed];
                 ObjetPatient newMed = new ObjetPatient(_selectedMed.Id, _selectedMed.Libelle);
-                this.TestIncompatibilty(newMed);
+                if (!this.TestIncompatibilty(newMed))
+                {
+                    return;
+                }
                 medicaments.Add(newMed);
                 UpdateMedicamentDG();
             } else if (medicaments.Exists(med => med.Id == allMeds[selectedMed].Id))
@@ -114,7 +117,7 @@ namespace AP3_eMEDS
         }
 
         // test incompatibility 
-        private void TestIncompatibilty(ObjetPatient med)
+        private bool TestIncompatibilty(ObjetPatient med)
         {
             // test if incompatibility with patient's antecedent
             foreach (ObjetPatient antecedent in patientAntecedents)
@@ -164,7 +167,7 @@ namespace AP3_eMEDS
                     dialog = MessageBox.Show(message, "Voulez-vous continuer ?", buttons);
                     if (dialog == System.Windows.Forms.DialogResult.No)
                     {
-                        return;
+                        return false;
                     }
                     break;
                 }
@@ -174,6 +177,8 @@ namespace AP3_eMEDS
                     break;
                 }
             }
+
+            return true;
 
         }
 

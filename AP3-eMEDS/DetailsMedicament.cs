@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace AP3_eMEDS
 {
-    public partial class Details : Form
+    public partial class DetailsMedicament : Form
     {
         private readonly Medicament detailledMed;
         private readonly MedicamentController controller = new MedicamentController();
@@ -23,7 +23,7 @@ namespace AP3_eMEDS
         private List<ObjetPatient> allergies = new List<ObjetPatient>();
         private List<ObjetPatient> antecedent = new List<ObjetPatient>();
         private List<ObjetPatient> medicaments = new List<ObjetPatient>();
-        public Details(Medicament detailledMed)
+        public DetailsMedicament(Medicament detailledMed)
         {
             InitializeComponent();
             this.detailledMed = detailledMed;

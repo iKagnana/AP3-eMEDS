@@ -1,6 +1,6 @@
 ﻿namespace AP3_eMEDS
 {
-    partial class Details
+    partial class DetailsMedicament
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Details));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DetailsMedicament));
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -57,7 +57,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.label1.Location = new System.Drawing.Point(57, 86);
+            this.label1.Location = new System.Drawing.Point(22, 127);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(247, 26);
             this.label1.TabIndex = 0;
@@ -67,7 +67,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(71, 187);
+            this.label4.Location = new System.Drawing.Point(36, 228);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(114, 16);
             this.label4.TabIndex = 20;
@@ -77,7 +77,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(71, 123);
+            this.label3.Location = new System.Drawing.Point(36, 164);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 18);
             this.label3.TabIndex = 17;
@@ -87,7 +87,7 @@
             // 
             this.contreIndcTxt.BackColor = System.Drawing.SystemColors.Window;
             this.contreIndcTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contreIndcTxt.Location = new System.Drawing.Point(74, 206);
+            this.contreIndcTxt.Location = new System.Drawing.Point(39, 247);
             this.contreIndcTxt.Multiline = true;
             this.contreIndcTxt.Name = "contreIndcTxt";
             this.contreIndcTxt.Size = new System.Drawing.Size(204, 65);
@@ -96,7 +96,7 @@
             // nameTxt
             // 
             this.nameTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameTxt.Location = new System.Drawing.Point(74, 144);
+            this.nameTxt.Location = new System.Drawing.Point(39, 185);
             this.nameTxt.Name = "nameTxt";
             this.nameTxt.Size = new System.Drawing.Size(204, 26);
             this.nameTxt.TabIndex = 15;
@@ -106,7 +106,7 @@
             this.confirmBtn.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.confirmBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.confirmBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.confirmBtn.Location = new System.Drawing.Point(74, 296);
+            this.confirmBtn.Location = new System.Drawing.Point(39, 337);
             this.confirmBtn.Name = "confirmBtn";
             this.confirmBtn.Size = new System.Drawing.Size(204, 43);
             this.confirmBtn.TabIndex = 5;
@@ -118,7 +118,7 @@
             // 
             this.supprBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.supprBtn.ForeColor = System.Drawing.Color.Red;
-            this.supprBtn.Location = new System.Drawing.Point(74, 354);
+            this.supprBtn.Location = new System.Drawing.Point(39, 395);
             this.supprBtn.Name = "supprBtn";
             this.supprBtn.Size = new System.Drawing.Size(204, 31);
             this.supprBtn.TabIndex = 6;
@@ -129,43 +129,43 @@
             // dataGridAl
             // 
             this.dataGridAl.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridAl.Location = new System.Drawing.Point(442, 107);
-            this.dataGridAl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridAl.Location = new System.Drawing.Point(308, 64);
+            this.dataGridAl.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridAl.Name = "dataGridAl";
             this.dataGridAl.RowHeadersWidth = 82;
             this.dataGridAl.RowTemplate.Height = 33;
-            this.dataGridAl.Size = new System.Drawing.Size(391, 78);
+            this.dataGridAl.Size = new System.Drawing.Size(391, 185);
             this.dataGridAl.TabIndex = 21;
             this.dataGridAl.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridAl_CellContentClick);
             // 
             // dataGridAn
             // 
             this.dataGridAn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridAn.Location = new System.Drawing.Point(442, 247);
-            this.dataGridAn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridAn.Location = new System.Drawing.Point(751, 64);
+            this.dataGridAn.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridAn.Name = "dataGridAn";
             this.dataGridAn.RowHeadersWidth = 82;
             this.dataGridAn.RowTemplate.Height = 33;
-            this.dataGridAn.Size = new System.Drawing.Size(391, 78);
+            this.dataGridAn.Size = new System.Drawing.Size(391, 185);
             this.dataGridAn.TabIndex = 22;
             this.dataGridAn.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridAn_CellContentClick);
             // 
             // dataGridMed
             // 
             this.dataGridMed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridMed.Location = new System.Drawing.Point(442, 379);
-            this.dataGridMed.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridMed.Location = new System.Drawing.Point(491, 362);
+            this.dataGridMed.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridMed.Name = "dataGridMed";
             this.dataGridMed.RowHeadersWidth = 82;
             this.dataGridMed.RowTemplate.Height = 33;
-            this.dataGridMed.Size = new System.Drawing.Size(391, 78);
+            this.dataGridMed.Size = new System.Drawing.Size(391, 185);
             this.dataGridMed.TabIndex = 23;
             this.dataGridMed.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridMed_CellContentClick);
             // 
             // labelAl
             // 
             this.labelAl.AutoSize = true;
-            this.labelAl.Location = new System.Drawing.Point(439, 66);
+            this.labelAl.Location = new System.Drawing.Point(305, 18);
             this.labelAl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelAl.Name = "labelAl";
             this.labelAl.Size = new System.Drawing.Size(113, 13);
@@ -175,7 +175,7 @@
             // labelAn
             // 
             this.labelAn.AutoSize = true;
-            this.labelAn.Location = new System.Drawing.Point(439, 206);
+            this.labelAn.Location = new System.Drawing.Point(748, 18);
             this.labelAn.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelAn.Name = "labelAn";
             this.labelAn.Size = new System.Drawing.Size(134, 13);
@@ -185,7 +185,7 @@
             // labelMed
             // 
             this.labelMed.AutoSize = true;
-            this.labelMed.Location = new System.Drawing.Point(439, 339);
+            this.labelMed.Location = new System.Drawing.Point(488, 315);
             this.labelMed.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMed.Name = "labelMed";
             this.labelMed.Size = new System.Drawing.Size(137, 13);
@@ -196,8 +196,8 @@
             // 
             this.addAlBtn.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.addAlBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addAlBtn.Location = new System.Drawing.Point(694, 81);
-            this.addAlBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addAlBtn.Location = new System.Drawing.Point(560, 33);
+            this.addAlBtn.Margin = new System.Windows.Forms.Padding(2);
             this.addAlBtn.Name = "addAlBtn";
             this.addAlBtn.Size = new System.Drawing.Size(33, 23);
             this.addAlBtn.TabIndex = 29;
@@ -209,8 +209,8 @@
             // 
             this.comboAl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.comboAl.FormattingEnabled = true;
-            this.comboAl.Location = new System.Drawing.Point(442, 80);
-            this.comboAl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboAl.Location = new System.Drawing.Point(308, 32);
+            this.comboAl.Margin = new System.Windows.Forms.Padding(2);
             this.comboAl.Name = "comboAl";
             this.comboAl.Size = new System.Drawing.Size(238, 28);
             this.comboAl.TabIndex = 27;
@@ -220,8 +220,8 @@
             // 
             this.addAnBtn.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.addAnBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addAnBtn.Location = new System.Drawing.Point(694, 222);
-            this.addAnBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addAnBtn.Location = new System.Drawing.Point(1003, 34);
+            this.addAnBtn.Margin = new System.Windows.Forms.Padding(2);
             this.addAnBtn.Name = "addAnBtn";
             this.addAnBtn.Size = new System.Drawing.Size(33, 23);
             this.addAnBtn.TabIndex = 31;
@@ -233,8 +233,8 @@
             // 
             this.comboAn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.comboAn.FormattingEnabled = true;
-            this.comboAn.Location = new System.Drawing.Point(442, 220);
-            this.comboAn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboAn.Location = new System.Drawing.Point(751, 32);
+            this.comboAn.Margin = new System.Windows.Forms.Padding(2);
             this.comboAn.Name = "comboAn";
             this.comboAn.Size = new System.Drawing.Size(238, 28);
             this.comboAn.TabIndex = 30;
@@ -244,8 +244,8 @@
             // 
             this.addMedBtn.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.addMedBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addMedBtn.Location = new System.Drawing.Point(694, 355);
-            this.addMedBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addMedBtn.Location = new System.Drawing.Point(743, 331);
+            this.addMedBtn.Margin = new System.Windows.Forms.Padding(2);
             this.addMedBtn.Name = "addMedBtn";
             this.addMedBtn.Size = new System.Drawing.Size(33, 23);
             this.addMedBtn.TabIndex = 33;
@@ -257,18 +257,18 @@
             // 
             this.comboMed.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.comboMed.FormattingEnabled = true;
-            this.comboMed.Location = new System.Drawing.Point(442, 354);
-            this.comboMed.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboMed.Location = new System.Drawing.Point(491, 330);
+            this.comboMed.Margin = new System.Windows.Forms.Padding(2);
             this.comboMed.Name = "comboMed";
             this.comboMed.Size = new System.Drawing.Size(238, 28);
             this.comboMed.TabIndex = 32;
             this.comboMed.SelectedIndexChanged += new System.EventHandler(this.comboMed_SelectedIndexChanged);
             // 
-            // Details
+            // DetailsMedicament
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(864, 469);
+            this.ClientSize = new System.Drawing.Size(1186, 618);
             this.Controls.Add(this.addMedBtn);
             this.Controls.Add(this.comboMed);
             this.Controls.Add(this.addAnBtn);
@@ -289,7 +289,7 @@
             this.Controls.Add(this.confirmBtn);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Details";
+            this.Name = "DetailsMedicament";
             this.Text = "Détails du médicament - GSB";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAn)).EndInit();

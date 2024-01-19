@@ -106,7 +106,6 @@ namespace AP3_eMEDS
                     using (MySqlCommand command = new MySqlCommand(query, conn))
                     {
                         command.Parameters.AddWithValue("@num_secu", numSecu);
-                        conn.Close();
                         return Convert.ToInt32(command.ExecuteScalar());
                     }
                 }
