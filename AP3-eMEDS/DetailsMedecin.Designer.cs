@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DetailsMedecin));
             this.roleLabel = new System.Windows.Forms.Label();
             this.comboBoxRole = new System.Windows.Forms.ComboBox();
             this.PwLabel = new System.Windows.Forms.Label();
@@ -225,6 +226,7 @@
             this.Controls.Add(this.lastnameTxt);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.addBtn);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DetailsMedecin";
             this.Text = "Détails du médecin - GSB";
             this.ResumeLayout(false);

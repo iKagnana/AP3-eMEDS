@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChangePwForm));
             this.changePwBtn = new System.Windows.Forms.Button();
             this.PwLabel = new System.Windows.Forms.Label();
             this.pwTxt = new System.Windows.Forms.TextBox();
@@ -73,6 +74,7 @@
             this.Controls.Add(this.changePwBtn);
             this.Controls.Add(this.PwLabel);
             this.Controls.Add(this.pwTxt);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ChangePwForm";
             this.Text = "Changement de mot de passe - GSB";
             this.ResumeLayout(false);

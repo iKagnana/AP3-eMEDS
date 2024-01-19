@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsultOrdonnance));
             this.labelInfos = new System.Windows.Forms.Label();
             this.dataGridMeds = new System.Windows.Forms.DataGridView();
             this.labelListMeds = new System.Windows.Forms.Label();
@@ -56,7 +57,7 @@
             // 
             this.dataGridMeds.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridMeds.Location = new System.Drawing.Point(413, 49);
-            this.dataGridMeds.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridMeds.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridMeds.Name = "dataGridMeds";
             this.dataGridMeds.RowHeadersWidth = 82;
             this.dataGridMeds.RowTemplate.Height = 33;
@@ -97,7 +98,7 @@
             // 
             this.dureeTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.dureeTxt.Location = new System.Drawing.Point(39, 191);
-            this.dureeTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dureeTxt.Margin = new System.Windows.Forms.Padding(2);
             this.dureeTxt.Name = "dureeTxt";
             this.dureeTxt.Size = new System.Drawing.Size(133, 26);
             this.dureeTxt.TabIndex = 34;
@@ -116,7 +117,7 @@
             // 
             this.posologieTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.posologieTxt.Location = new System.Drawing.Point(39, 126);
-            this.posologieTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.posologieTxt.Margin = new System.Windows.Forms.Padding(2);
             this.posologieTxt.Name = "posologieTxt";
             this.posologieTxt.Size = new System.Drawing.Size(133, 26);
             this.posologieTxt.TabIndex = 32;
@@ -158,7 +159,8 @@
             this.Controls.Add(this.labelListMeds);
             this.Controls.Add(this.dataGridMeds);
             this.Controls.Add(this.labelInfos);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ConsultOrdonnance";
             this.Text = "Consultation de l\'ordonnance - GSB";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridMeds)).EndInit();

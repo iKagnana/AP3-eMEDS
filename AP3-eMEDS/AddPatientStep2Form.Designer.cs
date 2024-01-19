@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddPatientStep2Form));
             this.comboAl = new System.Windows.Forms.ComboBox();
             this.labelAl = new System.Windows.Forms.Label();
             this.labelAn = new System.Windows.Forms.Label();
@@ -46,7 +47,7 @@
             this.comboAl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.comboAl.FormattingEnabled = true;
             this.comboAl.Location = new System.Drawing.Point(66, 114);
-            this.comboAl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboAl.Margin = new System.Windows.Forms.Padding(2);
             this.comboAl.Name = "comboAl";
             this.comboAl.Size = new System.Drawing.Size(238, 28);
             this.comboAl.TabIndex = 0;
@@ -77,7 +78,7 @@
             this.comboAn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.comboAn.FormattingEnabled = true;
             this.comboAn.Location = new System.Drawing.Point(429, 114);
-            this.comboAn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboAn.Margin = new System.Windows.Forms.Padding(2);
             this.comboAn.Name = "comboAn";
             this.comboAn.Size = new System.Drawing.Size(238, 28);
             this.comboAn.TabIndex = 2;
@@ -87,7 +88,7 @@
             // 
             this.dataGridAl.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridAl.Location = new System.Drawing.Point(66, 159);
-            this.dataGridAl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridAl.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridAl.Name = "dataGridAl";
             this.dataGridAl.RowHeadersWidth = 82;
             this.dataGridAl.RowTemplate.Height = 33;
@@ -99,7 +100,7 @@
             // 
             this.dataGridAn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridAn.Location = new System.Drawing.Point(429, 159);
-            this.dataGridAn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridAn.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridAn.Name = "dataGridAn";
             this.dataGridAn.RowHeadersWidth = 82;
             this.dataGridAn.RowTemplate.Height = 33;
@@ -112,7 +113,7 @@
             this.addAlBtn.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.addAlBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addAlBtn.Location = new System.Drawing.Point(318, 115);
-            this.addAlBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addAlBtn.Margin = new System.Windows.Forms.Padding(2);
             this.addAlBtn.Name = "addAlBtn";
             this.addAlBtn.Size = new System.Drawing.Size(33, 23);
             this.addAlBtn.TabIndex = 6;
@@ -125,7 +126,7 @@
             this.addAnBtn.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.addAnBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addAnBtn.Location = new System.Drawing.Point(681, 115);
-            this.addAnBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addAnBtn.Margin = new System.Windows.Forms.Padding(2);
             this.addAnBtn.Name = "addAnBtn";
             this.addAnBtn.Size = new System.Drawing.Size(33, 23);
             this.addAnBtn.TabIndex = 9;
@@ -160,7 +161,8 @@
             this.Controls.Add(this.comboAn);
             this.Controls.Add(this.labelAl);
             this.Controls.Add(this.comboAl);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AddPatientStep2Form";
             this.Text = "Ajout d\'un patient étape 2 - GSB";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAl)).EndInit();

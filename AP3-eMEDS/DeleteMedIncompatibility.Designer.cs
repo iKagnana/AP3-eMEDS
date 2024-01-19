@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DeleteMedIncompatibility));
             this.supprBtn = new System.Windows.Forms.Button();
             this.confirmBtn = new System.Windows.Forms.Button();
             this.titleLabel = new System.Windows.Forms.Label();
@@ -88,6 +89,7 @@
             this.Controls.Add(this.supprBtn);
             this.Controls.Add(this.confirmBtn);
             this.Controls.Add(this.titleLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DeleteMedIncompatibility";
             this.Text = "Suppression - GSB";
             this.ResumeLayout(false);

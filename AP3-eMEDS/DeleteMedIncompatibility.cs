@@ -28,7 +28,7 @@ namespace AP3_eMEDS
             switch (type)
             {
                 case typeItem.Allergy:
-                    this.subtitle.Text = $"l'allergie {obj.Libelle} ?";
+                    this.subtitle.Text = $"l'{obj.Libelle} ?";
                     break;
                 case typeItem.Antecedent:
                     this.subtitle.Text = $"l'antécédent {obj.Libelle} ?";

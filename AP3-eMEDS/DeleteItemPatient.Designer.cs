@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DeleteItemPatient));
             this.titleLabel = new System.Windows.Forms.Label();
             this.supprBtn = new System.Windows.Forms.Button();
             this.confirmBtn = new System.Windows.Forms.Button();
@@ -88,6 +89,7 @@
             this.Controls.Add(this.supprBtn);
             this.Controls.Add(this.confirmBtn);
             this.Controls.Add(this.titleLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DeleteItemPatient";
             this.Text = "Confirmation de suppression - GSB";
             this.ResumeLayout(false);

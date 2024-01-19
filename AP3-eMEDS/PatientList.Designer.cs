@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PatientList));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.addAlBtn = new System.Windows.Forms.Button();
             this.labelSearch = new System.Windows.Forms.Label();
@@ -129,6 +130,7 @@
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.addAlBtn);
             this.Controls.Add(this.dataGridView1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "PatientList";
             this.Text = "Liste des patients - GSB";
