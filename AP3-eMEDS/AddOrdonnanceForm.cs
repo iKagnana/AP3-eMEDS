@@ -197,24 +197,6 @@ namespace AP3_eMEDS
 
         private void addBtn_Click(object sender, EventArgs e)
         {
-            // warning message
-            if (incompatibilities.Exists(inco => inco.type == typeItem.Allergy) || incompatibilities.Exists(inco => inco.type == typeItem.Antecedent))
-            {
-                // separate allergies and antecedent
-                List<string> antedentsString = incompatibilities.Where(inco => inco.type == typeItem.Antecedent).Select(ant => ant.secondItem.Libelle).ToList();
-                List<string> allergiesString = incompatibilities.Where(inco => inco.type == typeItem.Allergy).Select(ant => ant.secondItem.Libelle).ToList();
-
-                string message = "Attention certains médicaments sont incompatibles avec le patient. " +
-                    $"Il a des incompatibilités avec : {String.Join(", ", antedentsString)}, {String.Join(", ", allergiesString)}";
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult dialog;
-
-                dialog = MessageBox.Show(message, "Voulez-vous continuer ?", buttons);
-                if (dialog == System.Windows.Forms.DialogResult.No)
-                {
-                    return;
-                }
-            }
 
             // pass UUID in field code for ordonnance to make easier adding meds
             string code = Guid.NewGuid().ToString();
@@ -235,6 +217,25 @@ namespace AP3_eMEDS
                 MessageBox.Show("Vérifiez vos champs.");
                 // exit
                 return;
+            }
+
+            // warning message
+            if (incompatibilities.Exists(inco => inco.type == typeItem.Allergy) || incompatibilities.Exists(inco => inco.type == typeItem.Antecedent))
+            {
+                // separate allergies and antecedent
+                List<string> antedentsString = incompatibilities.Where(inco => inco.type == typeItem.Antecedent).Select(ant => ant.secondItem.Libelle).ToList();
+                List<string> allergiesString = incompatibilities.Where(inco => inco.type == typeItem.Allergy).Select(ant => ant.secondItem.Libelle).ToList();
+
+                string message = "Attention certains médicaments sont incompatibles avec le patient. " +
+                    $"Il a des incompatibilités avec : {String.Join(", ", antedentsString)}, {String.Join(", ", allergiesString)}";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult dialog;
+
+                dialog = MessageBox.Show(message, "Voulez-vous continuer ?", buttons);
+                if (dialog == System.Windows.Forms.DialogResult.No)
+                {
+                    return;
+                }
             }
 
             // create object ordonnance to send to db 

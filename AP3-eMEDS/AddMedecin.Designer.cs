@@ -48,6 +48,7 @@
             this.pwTxt = new System.Windows.Forms.TextBox();
             this.comboBoxRole = new System.Windows.Forms.ComboBox();
             this.roleLabel = new System.Windows.Forms.Label();
+            this.warningLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridMedecin)).BeginInit();
             this.SuspendLayout();
@@ -235,11 +236,24 @@
             this.roleLabel.TabIndex = 44;
             this.roleLabel.Text = "Role";
             // 
+            // warningLabel
+            // 
+            this.warningLabel.AutoSize = true;
+            this.warningLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.warningLabel.ForeColor = System.Drawing.Color.Red;
+            this.warningLabel.Location = new System.Drawing.Point(12, 564);
+            this.warningLabel.Name = "warningLabel";
+            this.warningLabel.Size = new System.Drawing.Size(338, 18);
+            this.warningLabel.TabIndex = 45;
+            this.warningLabel.Text = "Faites attention, certains champs sont mal remplis";
+            this.warningLabel.Visible = false;
+            // 
             // AddMedecinForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1186, 618);
+            this.Controls.Add(this.warningLabel);
             this.Controls.Add(this.roleLabel);
             this.Controls.Add(this.comboBoxRole);
             this.Controls.Add(this.PwLabel);
@@ -289,5 +303,6 @@
         private System.Windows.Forms.TextBox pwTxt;
         private System.Windows.Forms.ComboBox comboBoxRole;
         private System.Windows.Forms.Label roleLabel;
+        private System.Windows.Forms.Label warningLabel;
     }
 }

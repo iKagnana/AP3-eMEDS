@@ -62,8 +62,11 @@ namespace AP3_eMEDS
                 this.emailTxt.Text.Length == 0 ||
                 this.pwTxt.Text.Length == 0)
             {
+                this.warningLabel.Visible = true;
                 return;
             }
+
+            this.warningLabel.Visible = false;
             Medecin newMedecin = new Medecin(this.lastnameTxt.Text,
                                              this.firstnameTxt.Text,
                                              this.birthDatePicker.Value.ToString("yyyy-MM-dd"),
