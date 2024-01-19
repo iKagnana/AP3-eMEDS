@@ -322,12 +322,18 @@ namespace AP3_eMEDS
 
                         if (medecin.Equals(null))
                         {
-                            Console.WriteLine("Oops");
                             return;
                         }
 
-                        // generate pdf 
-                        selected.GeneratePDF(patient, medecin, selected, controller.GetAllMeds(selected.Id), $"ordonnance {patient.Nom} {patient.Prenom}");
+                        FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+                        folderBrowserDialog.ShowDialog();
+                        if (folderBrowserDialog.SelectedPath != "")
+                        {
+                            // generate pdf 
+                            selected.GeneratePDF(folderBrowserDialog.SelectedPath, patient, medecin, controller.GetAllMeds(selected.Id), $"ordonnance_{patient.Nom}_{patient.Prenom}");
+                        }
+
+                        
                     } else
                     {
                         Console.WriteLine($"Consult ordonnance for ordonnance {selected.Id}");

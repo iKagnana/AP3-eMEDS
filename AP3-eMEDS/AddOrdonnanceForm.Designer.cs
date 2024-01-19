@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddOrdonnanceForm));
             this.patientInfos = new System.Windows.Forms.Label();
             this.comboMeds = new System.Windows.Forms.ComboBox();
             this.medLabel = new System.Windows.Forms.Label();
@@ -279,6 +280,7 @@
             this.Controls.Add(this.medLabel);
             this.Controls.Add(this.comboMeds);
             this.Controls.Add(this.patientInfos);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AddOrdonnanceForm";
             this.Text = "Ajout d\'ordonnance - GSB";

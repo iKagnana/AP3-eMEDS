@@ -38,10 +38,12 @@ namespace AP3_eMEDS
         }
 
         // method to generate the entire pdf
-        public void GeneratePDF(Patient patient, Medecin medecin, Ordonnance ordonnance, List<Medicament> meds, string fileName)
+        public void GeneratePDF(string directory, Patient patient, Medecin medecin, List<Medicament> meds, string fileName)
         {
+            Console.WriteLine("Ordonnance generate pdf");
             // create path to dl file 
-            string outFile = Environment.CurrentDirectory + $"/{fileName}.pdf";
+            string outFile = directory + $"/{fileName}.pdf";
+            Console.WriteLine(outFile);
             // create document and add table
             Document doc = new Document();
             PdfPTable tableLayout = new PdfPTable(2);
@@ -59,11 +61,11 @@ namespace AP3_eMEDS
 
             doc.Add(GeneratePdfTable(tableLayout, meds));
 
-            Paragraph posologie = new Paragraph($"Posologie : {ordonnance.Posologie}");
+            Paragraph posologie = new Paragraph($"Posologie : {this.Posologie}");
             posologie.Alignment = Element.ALIGN_LEFT;
             doc.Add(posologie);
 
-            Paragraph duree = new Paragraph($"Durée du traitement : {ordonnance.Duree}");
+            Paragraph duree = new Paragraph($"Durée du traitement : {this.Duree}");
             duree.Alignment = Element.ALIGN_LEFT;
             doc.Add(duree);
 
@@ -74,7 +76,7 @@ namespace AP3_eMEDS
         // method to generate pdf table medicament
         private PdfPTable GeneratePdfTable(PdfPTable tableLayout, List<Medicament> medicament)
         {
-            tableLayout.AddCell(new PdfPCell(new Phrase("Creating PDF file using iTextsharp", new Font(Font.NORMAL, 13, 1, new iTextSharp.text.BaseColor(153, 51, 0))))
+            tableLayout.AddCell(new PdfPCell(new Phrase("Médicament prescrits", new Font(Font.FontFamily.HELVETICA, 13, 1, new iTextSharp.text.BaseColor(153, 51, 0))))
             {
                 Colspan = 4,
                 Border = 0,
@@ -96,7 +98,7 @@ namespace AP3_eMEDS
         // Method to add single cell to the header  
         private static void AddCellToHeader(PdfPTable tableLayout, string cellText)
         {
-            tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.NORMAL, 8, 1, iTextSharp.text.BaseColor.WHITE)))
+            tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.FontFamily.HELVETICA, 8, 1, iTextSharp.text.BaseColor.WHITE)))
             {
                 HorizontalAlignment = Element.ALIGN_CENTER,
                 Padding = 5,
@@ -106,7 +108,7 @@ namespace AP3_eMEDS
         // Method to add single cell to the body  
         private static void AddCellToBody(PdfPTable tableLayout, string cellText)
         {
-            tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.NORMAL, 8, 1, iTextSharp.text.BaseColor.BLACK)))
+            tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.FontFamily.HELVETICA, 8, 1, iTextSharp.text.BaseColor.BLACK)))
             {
                 HorizontalAlignment = Element.ALIGN_CENTER,
                 Padding = 5,
