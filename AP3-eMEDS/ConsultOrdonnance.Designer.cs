@@ -143,6 +143,7 @@
             this.generateBtn.TabIndex = 37;
             this.generateBtn.Text = "Générer le pdf";
             this.generateBtn.UseVisualStyleBackColor = false;
+            this.generateBtn.Click += new System.EventHandler(this.generateBtn_Click);
             // 
             // ConsultOrdonnance
             // 

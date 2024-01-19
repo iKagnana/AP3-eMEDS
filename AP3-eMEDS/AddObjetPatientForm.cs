@@ -31,12 +31,12 @@ namespace AP3_eMEDS
             switch (type)
             {
                 case typeObjetPatient.Antecedent:
-                    this.Text = "Ajout d'un antécédent - GSB";
+                    this.Text = "Gestion des antécédents - GSB";
                     this.labelTitle.Text = "Ajout d'un antécédent";
                     this.objets = anController.GetAntecedents();
                     break;
                 case typeObjetPatient.Allergie:
-                    this.Text = "Ajout d'une allergie - GSB";
+                    this.Text = "Gestion des allergies - GSB";
                     this.labelTitle.Text = "Ajout d'une allergie";
                     this.objets = alController.GetAllergies();
                     break;

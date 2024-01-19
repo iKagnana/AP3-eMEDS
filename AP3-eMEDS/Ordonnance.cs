@@ -55,7 +55,7 @@ namespace AP3_eMEDS
             patientInfos.Alignment = Element.ALIGN_LEFT;
             doc.Add(patientInfos);
 
-            Paragraph medecinInfo = new Paragraph($"{medecin.Nom} {medecin.Prenom}");
+            Paragraph medecinInfo = new Paragraph($"DR.{medecin.Nom} {medecin.Prenom}");
             medecinInfo.Alignment = Element.ALIGN_RIGHT;
             doc.Add(medecinInfo);
 

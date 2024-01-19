@@ -43,6 +43,14 @@ namespace AP3_eMEDS
 
             // update data grid
             UpdateOrdonnance();
+            DataGridViewButtonColumn modifyButton = new DataGridViewButtonColumn();
+            modifyButton.Name = "Générer le pdf";
+            modifyButton.Text = "Générer le pdf";
+            int columnIndex = 0;
+            if (dataGridListO.Columns["modify"] == null)
+            {
+                dataGridListO.Columns.Insert(columnIndex, modifyButton);
+            }
 
             // init comboBox
             string[] typeDate = {"jour", "semaine", "mois"};
@@ -60,14 +68,6 @@ namespace AP3_eMEDS
             this.ordonnances = controller.GetOrdonnances(patient.Id);
 
             // data grid 
-            DataGridViewButtonColumn modifyButton = new DataGridViewButtonColumn();
-            modifyButton.Name = "Générer le pdf";
-            modifyButton.Text = "Générer le pdf";
-            int columnIndex = 0;
-            if (dataGridListO.Columns["modify"] == null)
-            {
-                dataGridListO.Columns.Insert(columnIndex, modifyButton);
-            }
             this.dataGridListO.DataSource = null;
             this.dataGridListO.DataSource = ordonnances;
 
@@ -95,6 +95,14 @@ namespace AP3_eMEDS
             this.comboMeds.SelectedValue = allMeds[0].Libelle;
         }
 
+        private void ResetForm()
+        {
+            this.dureeTxt.Text = string.Empty;
+            this.InstruSpeTxt.Text = string.Empty;
+            this.posologieTxt.Text = string.Empty;
+            this.nbDate.Text = string.Empty;
+        }
+
         private void addMedBtn_Click(object sender, EventArgs e)
         {
             // use the class ObjetPatient and not Medicament
@@ -110,6 +118,7 @@ namespace AP3_eMEDS
                 }
                 medicaments.Add(newMed);
                 UpdateMedicamentDG();
+                ResetForm();
             } else if (medicaments.Exists(med => med.Id == allMeds[selectedMed].Id))
             {
                 MessageBox.Show("Médicament déjà ajouté.");
@@ -211,7 +220,7 @@ namespace AP3_eMEDS
             }
 
             // test if fields are empty
-            if (this.InstruSpeTxt.Text.Length == 0 || this.posologieTxt.Text.Length == 0
+            if (this.posologieTxt.Text.Length == 0
                 || duree.Length == 0 && this.medicaments.Count == 0)
             {
                 MessageBox.Show("Vérifiez vos champs.");

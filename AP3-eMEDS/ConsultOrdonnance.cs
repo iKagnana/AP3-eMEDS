@@ -41,5 +41,25 @@ namespace AP3_eMEDS
             this.dataGridMeds.DataSource = null;
             this.dataGridMeds.DataSource = medicament;
         }
+
+        private void generateBtn_Click(object sender, EventArgs e)
+        {
+            MedecinController medecinController = new MedecinController();
+            int idMedecin = Global.UserId;
+            Medecin medecin = medecinController.GetMedecinFromId(idMedecin);
+
+            if (medecin.Equals(null))
+            {
+                return;
+            }
+
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            folderBrowserDialog.ShowDialog();
+            if (folderBrowserDialog.SelectedPath != "")
+            {
+                // generate pdf 
+                this.ordonnance.GeneratePDF(folderBrowserDialog.SelectedPath, patient, medecin, controller.GetAllMeds(ordonnance.Id), $"ordonnance_{patient.Nom}_{patient.Prenom}");
+            }
+        }
     }
 }

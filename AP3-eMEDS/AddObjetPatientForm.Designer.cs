@@ -126,7 +126,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "AddObjetPatientForm";
-            this.Text = "Ajout ";
+            this.Text = "Gestion";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridObjetPatient)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
